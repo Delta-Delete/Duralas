@@ -12,14 +12,17 @@
   box-sizing: border-box;
 
   /* Reglages */
-  --kyrn-corner-w: clamp(90px, 16vw, 140px);  /* largeur d'affichage des coins */
-  --kyrn-corner-h: clamp(90px, 16vw, 140px);  /* hauteur zone interdite de base */
-  --kyrn-corner-inset: 6px;                   /* rapproche le texte des coins */
-  --kyrn-corner-up-brut: 84px;                /* monte les coins (brut) */
-  --kyrn-corner-out-brut: 18px;               /* sort sur les cotes (brut) */
+  --kyrn-corner-w: clamp(90px, 16vw, 140px);
+  --kyrn-corner-h: clamp(90px, 16vw, 140px);
+  --kyrn-corner-inset: 6px;
+  --kyrn-corner-up-brut: 84px;
+  --kyrn-corner-out-brut: 18px;
 
-  /* Hauteur du marqueur du bas */
+  /* Bas */
   --kyrn-end-h: clamp(90px, 14vw, 160px);
+
+  /* IMPORTANT : force une hauteur minimale pour voir l'ancrage bas */
+  min-height: 720px; /* ajuste si tu veux plus/moins de “hauteur de fiche” */
 }
 
 /* Coins en overlay */
@@ -41,11 +44,10 @@
   pointer-events: none;
 }
 
-/* BRUT: on sort du bloc sur les cotes */
 .kyrn-corner-left{ left: calc(-1 * var(--kyrn-corner-out-brut)); }
 .kyrn-corner-right{ right: calc(-1 * var(--kyrn-corner-out-brut)); }
 
-/* Texte : wrap entre deux floats au debut */
+/* Texte */
 .kyrn-text{
   box-sizing: border-box;
   width: 100%;
@@ -53,11 +55,12 @@
   overflow-wrap: break-word;
   word-break: normal;
   display: flow-root;
-  padding: 14px 14px 18px;
+
+  /* IMPORTANT : on reserve la place du bas pour eviter que le texte passe dessous */
+  padding: 14px 14px calc(18px + var(--kyrn-end-h));
 }
 
-/* Zones interdites pour que le texte commence entre les coins
-   On ajoute +84px pour suivre la montee des images */
+/* Zones interdites */
 .kyrn-text::before,
 .kyrn-text::after{
   content: "";
@@ -68,24 +71,29 @@
 .kyrn-text::before{ float: left; }
 .kyrn-text::after{ float: right; }
 
-/* Marqueur de fin */
+/* BAS : ancre au bas du bloc */
 .kyrn-end{
-  margin-top: 12px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  margin: 0;
   padding: 0;
-  line-height: 0; /* evite les micro-espaces de baseline */
+  line-height: 0;
+  pointer-events: none;
 }
 
 .kyrn-endmark{
   width: 100%;
   height: var(--kyrn-end-h);
   display: block;
-
   object-fit: contain;
-  object-position: center bottom; /* IMPORTANT: colle l'image en bas */
-
+  object-position: center bottom;
   user-select: none;
   pointer-events: none;
 }
+
 
 
 
