@@ -18,7 +18,7 @@
   --kyrn-corner-up-brut: 84px;                /* MONTE les coins (brut) */
 
   /* NOUVEAU: décale les coins vers l’extérieur */
-  --kyrn-corner-out-brut: 18px;               /* + = plus sur les côtés */
+  --kyrn-corner-out-brut: 67px;               /* + = plus sur les côtés */
 }
 
 /* Coins en overlay */
