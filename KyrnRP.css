@@ -1,3 +1,6 @@
+/* Import Google Font: Macondo */
+@import url("https://fonts.googleapis.com/css2?family=Macondo&display=swap");
+
 /* =========================
    Kyrn RP Template (BRUT+)
    Coins haut G/D en overlay
@@ -7,6 +10,7 @@
    Dialogues: base + variantes (autres / Kyrn)
    Fix: bulles -> moins d'espace avant/après + réduit le gap du paragraphe suivant
    + Fix forum: <br> après bulle / <p> qui encapsule la bulle / paragraphes vides
+   + Font: Macondo + taille de police via variable
    ========================= */
 
 .kyrn-rpbox{
@@ -32,6 +36,7 @@
   --kyrn-text-raise: -28px;     /* NEGATIF = monte, POSITIF = descend */
 
   /* Lecture */
+  --kyrn-font-size: 15px;       /* <- AUGMENTE ICI (ex: 16px) */
   --kyrn-text-maxw: 900px;      /* largeur confortable (mets 100% si tu veux) */
   --kyrn-paragraph-gap: 14px;   /* espace entre paragraphes */
   --kyrn-veil: rgba(0,0,0,0.18);
@@ -87,6 +92,10 @@
   overflow-wrap: break-word;
   word-break: normal;
 
+  /* Font test */
+  font-family: "Macondo", Georgia, "Times New Roman", serif;
+  font-size: var(--kyrn-font-size);
+
   /* Déplacement fiable */
   position: relative;
   top: var(--kyrn-text-raise);
@@ -140,6 +149,10 @@
   border-left: 2px solid rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.04);
   border-radius: 10px;
+
+  /* même font/taille que le texte */
+  font-family: inherit;
+  font-size: inherit;
 }
 
 /* Si un paragraphe suit une bulle, réduire le gap du paragraphe */
@@ -165,6 +178,9 @@
   border-left: 2px solid rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.04);
   border-radius: 10px;
+
+  font-family: inherit;
+  font-size: inherit;
 }
 
 /* =========================
@@ -223,11 +239,9 @@
     --kyrn-gap-right: 6px;
     --kyrn-corner-w: 90px;
     --kyrn-text-maxw: 100%;
+    --kyrn-font-size: 14px; /* optionnel: un poil plus petit sur mobile */
   }
 }
-
-
-
 
 
 
