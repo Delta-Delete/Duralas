@@ -3,7 +3,7 @@
    Coins haut G/D en top negatif
    Texte en colonne fixe (ne passe jamais sous les tiges)
    Bas proche du texte
-   Test fix 1: bloque le margin-collapsing via flow-root sur .kyrn-rpbox
+   Fix: deplacement du texte via position:relative + top (imparable)
    ========================= */
 
 .kyrn-rpbox{
@@ -12,23 +12,23 @@
   position: relative;
   box-sizing: border-box;
 
-  /* FIX 1: empeche le margin collapsing du premier enfant */
+  /* empeche divers effets de marge */
   display: flow-root;
 
   /* Coins */
   --kyrn-corner-w: clamp(90px, 16vw, 140px);
-  --kyrn-corner-up-brut: 84px;      /* montee coins */
-  --kyrn-corner-out-brut: 18px;     /* vers l'exterieur */
+  --kyrn-corner-up-brut: 84px;
+  --kyrn-corner-out-brut: 18px;
 
-  /* Texte: colonne fixe (ajuste ces valeurs) */
-  --kyrn-safe-left: 50px;           /* commence apres la tige gauche */
-  --kyrn-safe-right: 40px;          /* s'arrete avant la tige droite */
-  --kyrn-gap-left: 10px;            /* ecart texte vs tige gauche */
-  --kyrn-gap-right: 0px;            /* ecart texte vs tige droite */
+  /* Texte: colonne fixe */
+  --kyrn-safe-left: 50px;
+  --kyrn-safe-right: 40px;
+  --kyrn-gap-left: 10px;
+  --kyrn-gap-right: 0px;
 
-  /* Texte: monter plus haut */
+  /* Texte: MONTER = valeur NEGATIVE */
   --kyrn-text-pad-top: 0px;
-  --kyrn-text-raise: 10px;         /* negatif = monte */
+  --kyrn-text-raise: -10px;  /* ex: -10, -20, -35 */
 
   /* Bas */
   --kyrn-end-h: clamp(90px, 14vw, 160px);
@@ -57,7 +57,7 @@
 .kyrn-corner-left{ left: calc(-1 * var(--kyrn-corner-out-brut)); }
 .kyrn-corner-right{ right: calc(-1 * var(--kyrn-corner-out-brut)); }
 
-/* Texte: colonne fixe sur toute la hauteur */
+/* Texte */
 .kyrn-text{
   box-sizing: border-box;
   width: 100%;
@@ -65,10 +65,11 @@
   overflow-wrap: break-word;
   word-break: normal;
 
-  /* monte le bloc texte (maintenant ca marche) */
-  margin-top: var(--kyrn-text-raise);
+  /* FIX: deplacement visuel fiable */
+  position: relative;
+  top: var(--kyrn-text-raise); /* NEGATIF = monte, POSITIF = descend */
 
-  /* reserve a gauche et a droite pour ne jamais passer sous les tiges */
+  /* reserve a gauche et a droite */
   padding-top: var(--kyrn-text-pad-top);
   padding-bottom: 6px;
   padding-left: calc(var(--kyrn-safe-left) + var(--kyrn-gap-left));
@@ -78,7 +79,7 @@
 /* Si le forum injecte des <p> avec marges */
 .kyrn-text p{ margin: 0; }
 
-/* On neutralise l'ancien systeme de floats si tu l'avais encore */
+/* Neutralise anciens floats */
 .kyrn-text::before,
 .kyrn-text::after{
   content: none;
@@ -101,6 +102,7 @@
   user-select: none;
   pointer-events: none;
 }
+
 
 
 
