@@ -1,15 +1,16 @@
-/* Import Google Font: Macondo (uniquement pour les dialogues) */
-@import url("https://fonts.googleapis.com/css2?family=Macondo&display=swap");
+/* Import Google Fonts: Spectral (texte) + Macondo (dialogues) */
+@import url("https://fonts.googleapis.com/css2?family=Spectral:wght@400;600&family=Macondo&display=swap");
 
 /* =========================
    Kyrn RP Template (BRUT+)
    Coins haut G/D en overlay
    Texte en colonne fixe (ne passe jamais sous les tiges)
-   Texte déplacé via position:relative + top
+   Texte déplacé via position:relative + top (imparable)
    Champ de fleurs rapproché via margin-top négatif
-   Dialogues: base + variantes (autres / Kyrn) + Macondo UNIQUEMENT ici
+   Dialogues: base + variantes (autres / Kyrn)
    Fix: bulles -> moins d'espace avant/après + réduit le gap du paragraphe suivant
    + Fix forum: <br> après bulle / <p> qui encapsule la bulle / paragraphes vides
+   + Fonts: Spectral (texte) / Macondo (dialogues)
    ========================= */
 
 .kyrn-rpbox{
@@ -35,19 +36,23 @@
   --kyrn-text-raise: -28px;     /* NEGATIF = monte, POSITIF = descend */
 
   /* Lecture */
-  --kyrn-font-size: 15px;       /* <- taille du texte normal */
-  --kyrn-text-maxw: 900px;
-  --kyrn-paragraph-gap: 14px;
+  --kyrn-font-size: 15px;       /* <- augmente ici si besoin (ex: 16px) */
+  --kyrn-text-maxw: 900px;      /* largeur confortable (mets 100% si tu veux) */
+  --kyrn-paragraph-gap: 14px;   /* espace entre paragraphes */
   --kyrn-veil: rgba(0,0,0,0.18);
   --kyrn-veil-radius: 12px;
 
+  /* Fonts */
+  --kyrn-font-text: "Spectral", Georgia, "Times New Roman", serif;
+  --kyrn-font-dia: "Macondo", Georgia, "Times New Roman", serif;
+
   /* Dialogues */
-  --kyrn-dia-gap: 6px;
-  --kyrn-dia-after-p-gap: 0px;
+  --kyrn-dia-gap: 6px;          /* espace vertical bulles */
+  --kyrn-dia-after-p-gap: 0px;  /* espace avant le paragraphe après une bulle */
 
   /* Bas */
   --kyrn-end-h: clamp(90px, 14vw, 160px);
-  --kyrn-end-pull: 18px;
+  --kyrn-end-pull: 18px;        /* augmente pour rapprocher les fleurs du texte */
 
   /* Effets doux */
   --kyrn-flower-glow: rgba(255, 235, 180, 0.18);
@@ -64,7 +69,7 @@
   z-index: 5;
 }
 
-/* Images coins */
+/* Images coins (BRUT) */
 .kyrn-corner{
   position: absolute;
   top: calc(-1 * var(--kyrn-corner-up-brut));
@@ -73,14 +78,16 @@
   display: block;
   user-select: none;
   pointer-events: none;
+
+  /* halo discret */
   filter: drop-shadow(0 0 10px var(--kyrn-flower-glow));
 }
 
-/* Sortie latérale */
+/* Sortie latérale (BRUT) */
 .kyrn-corner-left{ left: calc(-1 * var(--kyrn-corner-out-brut)); }
 .kyrn-corner-right{ right: calc(-1 * var(--kyrn-corner-out-brut)); }
 
-/* Texte (SANS Macondo) */
+/* Texte (narration) */
 .kyrn-text{
   box-sizing: border-box;
   width: 100%;
@@ -89,18 +96,22 @@
   overflow-wrap: break-word;
   word-break: normal;
 
-  /* Font du texte normal */
-  font-family: Georgia, "Times New Roman", serif;
+  /* Font texte */
+  font-family: var(--kyrn-font-text);
   font-size: var(--kyrn-font-size);
+  font-weight: 400;
 
+  /* Déplacement fiable */
   position: relative;
   top: var(--kyrn-text-raise);
 
+  /* Réserves anti-tiges */
   padding-top: var(--kyrn-text-pad-top);
   padding-bottom: 0px;
   padding-left: calc(var(--kyrn-safe-left) + var(--kyrn-gap-left));
   padding-right: calc(var(--kyrn-safe-right) + var(--kyrn-gap-right));
 
+  /* Confort de lecture */
   max-width: var(--kyrn-text-maxw);
   margin-left: auto;
   margin-right: auto;
@@ -108,11 +119,12 @@
   text-align: justify;
   hyphens: auto;
 
+  /* Voile discret */
   background: var(--kyrn-veil);
   border-radius: var(--kyrn-veil-radius);
 }
 
-/* Paragraphes */
+/* Paragraphes (forums injectent souvent des <p>) */
 .kyrn-text p{ margin: 0; }
 .kyrn-text p + p{ margin-top: var(--kyrn-paragraph-gap); }
 
@@ -124,38 +136,44 @@
 }
 
 /* =========================
-   Dialogues (Macondo UNIQUEMENT ici)
+   Dialogues (base + variantes)
+   Usage:
+   <div class="kyrn-dia kyrn-otext">- Autre...</div>
+   <div class="kyrn-dia kyrn-ktext">- Kyrn...</div>
    ========================= */
 
 .kyrn-text .kyrn-dia{
   display: block;
   margin: var(--kyrn-dia-gap) 0;
-  margin-bottom: 2px;
+  margin-bottom: 2px;                 /* colle un peu le texte après */
   padding: 8px 12px 8px 14px;
   border-left: 2px solid rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.04);
   border-radius: 10px;
 
-  /* Macondo sur les dialogues */
-  font-family: "Macondo", Georgia, "Times New Roman", serif;
-  font-size: inherit;
+  /* Font dialogues */
+  font-family: var(--kyrn-font-dia);
+  font-size: var(--kyrn-font-size);
+  font-weight: 400;
 }
 
-/* Si un paragraphe suit une bulle */
+/* Si un paragraphe suit une bulle, réduire le gap du paragraphe */
 .kyrn-text .kyrn-dia + p{
   margin-top: var(--kyrn-dia-after-p-gap);
 }
 
 /* Autres (neutre) */
-.kyrn-text .kyrn-otext{ color: inherit; }
+.kyrn-text .kyrn-otext{
+  color: inherit;
+}
 
 /* Kyrn (couleur dédiée) */
 .kyrn-text .kyrn-ktext{
   color: var(--kyrn-kyrn-color);
-  font-weight: 600;
+  font-weight: 600; /* optionnel */
 }
 
-/* Blockquote dialogues (si utilisé) */
+/* Si tu utilises des blockquote pour dialogues */
 .kyrn-text blockquote{
   margin: var(--kyrn-dia-gap) 0 2px;
   padding: 8px 12px 8px 14px;
@@ -163,27 +181,37 @@
   background: rgba(255,255,255,0.04);
   border-radius: 10px;
 
-  font-family: "Macondo", Georgia, "Times New Roman", serif;
-  font-size: inherit;
+  /* Font dialogues */
+  font-family: var(--kyrn-font-dia);
+  font-size: var(--kyrn-font-size);
+  font-weight: 400;
 }
 
 /* =========================
    FIX FORUM: gros trou après la bulle
+   (souvent causé par <br> injectés ou bulle encapsulée dans <p>)
    ========================= */
 
+/* 1) Si le forum met des <br> juste après la bulle, on les supprime */
 .kyrn-text .kyrn-dia + br{ display: none; }
 .kyrn-text .kyrn-dia + br + br{ display: none; }
 
+/* 2) Si le forum encapsule la bulle dans un <p>, on réduit le gap du <p> suivant */
 @supports selector(p:has(.kyrn-dia)){
   .kyrn-text p:has(.kyrn-dia) + p{
     margin-top: var(--kyrn-dia-after-p-gap);
   }
+
+  /* 3) Nettoie les paragraphes "vides" du type <p><br></p> */
   .kyrn-text p:has(> br:only-child){
     display: none;
   }
 }
 
-.kyrn-text p:empty{ display: none; }
+/* 4) Paragraphes vraiment vides */
+.kyrn-text p:empty{
+  display: none;
+}
 
 /* Bas proche du texte */
 .kyrn-end{
@@ -200,10 +228,12 @@
   object-position: center bottom;
   user-select: none;
   pointer-events: none;
+
+  /* halo discret */
   filter: drop-shadow(0 0 10px var(--kyrn-flower-glow));
 }
 
-/* Responsive */
+/* Responsive: évite que les réserves mangent tout */
 @media (max-width: 520px){
   .kyrn-rpbox{
     --kyrn-safe-left: 18px;
@@ -212,9 +242,10 @@
     --kyrn-gap-right: 6px;
     --kyrn-corner-w: 90px;
     --kyrn-text-maxw: 100%;
-    --kyrn-font-size: 14px;
+    --kyrn-font-size: 14px; /* optionnel: un poil plus petit sur mobile */
   }
 }
+
 
 
 
