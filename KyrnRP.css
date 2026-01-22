@@ -25,7 +25,7 @@
 
   /* Texte: monter plus haut */
   --kyrn-text-pad-top: 0px;
-  --kyrn-text-raise: -18px;         /* plus haut qu'avant */
+  --kyrn-text-raise: -28px;         /* plus haut qu'avant */
 
   /* Bas */
   --kyrn-end-h: clamp(90px, 14vw, 160px);
