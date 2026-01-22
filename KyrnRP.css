@@ -1,50 +1,61 @@
 .rpbox{
   width: 100%;
   max-width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
   position: relative;
+  box-sizing: border-box;
+
+  /* IMPORTANT : évite l’énorme vide si tu avais du 100vh quelque part */
+  height: auto !important;
+  min-height: 0 !important;
 }
 
-/* Coins overlay, qui s’adaptent à la largeur du post */
-.rp-corner{
+/* Wrapper overlay (hors flux) */
+.rp-corners{
   position: absolute;
-  top: 0;
-  width: clamp(90px, 16vw, 140px);
-  height: auto;
-  display: block;
+  inset: 0;               /* couvre le bloc */
   pointer-events: none;
-  user-select: none;
   z-index: 5;
 }
 
-.rp-corner-left{ left: 0; }
-.rp-corner-right{ right: 0; }
+/* Coins: ABSOLU => ne poussent plus le texte */
+.rp-corner{
+  position: absolute;
+  top: -4px;              /* petit “mordant” pour coller au coin */
+  width: clamp(90px, 16vw, 140px);
+  height: auto;
+  display: block;
+  user-select: none;
+}
 
-/* Milieu: colonnes latérales qui ne bouffent pas tout l’espace */
+.rp-corner-left{ left: -4px; }
+.rp-corner-right{ right: -4px; }
+
 .rp-mid{
   display: grid;
   grid-template-columns: clamp(34px, 6vw, 80px) minmax(0,1fr) clamp(34px, 6vw, 80px);
   gap: clamp(8px, 1.6vw, 14px);
   align-items: stretch;
+
+  /* laisse juste un chouïa de marge sous les coins */
+  padding-top: clamp(8px, 1.2vw, 12px);
 }
 
-/* Texte: coins qui “touchent presque”, sans manger le contenu */
 .rp-text{
   grid-column: 2;
   min-width: 0;
   width: 100%;
-  padding: clamp(22px, 3.2vw, 32px) clamp(14px, 2.2vw, 18px) 18px;
-  line-height: 1.6;
   box-sizing: border-box;
-  word-break: normal;
+
+  /* plus petit = texte plus haut, coins plus proches */
+  padding: clamp(12px, 1.6vw, 16px) clamp(14px, 2.2vw, 18px) 18px;
+
+  line-height: 1.6;
   overflow-wrap: break-word;
+  word-break: normal;
 }
 
-/* Colonnes gauche/droite */
 .rp-side{ position: relative; }
 
-/* Sticky: reste visible sans prendre trop de place */
 .rp-sticky{
   position: sticky;
   top: 35vh;
@@ -54,21 +65,21 @@
   margin: 0 auto;
   pointer-events: none;
   user-select: none;
-  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.35));
 }
 
-/* Cache l’icône “image cassée” si placeholder */
 .rp-sticky[src^="URL_"],
 .rp-sticky[src=""]{
   display: none;
 }
 
-/* Bas: prend toute la largeur et plus haut */
-.rp-end{ margin-top: 16px; }
+/* Bas: suit le texte, pas collé au bas de l’écran */
+.rp-end{
+  margin-top: 12px;
+}
 
 .rp-endmark{
   width: 100%;
-  height: clamp(120px, 18vw, 200px);
+  height: clamp(90px, 14vw, 160px);  /* “plus haut” sans créer un vide géant */
   display: block;
   object-fit: contain;
   pointer-events: none;
