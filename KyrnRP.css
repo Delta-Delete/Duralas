@@ -6,6 +6,7 @@
    Champ de fleurs rapproché via margin-top négatif
    Dialogues: base + variantes (autres / Kyrn)
    Fix: bulles -> moins d'espace avant/après + réduit le gap du paragraphe suivant
+   + Fix forum: <br> après bulle / <p> qui encapsule la bulle / paragraphes vides
    ========================= */
 
 .kyrn-rpbox{
@@ -133,8 +134,8 @@
 
 .kyrn-text .kyrn-dia{
   display: block;
-  margin: var(--kyrn-dia-gap) 0;         /* moins d'air */
-  margin-bottom: 2px;                    /* colle un peu le texte après */
+  margin: var(--kyrn-dia-gap) 0;
+  margin-bottom: 2px;                 /* colle un peu le texte après */
   padding: 8px 12px 8px 14px;
   border-left: 2px solid rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.04);
@@ -164,6 +165,33 @@
   border-left: 2px solid rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.04);
   border-radius: 10px;
+}
+
+/* =========================
+   FIX FORUM: gros trou après la bulle
+   (souvent causé par <br> injectés ou bulle encapsulée dans <p>)
+   ========================= */
+
+/* 1) Si le forum met des <br> juste après la bulle, on les supprime */
+.kyrn-text .kyrn-dia + br{ display: none; }
+.kyrn-text .kyrn-dia + br + br{ display: none; }
+
+/* 2) Si le forum encapsule la bulle dans un <p>, on réduit le gap du <p> suivant
+   (protégé par @supports, sinon ignoré) */
+@supports selector(p:has(.kyrn-dia)){
+  .kyrn-text p:has(.kyrn-dia) + p{
+    margin-top: var(--kyrn-dia-after-p-gap);
+  }
+
+  /* 3) Nettoie les paragraphes "vides" du type <p><br></p> */
+  .kyrn-text p:has(> br:only-child){
+    display: none;
+  }
+}
+
+/* 4) Paragraphes vraiment vides */
+.kyrn-text p:empty{
+  display: none;
 }
 
 /* Bas proche du texte */
