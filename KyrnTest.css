@@ -45,12 +45,10 @@
   --kyrn-media-h: 720px;
   --kyrn-media-inner-w: 378px;
   --kyrn-media-inner-h: 678px;
-
-  /* Float spacing */
   --kyrn-media-float-gap: 14px;
 
-  /* TON CADRE (PNG TRANSPARENT) -> remplace l’URL */
-  --kyrn-media-frame-img: url("https://i.postimg.cc/Gt38fqw7/Kyrn-Cadre.png");
+  /* URL de TON cadre perso (PNG transparent, 450x720) */
+  --kyrn-media-frame-img: url("https://TON-URL-ICI.png");
 }
 
 .kyrn-corners{
@@ -242,20 +240,15 @@
   filter: drop-shadow(0 0 10px var(--kyrn-flower-glow));
 }
 
-/* ===== Media Frame FLOAT (cadre perso + wrap texte) =====
-HTML (à gauche):
-<div class="kyrn-mediaframe kyrn-mediafloat-left">
-  <div class="kyrn-mediaframe-inner">
-    <img src="..." alt="">
-  </div>
-</div>
-
-HTML (à droite):
+/* ===== Media Frame FLOAT (cadre perso au-dessus + wrap texte) ===== */
+/* HTML:
 <div class="kyrn-mediaframe kyrn-mediafloat-right">
   <div class="kyrn-mediaframe-inner">
-    <audio controls src="..."></audio>
+    <img src="..." alt="">
+    <!-- ou <audio controls src="..."></audio> -->
   </div>
 </div>
+<div class="kyrn-clear"></div>  <!-- optionnel si tu veux stopper le wrap -->
 */
 
 .kyrn-text .kyrn-mediaframe{
@@ -264,27 +257,32 @@ HTML (à droite):
   height: var(--kyrn-media-h);
 
   position: relative;
-  overflow: hidden;
-  border-radius: 0;
+  overflow: visible;
+  background: none;
 
-  /* ton cadre en image */
-  background: var(--kyrn-media-frame-img) center / 100% 100% no-repeat;
-
-  /* petit halo optionnel */
   filter: drop-shadow(0 0 10px rgba(255, 235, 180, 0.12));
 }
 
-/* Float left/right = le texte s’enroule */
+.kyrn-text .kyrn-mediaframe::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: var(--kyrn-media-frame-img) center / 100% 100% no-repeat;
+  z-index: 3;
+}
+
 .kyrn-text .kyrn-mediafloat-left{
   float: left;
   margin: 6px var(--kyrn-media-float-gap) 10px 0;
 }
+
 .kyrn-text .kyrn-mediafloat-right{
   float: right;
   margin: 6px 0 10px var(--kyrn-media-float-gap);
 }
 
-/* Fenêtre intérieure 378x678 centrée pile */
 .kyrn-text .kyrn-mediaframe-inner{
   width: var(--kyrn-media-inner-w);
   height: var(--kyrn-media-inner-h);
@@ -297,27 +295,28 @@ HTML (à droite):
   display: flex;
   align-items: center;
   justify-content: center;
+
+  z-index: 1;
+  overflow: hidden;
 }
 
-/* Contenu */
 .kyrn-text .kyrn-mediaframe-inner img{
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: contain;
+  object-fit: cover; /* mets contain si tu veux garder l'image entière */
 }
+
 .kyrn-text .kyrn-mediaframe-inner audio{
   width: 100%;
   display: block;
 }
 
-/* Clear optionnel si tu veux “arrêter” le wrap ensuite
-   (utilise <div class="kyrn-clear"></div>) */
 .kyrn-text .kyrn-clear{
   clear: both;
 }
 
-/* ===== Responsive: sur petit écran, on coupe le float et on scale ===== */
+/* ===== Responsive: on enlève le float et on scale ===== */
 @media (max-width: 820px){
   .kyrn-text .kyrn-mediaframe{
     float: none;
@@ -326,11 +325,9 @@ HTML (à droite):
     aspect-ratio: 450 / 720;
     margin: 10px auto;
   }
-
   .kyrn-text .kyrn-mediaframe-inner{
     width: calc(100% * (378 / 450));
     height: calc(100% * (678 / 720));
-    position: absolute;
   }
 }
 
@@ -350,5 +347,3 @@ HTML (à droite):
     --kyrn-media-float-gap: 10px;
   }
 }
-
-
