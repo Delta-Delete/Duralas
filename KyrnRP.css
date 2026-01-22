@@ -4,6 +4,7 @@
    Texte en colonne fixe (ne passe jamais sous les tiges)
    Texte déplacé via position:relative + top (imparable)
    Champ de fleurs rapproché via margin-top négatif
+   Dialogues: base + variantes (autres / Kyrn)
    ========================= */
 
 .kyrn-rpbox{
@@ -40,6 +41,9 @@
 
   /* Effets doux */
   --kyrn-flower-glow: rgba(255, 235, 180, 0.18);
+
+  /* Couleurs dialogues */
+  --kyrn-kyrn-color: #4B6A84;
 }
 
 /* Coins en overlay */
@@ -116,20 +120,13 @@
 }
 
 /* =========================
-   Dialogues
-   =========================
-   Avec du texte brut qui commence par "-" (sans balise),
-   le CSS NE peut pas cibler "uniquement les lignes qui commencent par -".
-   Solution propre: encapsuler les dialogues.
+   Dialogues (base + variantes)
+   Usage:
+   <div class="kyrn-dia kyrn-otext">- Autre...</div>
+   <div class="kyrn-dia kyrn-ktext">- Kyrn...</div>
+   ========================= */
 
-   Exemple dans ton post:
-   <div class="kyrn-dia">- Ton dialogue...</div>
-   ou
-   <blockquote class="kyrn-dia">- Ton dialogue...</blockquote>
-*/
-
-.kyrn-text .kyrn-dia,
-.kyrn-text blockquote.kyrn-dia{
+.kyrn-text .kyrn-dia{
   display: block;
   margin: 10px 0;
   padding: 8px 12px 8px 14px;
@@ -138,7 +135,18 @@
   border-radius: 10px;
 }
 
-/* Si tu utilises des blockquote sans class */
+/* Autres (neutre) */
+.kyrn-text .kyrn-otext{
+  color: inherit;
+}
+
+/* Kyrn (couleur dédiée) */
+.kyrn-text .kyrn-ktext{
+  color: var(--kyrn-kyrn-color);
+  font-weight: 600; /* optionnel, supprime si tu veux */
+}
+
+/* Si tu utilises des blockquote pour dialogues */
 .kyrn-text blockquote{
   margin: 10px 0;
   padding: 8px 12px 8px 14px;
