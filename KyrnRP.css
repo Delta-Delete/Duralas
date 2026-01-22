@@ -28,7 +28,7 @@
 
   /* Texte: MONTER = valeur NEGATIVE */
   --kyrn-text-pad-top: 0px;
-  --kyrn-text-raise: -18px;  /* ex: -10, -20, -35 */
+  --kyrn-text-raise: 0px;  /* ex: -10, -20, -35 */
 
   /* Bas */
   --kyrn-end-h: clamp(90px, 14vw, 160px);
