@@ -20,7 +20,7 @@
   /* Texte: colonne fixe (ajuste ces 2 valeurs pour coller aux tiges) */
   --kyrn-safe-left: 150px;          /* commence apres la tige gauche */
   --kyrn-safe-right: 150px;         /* s'arrete avant la tige droite */
-  --kyrn-text-gap: 10px;            /* petit air entre texte et tiges */
+  --kyrn-text-gap: -10px;            /* petit air entre texte et tiges */
 
   /* Texte: monter plus haut */
   --kyrn-text-pad-top: 0px;         /* 0 ou 4px pour monter */
