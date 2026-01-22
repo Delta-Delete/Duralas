@@ -3,7 +3,7 @@
    Coins haut G/D en top negatif
    Texte en colonne fixe (ne passe jamais sous les tiges)
    Bas proche du texte
-   Classes: kyrn-
+   Test fix 1: bloque le margin-collapsing via flow-root sur .kyrn-rpbox
    ========================= */
 
 .kyrn-rpbox{
@@ -11,6 +11,9 @@
   max-width: 100%;
   position: relative;
   box-sizing: border-box;
+
+  /* FIX 1: empeche le margin collapsing du premier enfant */
+  display: flow-root;
 
   /* Coins */
   --kyrn-corner-w: clamp(90px, 16vw, 140px);
@@ -25,7 +28,7 @@
 
   /* Texte: monter plus haut */
   --kyrn-text-pad-top: 0px;
-  --kyrn-text-raise: -50px;         /* plus haut qu'avant */
+  --kyrn-text-raise: -18px;         /* negatif = monte */
 
   /* Bas */
   --kyrn-end-h: clamp(90px, 14vw, 160px);
@@ -62,7 +65,7 @@
   overflow-wrap: break-word;
   word-break: normal;
 
-  /* monte le bloc texte */
+  /* monte le bloc texte (maintenant ca marche) */
   margin-top: var(--kyrn-text-raise);
 
   /* reserve a gauche et a droite pour ne jamais passer sous les tiges */
@@ -98,6 +101,7 @@
   user-select: none;
   pointer-events: none;
 }
+
 
 
 
