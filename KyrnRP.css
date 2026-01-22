@@ -1,6 +1,6 @@
 /* =========================
    Kyrn RP Template (BRUT)
-   Coins haut G/D montés en top négatif (-84px)
+   Coins haut G/D montes en top negatif (-84px)
    Wrap du texte entre les coins (floats)
    Classes uniques: kyrn-
    ========================= */
@@ -11,14 +11,15 @@
   position: relative;
   box-sizing: border-box;
 
-  /* Réglages */
-  --kyrn-corner-w: clamp(90px, 16vw, 140px);  /* largeur d’affichage des coins */
-  --kyrn-corner-h: clamp(90px, 16vw, 140px);  /* hauteur “zone interdite” de base */
+  /* Reglages */
+  --kyrn-corner-w: clamp(90px, 16vw, 140px);  /* largeur d'affichage des coins */
+  --kyrn-corner-h: clamp(90px, 16vw, 140px);  /* hauteur zone interdite de base */
   --kyrn-corner-inset: 6px;                   /* rapproche le texte des coins */
-  --kyrn-corner-up-brut: 84px;                /* MONTE les coins (brut) */
+  --kyrn-corner-up-brut: 84px;                /* monte les coins (brut) */
+  --kyrn-corner-out-brut: 18px;               /* sort sur les cotes (brut) */
 
-  /* NOUVEAU: décale les coins vers l’extérieur */
-  --kyrn-corner-out-brut: 67px;               /* + = plus sur les côtés */
+  /* Hauteur du marqueur du bas */
+  --kyrn-end-h: clamp(90px, 14vw, 160px);
 }
 
 /* Coins en overlay */
@@ -32,7 +33,7 @@
 /* Images coins (BRUT) */
 .kyrn-corner{
   position: absolute;
-  top: calc(-1 * var(--kyrn-corner-up-brut));  /* <- le fameux -84px */
+  top: calc(-1 * var(--kyrn-corner-up-brut));
   width: var(--kyrn-corner-w);
   height: auto;
   display: block;
@@ -40,11 +41,11 @@
   pointer-events: none;
 }
 
-/* BRUT: on sort du bloc sur les côtés */
+/* BRUT: on sort du bloc sur les cotes */
 .kyrn-corner-left{ left: calc(-1 * var(--kyrn-corner-out-brut)); }
 .kyrn-corner-right{ right: calc(-1 * var(--kyrn-corner-out-brut)); }
 
-/* Texte : wrap entre deux “floats” au début */
+/* Texte : wrap entre deux floats au debut */
 .kyrn-text{
   box-sizing: border-box;
   width: 100%;
@@ -56,7 +57,7 @@
 }
 
 /* Zones interdites pour que le texte commence entre les coins
-   IMPORTANT: on ajoute +84px pour suivre la montée des images */
+   On ajoute +84px pour suivre la montee des images */
 .kyrn-text::before,
 .kyrn-text::after{
   content: "";
@@ -70,16 +71,22 @@
 /* Marqueur de fin */
 .kyrn-end{
   margin-top: 12px;
+  padding: 0;
+  line-height: 0; /* evite les micro-espaces de baseline */
 }
 
 .kyrn-endmark{
   width: 100%;
-  height: clamp(90px, 14vw, 160px);
+  height: var(--kyrn-end-h);
   display: block;
+
   object-fit: contain;
+  object-position: center bottom; /* IMPORTANT: colle l'image en bas */
+
   user-select: none;
   pointer-events: none;
 }
+
 
 
 
