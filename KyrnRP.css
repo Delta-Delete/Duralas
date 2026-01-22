@@ -5,6 +5,7 @@
    Texte déplacé via position:relative + top (imparable)
    Champ de fleurs rapproché via margin-top négatif
    Dialogues: base + variantes (autres / Kyrn)
+   Fix: bulles -> moins d'espace avant/après + réduit le gap du paragraphe suivant
    ========================= */
 
 .kyrn-rpbox{
@@ -34,6 +35,10 @@
   --kyrn-paragraph-gap: 14px;   /* espace entre paragraphes */
   --kyrn-veil: rgba(0,0,0,0.18);
   --kyrn-veil-radius: 12px;
+
+  /* Dialogues */
+  --kyrn-dia-gap: 6px;          /* espace vertical bulles */
+  --kyrn-dia-after-p-gap: 6px;  /* espace avant le paragraphe après une bulle */
 
   /* Bas */
   --kyrn-end-h: clamp(90px, 14vw, 160px);
@@ -104,7 +109,7 @@
   border-radius: var(--kyrn-veil-radius);
 }
 
-/* Si le forum injecte des <p> avec marges */
+/* Paragraphes (forums injectent souvent des <p>) */
 .kyrn-text p{
   margin: 0;
 }
@@ -128,11 +133,17 @@
 
 .kyrn-text .kyrn-dia{
   display: block;
-  margin: 10px 0;
+  margin: var(--kyrn-dia-gap) 0;         /* moins d'air */
+  margin-bottom: 2px;                    /* colle un peu le texte après */
   padding: 8px 12px 8px 14px;
   border-left: 2px solid rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.04);
   border-radius: 10px;
+}
+
+/* Si un paragraphe suit une bulle, réduire le gap du paragraphe */
+.kyrn-text .kyrn-dia + p{
+  margin-top: var(--kyrn-dia-after-p-gap);
 }
 
 /* Autres (neutre) */
@@ -143,12 +154,12 @@
 /* Kyrn (couleur dédiée) */
 .kyrn-text .kyrn-ktext{
   color: var(--kyrn-kyrn-color);
-  font-weight: 600; /* optionnel, supprime si tu veux */
+  font-weight: 600; /* optionnel */
 }
 
 /* Si tu utilises des blockquote pour dialogues */
 .kyrn-text blockquote{
-  margin: 10px 0;
+  margin: var(--kyrn-dia-gap) 0 2px;
   padding: 8px 12px 8px 14px;
   border-left: 2px solid rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.04);
@@ -186,6 +197,7 @@
     --kyrn-text-maxw: 100%;
   }
 }
+
 
 
 
