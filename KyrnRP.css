@@ -119,18 +119,14 @@
 }
 
 .kyrn-text .kyrn-ktext{
-  color: #F3EBDD;
-  font-weight: 600;
+  color: #F2E6CF;
+  font-weight: 500;
 
-  -webkit-text-stroke: 0.6px rgba(214,176,92,0.90);
+  -webkit-text-stroke: 0.6px rgba(184, 134, 60, 0.90);
 
   text-shadow:
-    -0.6px 0 rgba(214,176,92,0.55),
-     0.6px 0 rgba(214,176,92,0.55),
-     0 -0.6px rgba(214,176,92,0.55),
-     0  0.6px rgba(214,176,92,0.55),
-     0 0 6px rgba(214,176,92,0.28),
-     0 1px 0 rgba(0,0,0,0.65);
+    0 0 6px rgba(184, 134, 60, 0.22),
+    0 1px 0 rgba(0,0,0,0.55);
 }
 
 .kyrn-text blockquote{
@@ -188,6 +184,7 @@
     --kyrn-font-size: 14.5px;
   }
 }
+
 
 
 
