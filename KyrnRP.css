@@ -32,6 +32,13 @@
   --kyrn-end-pull: 18px;
 
   --kyrn-flower-glow: rgba(255, 235, 180, 0.18);
+
+  --kyrn-dia-texture: url("https://i.postimg.cc/dt5v1Mt9/32.png ");
+  --kyrn-dia-texture-opacity: 0.16;
+  --kyrn-dia-texture-size: 420px;
+  --kyrn-dia-base-bg: rgba(0,0,0,0.35);
+  --kyrn-dia-border-gold: rgba(184, 134, 60, 0.22);
+  --kyrn-dia-inset: rgba(255,255,255,0.06);
 }
 
 .kyrn-corners{
@@ -99,12 +106,37 @@
   margin: var(--kyrn-dia-gap) 0;
   margin-bottom: 2px;
   padding: 8px 12px 8px 14px;
-  border-left: 2px solid rgba(255,255,255,0.18);
-  background: rgba(255,255,255,0.04);
+
+  position: relative;
+  overflow: hidden;
+
+  background: var(--kyrn-dia-base-bg);
   border-radius: 10px;
+
+  border: 1px solid rgba(0,0,0,0.55);
+  box-shadow:
+    inset 0 0 0 1px var(--kyrn-dia-inset),
+    inset 0 0 0 2px rgba(0,0,0,0.22);
+
+  border-left: 2px solid var(--kyrn-dia-border-gold);
 
   font-family: "Macondo", "Spectral", Georgia, "Times New Roman", serif;
   font-size: inherit;
+}
+
+.kyrn-text .kyrn-dia::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+
+  background-image: var(--kyrn-dia-texture);
+  background-repeat: repeat;
+  background-size: var(--kyrn-dia-texture-size);
+  opacity: var(--kyrn-dia-texture-opacity);
+
+  filter: blur(0.2px) contrast(0.95);
 }
 
 .kyrn-text .kyrn-dia + p{
@@ -132,12 +164,37 @@
 .kyrn-text blockquote{
   margin: var(--kyrn-dia-gap) 0 2px;
   padding: 8px 12px 8px 14px;
-  border-left: 2px solid rgba(255,255,255,0.18);
-  background: rgba(255,255,255,0.04);
+
+  position: relative;
+  overflow: hidden;
+
+  background: var(--kyrn-dia-base-bg);
   border-radius: 10px;
+
+  border: 1px solid rgba(0,0,0,0.55);
+  box-shadow:
+    inset 0 0 0 1px var(--kyrn-dia-inset),
+    inset 0 0 0 2px rgba(0,0,0,0.22);
+
+  border-left: 2px solid var(--kyrn-dia-border-gold);
 
   font-family: "Macondo", "Spectral", Georgia, "Times New Roman", serif;
   font-size: inherit;
+}
+
+.kyrn-text blockquote::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+
+  background-image: var(--kyrn-dia-texture);
+  background-repeat: repeat;
+  background-size: var(--kyrn-dia-texture-size);
+  opacity: var(--kyrn-dia-texture-opacity);
+
+  filter: blur(0.2px) contrast(0.95);
 }
 
 .kyrn-text .kyrn-dia + br{ display: none; }
@@ -182,14 +239,11 @@
     --kyrn-corner-w: 90px;
     --kyrn-text-maxw: 100%;
     --kyrn-font-size: 14.5px;
+
+    --kyrn-dia-texture-size: 360px;
+    --kyrn-dia-texture-opacity: 0.14;
   }
 }
-
-
-
-
-
-
 
 
 
