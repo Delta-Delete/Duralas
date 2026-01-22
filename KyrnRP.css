@@ -10,8 +10,8 @@
   --kyrn-corner-inset: 6px;
 
   /* Nouveaux réglages */
-  --kyrn-corner-up: 14px;     /* + = monte les fleurs */
-  --kyrn-corner-out: 10px;    /* + = vers les côtés */
+  --kyrn-corner-up: -84px;     /* + = monte les fleurs */
+  --kyrn-corner-out: -20px;    /* + = vers les côtés */
 }
 
 /* Coins en overlay */
