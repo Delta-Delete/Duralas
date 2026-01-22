@@ -45,11 +45,12 @@
   --kyrn-media-h: 720px;
   --kyrn-media-inner-w: 378px;
   --kyrn-media-inner-h: 678px;
-  --kyrn-media-gap: 12px;
-  --kyrn-media-radius: 14px;
-  --kyrn-media-border: rgba(214,176,92,0.18);
-  --kyrn-media-inner-border: rgba(255,255,255,0.06);
-  --kyrn-media-glow: rgba(214,176,92,0.18);
+
+  /* Float spacing */
+  --kyrn-media-float-gap: 14px;
+
+  /* TON CADRE (PNG TRANSPARENT) -> remplace l’URL */
+  --kyrn-media-frame-img: url("https://i.postimg.cc/Gt38fqw7/Kyrn-Cadre.png");
 }
 
 .kyrn-corners{
@@ -241,107 +242,96 @@
   filter: drop-shadow(0 0 10px var(--kyrn-flower-glow));
 }
 
-/* ===== Media Frame (optionnel) ===== */
-/* HTML:
-<div class="kyrn-mediaframe kyrn-mediaframe-fixed">
+/* ===== Media Frame FLOAT (cadre perso + wrap texte) =====
+HTML (à gauche):
+<div class="kyrn-mediaframe kyrn-mediafloat-left">
   <div class="kyrn-mediaframe-inner">
     <img src="..." alt="">
-    <!-- ou <audio controls src="..."></audio> -->
+  </div>
+</div>
+
+HTML (à droite):
+<div class="kyrn-mediaframe kyrn-mediafloat-right">
+  <div class="kyrn-mediaframe-inner">
+    <audio controls src="..."></audio>
   </div>
 </div>
 */
 
 .kyrn-text .kyrn-mediaframe{
   box-sizing: border-box;
-  margin: var(--kyrn-media-gap) auto;
-  border-radius: var(--kyrn-media-radius);
-  overflow: hidden;
-  position: relative;
-
-  background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(0,0,0,0.10));
-  border: 1px solid var(--kyrn-media-border);
-
-  box-shadow:
-    0 0 0 1px rgba(0,0,0,0.45) inset,
-    0 12px 32px rgba(0,0,0,0.28);
-
-  filter: drop-shadow(0 0 10px rgba(255, 235, 180, 0.10));
-}
-
-.kyrn-text .kyrn-mediaframe::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.18;
-  background:
-    radial-gradient(120% 80% at 0% 0%, rgba(214,176,92,0.20), transparent 55%),
-    radial-gradient(120% 80% at 100% 0%, rgba(214,176,92,0.14), transparent 55%),
-    radial-gradient(120% 90% at 50% 120%, rgba(255,255,255,0.06), transparent 55%);
-  mix-blend-mode: screen;
-}
-
-.kyrn-text .kyrn-mediaframe::after{
-  content: "";
-  position: absolute;
-  inset: 6px;
-  border-radius: calc(var(--kyrn-media-radius) - 2px);
-  pointer-events: none;
-  border: 1px solid rgba(255,255,255,0.06);
-  box-shadow: 0 0 0 1px rgba(214,176,92,0.10) inset;
-}
-
-.kyrn-text .kyrn-mediaframe > *{
-  position: relative;
-  z-index: 1;
-}
-
-.kyrn-text .kyrn-mediaframe-fixed{
   width: var(--kyrn-media-w);
   height: var(--kyrn-media-h);
+
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+
+  /* ton cadre en image */
+  background: var(--kyrn-media-frame-img) center / 100% 100% no-repeat;
+
+  /* petit halo optionnel */
+  filter: drop-shadow(0 0 10px rgba(255, 235, 180, 0.12));
 }
 
+/* Float left/right = le texte s’enroule */
+.kyrn-text .kyrn-mediafloat-left{
+  float: left;
+  margin: 6px var(--kyrn-media-float-gap) 10px 0;
+}
+.kyrn-text .kyrn-mediafloat-right{
+  float: right;
+  margin: 6px 0 10px var(--kyrn-media-float-gap);
+}
+
+/* Fenêtre intérieure 378x678 centrée pile */
 .kyrn-text .kyrn-mediaframe-inner{
   width: var(--kyrn-media-inner-w);
   height: var(--kyrn-media-inner-h);
-  margin: auto;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Contenu */
 .kyrn-text .kyrn-mediaframe-inner img{
   width: 100%;
   height: 100%;
   display: block;
-  border-radius: 10px;
   object-fit: contain;
-  box-shadow: 0 0 0 1px var(--kyrn-media-inner-border) inset;
 }
-
 .kyrn-text .kyrn-mediaframe-inner audio{
   width: 100%;
   display: block;
 }
 
-/* Responsive: scale automatique de la frame (garde le ratio 450x720) */
-.kyrn-text .kyrn-mediaframe-responsive{
-  width: min(100%, var(--kyrn-media-w));
-  aspect-ratio: 450 / 720;
-  height: auto;
+/* Clear optionnel si tu veux “arrêter” le wrap ensuite
+   (utilise <div class="kyrn-clear"></div>) */
+.kyrn-text .kyrn-clear{
+  clear: both;
 }
 
-.kyrn-text .kyrn-mediaframe-responsive .kyrn-mediaframe-inner{
-  width: calc(100% * (378 / 450));
-  height: calc(100% * (678 / 720));
-}
-
-/* fallback si aspect-ratio pas supporté */
-@supports not (aspect-ratio: 1 / 1){
-  .kyrn-text .kyrn-mediaframe-responsive{
+/* ===== Responsive: sur petit écran, on coupe le float et on scale ===== */
+@media (max-width: 820px){
+  .kyrn-text .kyrn-mediaframe{
+    float: none;
     width: min(100%, var(--kyrn-media-w));
+    height: auto;
+    aspect-ratio: 450 / 720;
+    margin: 10px auto;
   }
-  .kyrn-text .kyrn-mediaframe-responsive::marker{ content: ""; }
+
+  .kyrn-text .kyrn-mediaframe-inner{
+    width: calc(100% * (378 / 450));
+    height: calc(100% * (678 / 720));
+    position: absolute;
+  }
 }
 
 @media (max-width: 520px){
@@ -357,6 +347,8 @@
     --kyrn-dia-texture-size: 360px;
     --kyrn-dia-texture-opacity: 0.14;
 
-    --kyrn-media-gap: 10px;
+    --kyrn-media-float-gap: 10px;
   }
 }
+
+
