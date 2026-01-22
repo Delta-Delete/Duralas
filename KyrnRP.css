@@ -3,9 +3,14 @@
   max-width: 100%;
   position: relative;
   box-sizing: border-box;
+
+  /* Réglages faciles */
+  --kyrn-corner-w: clamp(90px, 16vw, 140px); /* largeur coin */
+  --kyrn-corner-h: clamp(90px, 16vw, 140px); /* hauteur “zone interdite” */
+  --kyrn-corner-inset: 6px;  /* rapproche le texte des coins */
 }
 
-/* Coins en overlay (hors flux) */
+/* Coins en overlay (ne poussent pas le texte) */
 .kyrn-corners{
   position: absolute;
   inset: 0;
@@ -13,11 +18,10 @@
   z-index: 5;
 }
 
-/* Images coins */
 .kyrn-corner{
   position: absolute;
-  top: -4px;
-  width: clamp(90px, 16vw, 140px);
+  top: -84px;
+  width: var(--kyrn-corner-w);
   height: auto;
   display: block;
   user-select: none;
@@ -27,18 +31,31 @@
 .kyrn-corner-left{ left: -4px; }
 .kyrn-corner-right{ right: -4px; }
 
-/* Texte (on laisse juste assez de marge pour les coins) */
+/* Texte : wrap entre deux “floats” au début */
 .kyrn-text{
   box-sizing: border-box;
   width: 100%;
-
-  padding: clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 18px) 18px;
-  padding-top: clamp(22px, 3.2vw, 34px); /* espace sous les coins */
-
   line-height: 1.6;
   overflow-wrap: break-word;
   word-break: normal;
+
+  /* IMPORTANT : contient les floats */
+  display: flow-root;
+
+  /* petit padding global */
+  padding: 14px 14px 18px;
 }
+
+/* Zones interdites pour que le texte commence entre les coins */
+.kyrn-text::before,
+.kyrn-text::after{
+  content: "";
+  width: calc(var(--kyrn-corner-w) - var(--kyrn-corner-inset));
+  height: calc(var(--kyrn-corner-h) - 8px);
+}
+
+.kyrn-text::before{ float: left; }
+.kyrn-text::after{ float: right; }
 
 /* Marqueur de fin */
 .kyrn-end{
