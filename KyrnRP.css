@@ -2,8 +2,7 @@
    Kyrn RP Template (BRUT)
    Coins haut G/D montes en top negatif (-84px)
    Wrap du texte entre les coins (floats)
-   Bas proche du texte (pas d'ancrage absolute)
-   Classes uniques: kyrn-
+   Bas proche du texte (pas de trou)
    ========================= */
 
 .kyrn-rpbox{
@@ -14,9 +13,9 @@
 
   /* Reglages */
   --kyrn-corner-w: clamp(90px, 16vw, 140px);  /* largeur d'affichage des coins */
-  --kyrn-corner-h: clamp(90px, 16vw, 140px);  /* hauteur zone interdite de base */
+  --kyrn-corner-h: clamp(90px, 16vw, 140px);  /* hauteur "zone interdite" de base */
   --kyrn-corner-inset: 6px;                   /* rapproche le texte des coins */
-  --kyrn-corner-up-brut: 84px;                /* monte les coins (brut) */
+  --kyrn-corner-up-brut: 84px;                /* MONTE les coins (brut) */
   --kyrn-corner-out-brut: 18px;               /* sort sur les cotes (brut) */
 
   /* Bas */
@@ -46,7 +45,7 @@
 .kyrn-corner-left{ left: calc(-1 * var(--kyrn-corner-out-brut)); }
 .kyrn-corner-right{ right: calc(-1 * var(--kyrn-corner-out-brut)); }
 
-/* Texte : wrap entre deux floats au debut */
+/* Texte */
 .kyrn-text{
   box-sizing: border-box;
   width: 100%;
@@ -55,35 +54,44 @@
   word-break: normal;
 
   display: flow-root; /* contient les floats */
-  padding: 14px 14px 10px; /* padding bas reduit pour rapprocher les fleurs */
+  padding: 14px 14px 6px; /* bas reduit = fleurs plus proches */
 }
 
-/* Zones interdites pour que le texte commence entre les coins */
+/* Evite les marges par defaut si le forum/codepen injecte des <p> */
+.kyrn-text p,
+.kyrn-text ul,
+.kyrn-text ol{
+  margin: 0;
+  padding: 0;
+}
+
+/* Zones interdites pour que le texte commence entre les coins
+   IMPORTANT: comme tu montes les coins de 84px, on reserve MOINS, pas plus */
 .kyrn-text::before,
 .kyrn-text::after{
   content: "";
   width: calc(var(--kyrn-corner-w) - var(--kyrn-corner-inset));
-  height: calc(var(--kyrn-corner-h) + var(--kyrn-corner-up-brut));
+
+  /* Reserve uniquement la partie des fleurs qui reste DANS le post */
+  height: max(0px, calc(var(--kyrn-corner-h) - var(--kyrn-corner-up-brut)));
 }
 
 .kyrn-text::before{ float: left; }
 .kyrn-text::after{ float: right; }
 
-/* Marqueur de fin: dans le flux, donc proche du texte */
+/* Marqueur de fin: dans le flux, colle au bas du template (pas de trou) */
 .kyrn-end{
-  margin-top: 8px;   /* ajuste: 0 a 12px */
+  margin-top: 0;   /* 0 = le plus proche possible */
   padding: 0;
-  line-height: 0;    /* evite les micro-espaces */
+  line-height: 0;  /* supprime le micro-espace baseline */
 }
 
 .kyrn-endmark{
   width: 100%;
   height: var(--kyrn-end-h);
   display: block;
-
   object-fit: contain;
   object-position: center bottom;
-
   user-select: none;
   pointer-events: none;
 }
