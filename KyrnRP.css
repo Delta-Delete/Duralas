@@ -1,28 +1,20 @@
-/* =========================
-   Kyrn RP Template (3 images)
-   Coins haut G/D + marqueur bas
-   Texte en colonne constante (ne “revient” pas)
-   Classes uniques: kyrn-
-   ========================= */
-
 .kyrn-rpbox{
   width: 100%;
   max-width: 100%;
   position: relative;
   box-sizing: border-box;
 
-  /* --- Réglages principaux --- */
-  --kyrn-corner-w: 140px;           /* largeur d’affichage des coins */
-  --kyrn-reserve-left: 92px;        /* espace réservé à gauche pour coller à la fleur */
-  --kyrn-reserve-right: 92px;       /* espace réservé à droite */
-  --kyrn-corner-gap: 8px;           /* marge entre texte et coins */
+  /* Réglages faciles */
+  --kyrn-corner-w: clamp(90px, 16vw, 140px);
+  --kyrn-corner-h: clamp(90px, 16vw, 140px);
+  --kyrn-corner-inset: 6px;
 
-  /* Décalages optionnels des coins (0 par défaut) */
-  --kyrn-corner-shift-left: 0px;    /* + = coin gauche vers la droite */
-  --kyrn-corner-shift-right: 0px;   /* + = coin droit vers la gauche (inward) */
+  /* Nouveaux réglages */
+  --kyrn-corner-up: 14px;     /* + = monte les fleurs */
+  --kyrn-corner-out: 10px;    /* + = vers les côtés */
 }
 
-/* Coins en overlay (hors flux) */
+/* Coins en overlay */
 .kyrn-corners{
   position: absolute;
   inset: 0;
@@ -30,54 +22,58 @@
   z-index: 5;
 }
 
-/* Images coins */
 .kyrn-corner{
   position: absolute;
-  top: 0;                           /* évite le clipping des parents forum */
+  top: 0; /* safe */
   width: var(--kyrn-corner-w);
   height: auto;
   display: block;
   user-select: none;
   pointer-events: none;
+
+  /* monte l’image sans sortir en top négatif */
+  transform: translateY(calc(-1 * var(--kyrn-corner-up)));
 }
 
-.kyrn-corner-left{
-  left: var(--kyrn-corner-shift-left);
-}
+/* Vers les côtés: ATTENTION au clipping si ton forum coupe.
+   Si ça disparaît, remets left/right à 0 et baisse --kyrn-corner-out. */
+.kyrn-corner-left{ left: calc(-1 * var(--kyrn-corner-out)); }
+.kyrn-corner-right{ right: calc(-1 * var(--kyrn-corner-out)); }
 
-.kyrn-corner-right{
-  right: var(--kyrn-corner-shift-right);
-}
-
-/* Texte : colonne CONSTANTE sur toute la hauteur */
+/* Texte : wrap entre deux “floats” au début */
 .kyrn-text{
   box-sizing: border-box;
   width: 100%;
   line-height: 1.6;
   overflow-wrap: break-word;
   word-break: normal;
-  text-align: left;
-
-  /* IMPORTANT: réserve à gauche/droite tout du long */
-  padding-top: 14px;
-  padding-bottom: 18px;
-  padding-left: calc(var(--kyrn-reserve-left) + var(--kyrn-corner-gap));
-  padding-right: calc(var(--kyrn-reserve-right) + var(--kyrn-corner-gap));
+  display: flow-root;
+  padding: 14px 14px 18px;
 }
+
+/* Zones interdites (wrap) */
+.kyrn-text::before,
+.kyrn-text::after{
+  content: "";
+  width: calc(var(--kyrn-corner-w) - var(--kyrn-corner-inset));
+  height: calc(var(--kyrn-corner-h) - 8px);
+}
+
+.kyrn-text::before{ float: left; }
+.kyrn-text::after{ float: right; }
 
 /* Marqueur de fin */
-.kyrn-end{
-  margin-top: 12px;
-}
+.kyrn-end{ margin-top: 12px; }
 
 .kyrn-endmark{
   width: 100%;
-  height: 160px;                    /* allonge verticalement */
+  height: clamp(90px, 14vw, 160px);
   display: block;
   object-fit: contain;
   user-select: none;
   pointer-events: none;
 }
+
 
 
 
