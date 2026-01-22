@@ -17,14 +17,15 @@
   --kyrn-corner-up-brut: 84px;      /* montee coins */
   --kyrn-corner-out-brut: 18px;     /* vers l'exterieur */
 
-  /* Texte: colonne fixe (ajuste ces 2 valeurs pour coller aux tiges) */
+  /* Texte: colonne fixe (ajuste ces valeurs) */
   --kyrn-safe-left: 150px;          /* commence apres la tige gauche */
-  --kyrn-safe-right: 150px;         /* s'arrete avant la tige droite */
-  --kyrn-text-gap: -70px;            /* petit air entre texte et tiges */
+  --kyrn-safe-right: 165px;         /* s'arrete avant la tige droite */
+  --kyrn-gap-left: 10px;            /* ecart texte vs tige gauche */
+  --kyrn-gap-right: 10px;           /* ecart texte vs tige droite */
 
   /* Texte: monter plus haut */
-  --kyrn-text-pad-top: 0px;         /* 0 ou 4px pour monter */
-  --kyrn-text-raise: -8px;          /* negatif = monte encore */
+  --kyrn-text-pad-top: 0px;
+  --kyrn-text-raise: -18px;         /* plus haut qu'avant */
 
   /* Bas */
   --kyrn-end-h: clamp(90px, 14vw, 160px);
@@ -67,8 +68,8 @@
   /* reserve a gauche et a droite pour ne jamais passer sous les tiges */
   padding-top: var(--kyrn-text-pad-top);
   padding-bottom: 6px;
-  padding-left: calc(var(--kyrn-safe-left) + var(--kyrn-text-gap));
-  padding-right: calc(var(--kyrn-safe-right) + var(--kyrn-text-gap));
+  padding-left: calc(var(--kyrn-safe-left) + var(--kyrn-gap-left));
+  padding-right: calc(var(--kyrn-safe-right) + var(--kyrn-gap-right));
 }
 
 /* Si le forum injecte des <p> avec marges */
@@ -97,6 +98,7 @@
   user-select: none;
   pointer-events: none;
 }
+
 
 
 
