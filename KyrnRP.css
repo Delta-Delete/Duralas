@@ -1,10 +1,9 @@
 /* =========================
-   Kyrn RP Template (BRUT)
-   Coins haut G/D en top negatif
+   Kyrn RP Template (BRUT+)
+   Coins haut G/D en overlay
    Texte en colonne fixe (ne passe jamais sous les tiges)
-   Bas proche du texte
-   Fix: deplacement du texte via position:relative + top (imparable)
-   Fix: rapproche le bas via margin-top negatif sur .kyrn-end
+   Texte déplacé via position:relative + top (imparable)
+   Champ de fleurs rapproché via margin-top négatif
    ========================= */
 
 .kyrn-rpbox{
@@ -12,8 +11,6 @@
   max-width: 100%;
   position: relative;
   box-sizing: border-box;
-
-  /* empeche divers effets de marge */
   display: flow-root;
 
   /* Coins */
@@ -27,15 +24,22 @@
   --kyrn-gap-left: 10px;
   --kyrn-gap-right: 0px;
 
-  /* Texte: MONTER = valeur NEGATIVE */
+  /* Texte: position verticale */
   --kyrn-text-pad-top: 0px;
-  --kyrn-text-raise: -28px;  /* ex: -10, -20, -35 */
+  --kyrn-text-raise: -28px;     /* NEGATIF = monte, POSITIF = descend */
+
+  /* Lecture */
+  --kyrn-text-maxw: 900px;      /* largeur confortable (mets 100% si tu veux) */
+  --kyrn-paragraph-gap: 14px;   /* espace entre paragraphes */
+  --kyrn-veil: rgba(0,0,0,0.18);
+  --kyrn-veil-radius: 12px;
 
   /* Bas */
   --kyrn-end-h: clamp(90px, 14vw, 160px);
+  --kyrn-end-pull: 18px;        /* augmente pour rapprocher les fleurs du texte */
 
-  /* NEW: rapproche le champ de fleurs du texte */
-  --kyrn-end-pull: 50px;  /* augmente pour rapprocher (18, 30, 45...) */
+  /* Effets doux */
+  --kyrn-flower-glow: rgba(255, 235, 180, 0.18);
 }
 
 /* Coins en overlay */
@@ -55,9 +59,12 @@
   display: block;
   user-select: none;
   pointer-events: none;
+
+  /* halo discret */
+  filter: drop-shadow(0 0 10px var(--kyrn-flower-glow));
 }
 
-/* Sortie laterale (BRUT) */
+/* Sortie latérale (BRUT) */
 .kyrn-corner-left{ left: calc(-1 * var(--kyrn-corner-out-brut)); }
 .kyrn-corner-right{ right: calc(-1 * var(--kyrn-corner-out-brut)); }
 
@@ -65,24 +72,41 @@
 .kyrn-text{
   box-sizing: border-box;
   width: 100%;
-  line-height: 1.6;
+  line-height: 1.7;
+  letter-spacing: 0.2px;
   overflow-wrap: break-word;
   word-break: normal;
 
-  /* FIX: deplacement visuel fiable */
+  /* Déplacement fiable */
   position: relative;
-  top: var(--kyrn-text-raise); /* NEGATIF = monte, POSITIF = descend */
+  top: var(--kyrn-text-raise);
 
-  /* reserve a gauche et a droite */
+  /* Réserves anti-tiges */
   padding-top: var(--kyrn-text-pad-top);
-  padding-bottom: 0px; /* padding negatif interdit */
+  padding-bottom: 0px;
   padding-left: calc(var(--kyrn-safe-left) + var(--kyrn-gap-left));
   padding-right: calc(var(--kyrn-safe-right) + var(--kyrn-gap-right));
+
+  /* Confort de lecture */
+  max-width: var(--kyrn-text-maxw);
+  margin-left: auto;
+  margin-right: auto;
+
+  text-align: justify;
+  hyphens: auto;
+
+  /* Voile discret */
+  background: var(--kyrn-veil);
+  border-radius: var(--kyrn-veil-radius);
 }
 
 /* Si le forum injecte des <p> avec marges */
-.kyrn-text p{ margin: 0; }
-.kyrn-text p:last-child{ margin-bottom: 0; }
+.kyrn-text p{
+  margin: 0;
+}
+.kyrn-text p + p{
+  margin-top: var(--kyrn-paragraph-gap);
+}
 
 /* Neutralise anciens floats */
 .kyrn-text::before,
@@ -91,9 +115,41 @@
   display: none;
 }
 
+/* =========================
+   Dialogues
+   =========================
+   Avec du texte brut qui commence par "-" (sans balise),
+   le CSS NE peut pas cibler "uniquement les lignes qui commencent par -".
+   Solution propre: encapsuler les dialogues.
+
+   Exemple dans ton post:
+   <div class="kyrn-dia">- Ton dialogue...</div>
+   ou
+   <blockquote class="kyrn-dia">- Ton dialogue...</blockquote>
+*/
+
+.kyrn-text .kyrn-dia,
+.kyrn-text blockquote.kyrn-dia{
+  display: block;
+  margin: 10px 0;
+  padding: 8px 12px 8px 14px;
+  border-left: 2px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+}
+
+/* Si tu utilises des blockquote sans class */
+.kyrn-text blockquote{
+  margin: 10px 0;
+  padding: 8px 12px 8px 14px;
+  border-left: 2px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+}
+
 /* Bas proche du texte */
 .kyrn-end{
-  margin-top: calc(-1 * var(--kyrn-end-pull)); /* <- rapproche */
+  margin-top: calc(-1 * var(--kyrn-end-pull));
   padding: 0;
   line-height: 0;
 }
@@ -106,7 +162,23 @@
   object-position: center bottom;
   user-select: none;
   pointer-events: none;
+
+  /* halo discret */
+  filter: drop-shadow(0 0 10px var(--kyrn-flower-glow));
 }
+
+/* Responsive: évite que les réserves mangent tout */
+@media (max-width: 520px){
+  .kyrn-rpbox{
+    --kyrn-safe-left: 18px;
+    --kyrn-safe-right: 18px;
+    --kyrn-gap-left: 6px;
+    --kyrn-gap-right: 6px;
+    --kyrn-corner-w: 90px;
+    --kyrn-text-maxw: 100%;
+  }
+}
+
 
 
 
