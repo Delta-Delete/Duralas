@@ -15,7 +15,7 @@
   --kyrn-corner-w: clamp(90px, 16vw, 140px);  /* largeur d’affichage des coins */
   --kyrn-corner-h: clamp(90px, 16vw, 140px);  /* hauteur “zone interdite” de base */
   --kyrn-corner-inset: 6px;                   /* rapproche le texte des coins */
-  --kyrn-corner-up-brut: 84px;                /* MONTE les coins (brut) */
+  --kyrn-corner-up-brut: 54px;                /* MONTE les coins (brut) */
 }
 
 /* Coins en overlay */
