@@ -1,52 +1,52 @@
-.rpbox{
+.kyrn-rpbox{
   width: 100%;
   max-width: 100%;
   position: relative;
   box-sizing: border-box;
 
-  /* IMPORTANT : évite l’énorme vide si tu avais du 100vh quelque part */
   height: auto !important;
   min-height: 0 !important;
 }
 
 /* Wrapper overlay (hors flux) */
-.rp-corners{
+.kyrn-corners{
   position: absolute;
-  inset: 0;               /* couvre le bloc */
+  inset: 0;
   pointer-events: none;
   z-index: 5;
 }
 
-/* Coins: ABSOLU => ne poussent plus le texte */
-.rp-corner{
+/* Coins */
+.kyrn-corner{
   position: absolute;
-  top: -4px;              /* petit “mordant” pour coller au coin */
+  top: -4px;
   width: clamp(90px, 16vw, 140px);
   height: auto;
   display: block;
   user-select: none;
+  pointer-events: none;
 }
 
-.rp-corner-left{ left: -4px; }
-.rp-corner-right{ right: -4px; }
+.kyrn-corner-left{ left: -4px; }
+.kyrn-corner-right{ right: -4px; }
 
-.rp-mid{
+/* Zone centrale */
+.kyrn-mid{
   display: grid;
   grid-template-columns: clamp(34px, 6vw, 80px) minmax(0,1fr) clamp(34px, 6vw, 80px);
   gap: clamp(8px, 1.6vw, 14px);
   align-items: stretch;
 
-  /* laisse juste un chouïa de marge sous les coins */
   padding-top: clamp(8px, 1.2vw, 12px);
 }
 
-.rp-text{
+/* Texte */
+.kyrn-text{
   grid-column: 2;
   min-width: 0;
   width: 100%;
   box-sizing: border-box;
 
-  /* plus petit = texte plus haut, coins plus proches */
   padding: clamp(12px, 1.6vw, 16px) clamp(14px, 2.2vw, 18px) 18px;
 
   line-height: 1.6;
@@ -54,34 +54,38 @@
   word-break: normal;
 }
 
-.rp-side{ position: relative; }
+/* Colonnes latérales */
+.kyrn-side{ position: relative; }
 
-.rp-sticky{
+/* Sticky au scroll */
+.kyrn-sticky{
   position: sticky;
   top: 35vh;
   width: clamp(34px, 5vw, 54px);
   height: auto;
   display: block;
   margin: 0 auto;
-  pointer-events: none;
   user-select: none;
+  pointer-events: none;
 }
 
-.rp-sticky[src^="URL_"],
-.rp-sticky[src=""]{
+/* Cache l’icône “image cassée” si placeholder */
+.kyrn-sticky[src^="URL_"],
+.kyrn-sticky[src=""]{
   display: none;
 }
 
-/* Bas: suit le texte, pas collé au bas de l’écran */
-.rp-end{
+/* Bas */
+.kyrn-end{
   margin-top: 12px;
 }
 
-.rp-endmark{
+.kyrn-endmark{
   width: 100%;
-  height: clamp(90px, 14vw, 160px);  /* “plus haut” sans créer un vide géant */
+  height: clamp(90px, 14vw, 160px);
   display: block;
   object-fit: contain;
-  pointer-events: none;
   user-select: none;
+  pointer-events: none;
 }
+
