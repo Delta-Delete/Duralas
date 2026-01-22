@@ -1,4 +1,7 @@
-/* Import Google Fonts: Spectral (texte) + Macondo (dialogues) */
+/* Import Google Fonts:
+   - Spectral = texte
+   - Macondo  = dialogues
+*/
 @import url("https://fonts.googleapis.com/css2?family=Spectral:wght@400;600&family=Macondo&display=swap");
 
 /* =========================
@@ -10,7 +13,8 @@
    Dialogues: base + variantes (autres / Kyrn)
    Fix: bulles -> moins d'espace avant/après + réduit le gap du paragraphe suivant
    + Fix forum: <br> après bulle / <p> qui encapsule la bulle / paragraphes vides
-   + Fonts: Spectral (texte) / Macondo (dialogues)
+   + Fonts: Spectral (texte) + Macondo (dialogues)
+   + Améliorations: stop hyphens, meilleure lisibilité, bulles moins “barre”
    ========================= */
 
 .kyrn-rpbox{
@@ -36,15 +40,11 @@
   --kyrn-text-raise: -28px;     /* NEGATIF = monte, POSITIF = descend */
 
   /* Lecture */
-  --kyrn-font-size: 15px;       /* <- augmente ici si besoin (ex: 16px) */
+  --kyrn-font-size: 15px;       /* taille texte */
   --kyrn-text-maxw: 900px;      /* largeur confortable (mets 100% si tu veux) */
   --kyrn-paragraph-gap: 14px;   /* espace entre paragraphes */
   --kyrn-veil: rgba(0,0,0,0.18);
   --kyrn-veil-radius: 12px;
-
-  /* Fonts */
-  --kyrn-font-text: "Spectral", Georgia, "Times New Roman", serif;
-  --kyrn-font-dia: "Macondo", Georgia, "Times New Roman", serif;
 
   /* Dialogues */
   --kyrn-dia-gap: 6px;          /* espace vertical bulles */
@@ -59,6 +59,9 @@
 
   /* Couleurs dialogues */
   --kyrn-kyrn-color: #4B6A84;
+
+  /* Couleur texte (lisibilité) */
+  --kyrn-text-color: rgba(235, 220, 185, 0.92);
 }
 
 /* Coins en overlay */
@@ -87,19 +90,28 @@
 .kyrn-corner-left{ left: calc(-1 * var(--kyrn-corner-out-brut)); }
 .kyrn-corner-right{ right: calc(-1 * var(--kyrn-corner-out-brut)); }
 
-/* Texte (narration) */
+/* Texte */
 .kyrn-text{
   box-sizing: border-box;
   width: 100%;
   line-height: 1.7;
   letter-spacing: 0.2px;
-  overflow-wrap: break-word;
+
+  /* Anti “hen- drit” + débordements */
+  hyphens: none;
+  overflow-wrap: anywhere;
   word-break: normal;
 
   /* Font texte */
-  font-family: var(--kyrn-font-text);
+  font-family: "Spectral", Georgia, "Times New Roman", serif;
   font-size: var(--kyrn-font-size);
-  font-weight: 400;
+
+  /* Lisibilité */
+  color: var(--kyrn-text-color);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.65);
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  font-variant-ligatures: common-ligatures;
 
   /* Déplacement fiable */
   position: relative;
@@ -117,7 +129,6 @@
   margin-right: auto;
 
   text-align: justify;
-  hyphens: auto;
 
   /* Voile discret */
   background: var(--kyrn-veil);
@@ -125,8 +136,12 @@
 }
 
 /* Paragraphes (forums injectent souvent des <p>) */
-.kyrn-text p{ margin: 0; }
-.kyrn-text p + p{ margin-top: var(--kyrn-paragraph-gap); }
+.kyrn-text p{
+  margin: 0;
+}
+.kyrn-text p + p{
+  margin-top: var(--kyrn-paragraph-gap);
+}
 
 /* Neutralise anciens floats */
 .kyrn-text::before,
@@ -145,16 +160,22 @@
 .kyrn-text .kyrn-dia{
   display: block;
   margin: var(--kyrn-dia-gap) 0;
-  margin-bottom: 2px;                 /* colle un peu le texte après */
+  margin-bottom: 2px;
   padding: 8px 12px 8px 14px;
+
   border-left: 2px solid rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.04);
   border-radius: 10px;
 
   /* Font dialogues */
-  font-family: var(--kyrn-font-dia);
-  font-size: var(--kyrn-font-size);
-  font-weight: 400;
+  font-family: "Macondo", Georgia, "Times New Roman", serif;
+  font-size: inherit;
+
+  /* Bulle moins “barre” */
+  max-width: 92%;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 6px 16px rgba(0,0,0,0.28);
 }
 
 /* Si un paragraphe suit une bulle, réduire le gap du paragraphe */
@@ -165,26 +186,33 @@
 /* Autres (neutre) */
 .kyrn-text .kyrn-otext{
   color: inherit;
+  background: rgba(255,255,255,0.035);
 }
 
 /* Kyrn (couleur dédiée) */
 .kyrn-text .kyrn-ktext{
   color: var(--kyrn-kyrn-color);
   font-weight: 600; /* optionnel */
+  border-left-color: var(--kyrn-kyrn-color);
+  background: rgba(75, 106, 132, 0.10);
 }
 
 /* Si tu utilises des blockquote pour dialogues */
 .kyrn-text blockquote{
   margin: var(--kyrn-dia-gap) 0 2px;
   padding: 8px 12px 8px 14px;
+
   border-left: 2px solid rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.04);
   border-radius: 10px;
 
-  /* Font dialogues */
-  font-family: var(--kyrn-font-dia);
-  font-size: var(--kyrn-font-size);
-  font-weight: 400;
+  font-family: "Macondo", Georgia, "Times New Roman", serif;
+  font-size: inherit;
+
+  max-width: 92%;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 6px 16px rgba(0,0,0,0.28);
 }
 
 /* =========================
@@ -213,6 +241,23 @@
   display: none;
 }
 
+/* =========================
+   Séparateur optionnel
+   Usage: <div class="kyrn-sep"></div>
+   ========================= */
+.kyrn-sep{
+  height: 1px;
+  width: min(420px, 70%);
+  margin: 18px auto;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 235, 180, 0.18),
+    transparent
+  );
+  border-radius: 999px;
+}
+
 /* Bas proche du texte */
 .kyrn-end{
   margin-top: calc(-1 * var(--kyrn-end-pull));
@@ -233,7 +278,7 @@
   filter: drop-shadow(0 0 10px var(--kyrn-flower-glow));
 }
 
-/* Responsive: évite que les réserves mangent tout */
+/* Responsive: évite que les réserves mangent tout + justify souvent moche sur mobile */
 @media (max-width: 520px){
   .kyrn-rpbox{
     --kyrn-safe-left: 18px;
@@ -242,9 +287,19 @@
     --kyrn-gap-right: 6px;
     --kyrn-corner-w: 90px;
     --kyrn-text-maxw: 100%;
-    --kyrn-font-size: 14px; /* optionnel: un poil plus petit sur mobile */
+    --kyrn-font-size: 14px;
+  }
+
+  .kyrn-text{
+    text-align: left;
+  }
+
+  .kyrn-text .kyrn-dia,
+  .kyrn-text blockquote{
+    max-width: 100%;
   }
 }
+
 
 
 
