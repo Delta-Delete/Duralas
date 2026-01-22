@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Macondo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Spectral:wght@400;600&family=Macondo&display=swap");
 
 .kyrn-rpbox{
   width: 100%;
@@ -19,7 +19,7 @@
   --kyrn-text-pad-top: 0px;
   --kyrn-text-raise: -28px;
 
-  --kyrn-font-size: 15px;
+  --kyrn-font-size: 15.5px;
   --kyrn-text-maxw: 900px;
   --kyrn-paragraph-gap: 14px;
   --kyrn-veil: rgba(0,0,0,0.18);
@@ -32,11 +32,6 @@
   --kyrn-end-pull: 18px;
 
   --kyrn-flower-glow: rgba(255, 235, 180, 0.18);
-
-  --kyrn-ink: rgba(235, 220, 185, 0.95);
-  --kyrn-gold: rgba(214, 177, 93, 0.95);
-  --kyrn-gold-deep: rgba(132, 92, 28, 0.65);
-  --kyrn-gold-lite: rgba(255, 245, 210, 0.55);
 }
 
 .kyrn-corners{
@@ -108,7 +103,7 @@
   background: rgba(255,255,255,0.04);
   border-radius: 10px;
 
-  font-family: "Macondo", Georgia, "Times New Roman", serif;
+  font-family: "Macondo", "Spectral", Georgia, "Times New Roman", serif;
   font-size: inherit;
 }
 
@@ -118,16 +113,24 @@
 
 .kyrn-text .kyrn-otext{
   color: inherit;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+  font-weight: inherit;
 }
 
-.kyrn-text .kyrn-dia.kyrn-ktext{
-  color: var(--kyrn-ink);
-  -webkit-text-stroke: 0.55px var(--kyrn-gold);
+.kyrn-text .kyrn-ktext{
+  color: #F3EBDD;
+  font-weight: 600;
+
+  -webkit-text-stroke: 0.6px rgba(214,176,92,0.90);
+
   text-shadow:
-    0 0 0.6px var(--kyrn-gold),
-    0.9px 0.9px 0 var(--kyrn-gold-deep),
-    -0.6px -0.6px 0 var(--kyrn-gold-lite),
-    0 0 8px rgba(214, 177, 93, 0.16);
+    -0.6px 0 rgba(214,176,92,0.55),
+     0.6px 0 rgba(214,176,92,0.55),
+     0 -0.6px rgba(214,176,92,0.55),
+     0  0.6px rgba(214,176,92,0.55),
+     0 0 6px rgba(214,176,92,0.28),
+     0 1px 0 rgba(0,0,0,0.65);
 }
 
 .kyrn-text blockquote{
@@ -137,7 +140,7 @@
   background: rgba(255,255,255,0.04);
   border-radius: 10px;
 
-  font-family: "Macondo", Georgia, "Times New Roman", serif;
+  font-family: "Macondo", "Spectral", Georgia, "Times New Roman", serif;
   font-size: inherit;
 }
 
@@ -182,9 +185,10 @@
     --kyrn-gap-right: 6px;
     --kyrn-corner-w: 90px;
     --kyrn-text-maxw: 100%;
-    --kyrn-font-size: 14px;
+    --kyrn-font-size: 14.5px;
   }
 }
+
 
 
 
