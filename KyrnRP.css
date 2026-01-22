@@ -3,12 +3,9 @@
   max-width: 100%;
   position: relative;
   box-sizing: border-box;
-
-  height: auto !important;
-  min-height: 0 !important;
 }
 
-/* Wrapper overlay (hors flux) */
+/* Coins en overlay (hors flux) */
 .kyrn-corners{
   position: absolute;
   inset: 0;
@@ -16,7 +13,7 @@
   z-index: 5;
 }
 
-/* Coins */
+/* Images coins */
 .kyrn-corner{
   position: absolute;
   top: -4px;
@@ -30,52 +27,20 @@
 .kyrn-corner-left{ left: -4px; }
 .kyrn-corner-right{ right: -4px; }
 
-/* Zone centrale */
-.kyrn-mid{
-  display: grid;
-  grid-template-columns: clamp(34px, 6vw, 80px) minmax(0,1fr) clamp(34px, 6vw, 80px);
-  gap: clamp(8px, 1.6vw, 14px);
-  align-items: stretch;
-
-  padding-top: clamp(8px, 1.2vw, 12px);
-}
-
-/* Texte */
+/* Texte (on laisse juste assez de marge pour les coins) */
 .kyrn-text{
-  grid-column: 2;
-  min-width: 0;
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
 
-  padding: clamp(12px, 1.6vw, 16px) clamp(14px, 2.2vw, 18px) 18px;
+  padding: clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 18px) 18px;
+  padding-top: clamp(22px, 3.2vw, 34px); /* espace sous les coins */
 
   line-height: 1.6;
   overflow-wrap: break-word;
   word-break: normal;
 }
 
-/* Colonnes latérales */
-.kyrn-side{ position: relative; }
-
-/* Sticky au scroll */
-.kyrn-sticky{
-  position: sticky;
-  top: 35vh;
-  width: clamp(34px, 5vw, 54px);
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  user-select: none;
-  pointer-events: none;
-}
-
-/* Cache l’icône “image cassée” si placeholder */
-.kyrn-sticky[src^="URL_"],
-.kyrn-sticky[src=""]{
-  display: none;
-}
-
-/* Bas */
+/* Marqueur de fin */
 .kyrn-end{
   margin-top: 12px;
 }
@@ -88,4 +53,5 @@
   user-select: none;
   pointer-events: none;
 }
+
 
