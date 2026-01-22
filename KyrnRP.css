@@ -19,7 +19,7 @@
 
   /* Texte: colonne fixe (ajuste ces valeurs) */
   --kyrn-safe-left: 50px;          /* commence apres la tige gauche */
-  --kyrn-safe-right: 65px;         /* s'arrete avant la tige droite */
+  --kyrn-safe-right: 50px;         /* s'arrete avant la tige droite */
   --kyrn-gap-left: 10px;            /* ecart texte vs tige gauche */
   --kyrn-gap-right: 10px;           /* ecart texte vs tige droite */
 
