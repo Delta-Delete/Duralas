@@ -71,7 +71,7 @@
 
   /* reserve a gauche et a droite */
   padding-top: var(--kyrn-text-pad-top);
-  padding-bottom: 0px;
+  padding-bottom: -20px;
   padding-left: calc(var(--kyrn-safe-left) + var(--kyrn-gap-left));
   padding-right: calc(var(--kyrn-safe-right) + var(--kyrn-gap-right));
 }
