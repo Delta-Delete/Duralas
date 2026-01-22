@@ -38,7 +38,7 @@
 
   /* Dialogues */
   --kyrn-dia-gap: 6px;          /* espace vertical bulles */
-  --kyrn-dia-after-p-gap: 6px;  /* espace avant le paragraphe après une bulle */
+  --kyrn-dia-after-p-gap: 0px;  /* espace avant le paragraphe après une bulle */
 
   /* Bas */
   --kyrn-end-h: clamp(90px, 14vw, 160px);
