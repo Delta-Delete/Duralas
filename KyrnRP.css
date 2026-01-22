@@ -62,9 +62,6 @@
   overflow-wrap: break-word;
   word-break: normal;
 
-  /* IMPORTANT: le forum centre souvent le texte -> on force */
-  text-align: left !important;
-
   /* monte le bloc texte */
   margin-top: var(--kyrn-text-raise);
 
@@ -76,16 +73,13 @@
 }
 
 /* Si le forum injecte des <p> avec marges */
-.kyrn-text p{
-  margin: 0;
-  text-align: inherit !important;
-}
+.kyrn-text p{ margin: 0; }
 
 /* On neutralise l'ancien systeme de floats si tu l'avais encore */
 .kyrn-text::before,
 .kyrn-text::after{
-  content: none !important;
-  display: none !important;
+  content: none;
+  display: none;
 }
 
 /* Bas proche du texte */
