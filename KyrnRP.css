@@ -2,6 +2,7 @@
    Kyrn RP Template (BRUT)
    Coins haut G/D montes en top negatif (-84px)
    Wrap du texte entre les coins (floats)
+   Bas proche du texte (pas d'ancrage absolute)
    Classes uniques: kyrn-
    ========================= */
 
@@ -12,17 +13,14 @@
   box-sizing: border-box;
 
   /* Reglages */
-  --kyrn-corner-w: clamp(90px, 16vw, 140px);
-  --kyrn-corner-h: clamp(90px, 16vw, 140px);
-  --kyrn-corner-inset: 6px;
-  --kyrn-corner-up-brut: 84px;
-  --kyrn-corner-out-brut: 18px;
+  --kyrn-corner-w: clamp(90px, 16vw, 140px);  /* largeur d'affichage des coins */
+  --kyrn-corner-h: clamp(90px, 16vw, 140px);  /* hauteur zone interdite de base */
+  --kyrn-corner-inset: 6px;                   /* rapproche le texte des coins */
+  --kyrn-corner-up-brut: 84px;                /* monte les coins (brut) */
+  --kyrn-corner-out-brut: 18px;               /* sort sur les cotes (brut) */
 
   /* Bas */
   --kyrn-end-h: clamp(90px, 14vw, 160px);
-
-  /* IMPORTANT : force une hauteur minimale pour voir l'ancrage bas */
-  min-height: 720px; /* ajuste si tu veux plus/moins de “hauteur de fiche” */
 }
 
 /* Coins en overlay */
@@ -44,23 +42,23 @@
   pointer-events: none;
 }
 
+/* BRUT: on sort du bloc sur les cotes */
 .kyrn-corner-left{ left: calc(-1 * var(--kyrn-corner-out-brut)); }
 .kyrn-corner-right{ right: calc(-1 * var(--kyrn-corner-out-brut)); }
 
-/* Texte */
+/* Texte : wrap entre deux floats au debut */
 .kyrn-text{
   box-sizing: border-box;
   width: 100%;
   line-height: 1.6;
   overflow-wrap: break-word;
   word-break: normal;
-  display: flow-root;
 
-  /* IMPORTANT : on reserve la place du bas pour eviter que le texte passe dessous */
-  padding: 14px 14px calc(18px + var(--kyrn-end-h));
+  display: flow-root; /* contient les floats */
+  padding: 14px 14px 10px; /* padding bas reduit pour rapprocher les fleurs */
 }
 
-/* Zones interdites */
+/* Zones interdites pour que le texte commence entre les coins */
 .kyrn-text::before,
 .kyrn-text::after{
   content: "";
@@ -71,28 +69,25 @@
 .kyrn-text::before{ float: left; }
 .kyrn-text::after{ float: right; }
 
-/* BAS : ancre au bas du bloc */
+/* Marqueur de fin: dans le flux, donc proche du texte */
 .kyrn-end{
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  margin: 0;
+  margin-top: 8px;   /* ajuste: 0 a 12px */
   padding: 0;
-  line-height: 0;
-  pointer-events: none;
+  line-height: 0;    /* evite les micro-espaces */
 }
 
 .kyrn-endmark{
   width: 100%;
   height: var(--kyrn-end-h);
   display: block;
+
   object-fit: contain;
   object-position: center bottom;
+
   user-select: none;
   pointer-events: none;
 }
+
 
 
 
