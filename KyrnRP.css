@@ -18,10 +18,10 @@
   --kyrn-corner-out-brut: 18px;     /* vers l'exterieur */
 
   /* Texte: colonne fixe (ajuste ces valeurs) */
-  --kyrn-safe-left: 50px;          /* commence apres la tige gauche */
-  --kyrn-safe-right: 40px;         /* s'arrete avant la tige droite */
+  --kyrn-safe-left: 50px;           /* commence apres la tige gauche */
+  --kyrn-safe-right: 40px;          /* s'arrete avant la tige droite */
   --kyrn-gap-left: 10px;            /* ecart texte vs tige gauche */
-  --kyrn-gap-right: 0px;           /* ecart texte vs tige droite */
+  --kyrn-gap-right: 0px;            /* ecart texte vs tige droite */
 
   /* Texte: monter plus haut */
   --kyrn-text-pad-top: 0px;
@@ -62,6 +62,9 @@
   overflow-wrap: break-word;
   word-break: normal;
 
+  /* IMPORTANT: le forum centre souvent le texte -> on force */
+  text-align: left !important;
+
   /* monte le bloc texte */
   margin-top: var(--kyrn-text-raise);
 
@@ -73,7 +76,10 @@
 }
 
 /* Si le forum injecte des <p> avec marges */
-.kyrn-text p{ margin: 0; }
+.kyrn-text p{
+  margin: 0;
+  text-align: inherit !important;
+}
 
 /* On neutralise l'ancien systeme de floats si tu l'avais encore */
 .kyrn-text::before,
@@ -98,6 +104,7 @@
   user-select: none;
   pointer-events: none;
 }
+
 
 
 
