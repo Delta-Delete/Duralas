@@ -16,6 +16,9 @@
   --kyrn-corner-h: clamp(90px, 16vw, 140px);  /* hauteur “zone interdite” de base */
   --kyrn-corner-inset: 6px;                   /* rapproche le texte des coins */
   --kyrn-corner-up-brut: 84px;                /* MONTE les coins (brut) */
+
+  /* NOUVEAU: décale les coins vers l’extérieur */
+  --kyrn-corner-out-brut: 18px;               /* + = plus sur les côtés */
 }
 
 /* Coins en overlay */
@@ -37,9 +40,9 @@
   pointer-events: none;
 }
 
-/* SAFE: pas de left/right négatifs (évite clipping forum) */
-.kyrn-corner-left{ left: calc(-10 * var(--kyrn-corner-out)); }
-.kyrn-corner-right{ right: calc(-10 * var(--kyrn-corner-out)); }
+/* BRUT: on sort du bloc sur les côtés */
+.kyrn-corner-left{ left: calc(-1 * var(--kyrn-corner-out-brut)); }
+.kyrn-corner-right{ right: calc(-1 * var(--kyrn-corner-out-brut)); }
 
 /* Texte : wrap entre deux “floats” au début */
 .kyrn-text{
@@ -77,6 +80,7 @@
   user-select: none;
   pointer-events: none;
 }
+
 
 
 
