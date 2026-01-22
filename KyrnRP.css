@@ -1,21 +1,4 @@
-/* Import Google Fonts:
-   - Spectral = texte
-   - Macondo  = dialogues
-*/
-@import url("https://fonts.googleapis.com/css2?family=Spectral:wght@400;600&family=Macondo&display=swap");
-
-/* =========================
-   Kyrn RP Template (BRUT+)
-   Coins haut G/D en overlay
-   Texte en colonne fixe (ne passe jamais sous les tiges)
-   Texte déplacé via position:relative + top (imparable)
-   Champ de fleurs rapproché via margin-top négatif
-   Dialogues: base + variantes (autres / Kyrn)
-   Fix: bulles -> moins d'espace avant/après + réduit le gap du paragraphe suivant
-   + Fix forum: <br> après bulle / <p> qui encapsule la bulle / paragraphes vides
-   + Fonts: Spectral (texte) + Macondo (dialogues)
-   + Améliorations: stop hyphens, meilleure lisibilité, bulles moins “barre”
-   ========================= */
+@import url("https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Macondo&display=swap");
 
 .kyrn-rpbox{
   width: 100%;
@@ -24,47 +7,38 @@
   box-sizing: border-box;
   display: flow-root;
 
-  /* Coins */
   --kyrn-corner-w: clamp(90px, 16vw, 140px);
   --kyrn-corner-up-brut: 84px;
   --kyrn-corner-out-brut: 18px;
 
-  /* Texte: colonne fixe */
   --kyrn-safe-left: 50px;
   --kyrn-safe-right: 50px;
   --kyrn-gap-left: 10px;
   --kyrn-gap-right: 0px;
 
-  /* Texte: position verticale */
   --kyrn-text-pad-top: 0px;
-  --kyrn-text-raise: -28px;     /* NEGATIF = monte, POSITIF = descend */
+  --kyrn-text-raise: -28px;
 
-  /* Lecture */
-  --kyrn-font-size: 15px;       /* taille texte */
-  --kyrn-text-maxw: 900px;      /* largeur confortable (mets 100% si tu veux) */
-  --kyrn-paragraph-gap: 14px;   /* espace entre paragraphes */
+  --kyrn-font-size: 15px;
+  --kyrn-text-maxw: 900px;
+  --kyrn-paragraph-gap: 14px;
   --kyrn-veil: rgba(0,0,0,0.18);
   --kyrn-veil-radius: 12px;
 
-  /* Dialogues */
-  --kyrn-dia-gap: 6px;          /* espace vertical bulles */
-  --kyrn-dia-after-p-gap: 0px;  /* espace avant le paragraphe après une bulle */
+  --kyrn-dia-gap: 6px;
+  --kyrn-dia-after-p-gap: 0px;
 
-  /* Bas */
   --kyrn-end-h: clamp(90px, 14vw, 160px);
-  --kyrn-end-pull: 18px;        /* augmente pour rapprocher les fleurs du texte */
+  --kyrn-end-pull: 18px;
 
-  /* Effets doux */
   --kyrn-flower-glow: rgba(255, 235, 180, 0.18);
 
-  /* Couleurs dialogues */
-  --kyrn-kyrn-color: #4B6A84;
-
-  /* Couleur texte (lisibilité) */
-  --kyrn-text-color: rgba(235, 220, 185, 0.92);
+  --kyrn-ink: rgba(235, 220, 185, 0.95);
+  --kyrn-gold: rgba(214, 177, 93, 0.95);
+  --kyrn-gold-deep: rgba(132, 92, 28, 0.65);
+  --kyrn-gold-lite: rgba(255, 245, 210, 0.55);
 }
 
-/* Coins en overlay */
 .kyrn-corners{
   position: absolute;
   inset: 0;
@@ -72,7 +46,6 @@
   z-index: 5;
 }
 
-/* Images coins (BRUT) */
 .kyrn-corner{
   position: absolute;
   top: calc(-1 * var(--kyrn-corner-up-brut));
@@ -81,184 +54,109 @@
   display: block;
   user-select: none;
   pointer-events: none;
-
-  /* halo discret */
   filter: drop-shadow(0 0 10px var(--kyrn-flower-glow));
 }
 
-/* Sortie latérale (BRUT) */
 .kyrn-corner-left{ left: calc(-1 * var(--kyrn-corner-out-brut)); }
 .kyrn-corner-right{ right: calc(-1 * var(--kyrn-corner-out-brut)); }
 
-/* Texte */
 .kyrn-text{
   box-sizing: border-box;
   width: 100%;
   line-height: 1.7;
   letter-spacing: 0.2px;
-
-  /* Anti “hen- drit” + débordements */
-  hyphens: none;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   word-break: normal;
 
-  /* Font texte */
   font-family: "Spectral", Georgia, "Times New Roman", serif;
   font-size: var(--kyrn-font-size);
 
-  /* Lisibilité */
-  color: var(--kyrn-text-color);
-  text-shadow: 0 1px 0 rgba(0,0,0,0.65);
-  font-kerning: normal;
-  text-rendering: optimizeLegibility;
-  font-variant-ligatures: common-ligatures;
-
-  /* Déplacement fiable */
   position: relative;
   top: var(--kyrn-text-raise);
 
-  /* Réserves anti-tiges */
   padding-top: var(--kyrn-text-pad-top);
   padding-bottom: 0px;
   padding-left: calc(var(--kyrn-safe-left) + var(--kyrn-gap-left));
   padding-right: calc(var(--kyrn-safe-right) + var(--kyrn-gap-right));
 
-  /* Confort de lecture */
   max-width: var(--kyrn-text-maxw);
   margin-left: auto;
   margin-right: auto;
 
   text-align: justify;
+  hyphens: auto;
 
-  /* Voile discret */
   background: var(--kyrn-veil);
   border-radius: var(--kyrn-veil-radius);
 }
 
-/* Paragraphes (forums injectent souvent des <p>) */
-.kyrn-text p{
-  margin: 0;
-}
-.kyrn-text p + p{
-  margin-top: var(--kyrn-paragraph-gap);
-}
+.kyrn-text p{ margin: 0; }
+.kyrn-text p + p{ margin-top: var(--kyrn-paragraph-gap); }
 
-/* Neutralise anciens floats */
 .kyrn-text::before,
 .kyrn-text::after{
   content: none;
   display: none;
 }
 
-/* =========================
-   Dialogues (base + variantes)
-   Usage:
-   <div class="kyrn-dia kyrn-otext">- Autre...</div>
-   <div class="kyrn-dia kyrn-ktext">- Kyrn...</div>
-   ========================= */
-
 .kyrn-text .kyrn-dia{
   display: block;
   margin: var(--kyrn-dia-gap) 0;
   margin-bottom: 2px;
   padding: 8px 12px 8px 14px;
-
   border-left: 2px solid rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.04);
   border-radius: 10px;
 
-  /* Font dialogues */
   font-family: "Macondo", Georgia, "Times New Roman", serif;
   font-size: inherit;
-
-  /* Bulle moins “barre” */
-  max-width: 92%;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.05),
-    0 6px 16px rgba(0,0,0,0.28);
 }
 
-/* Si un paragraphe suit une bulle, réduire le gap du paragraphe */
 .kyrn-text .kyrn-dia + p{
   margin-top: var(--kyrn-dia-after-p-gap);
 }
 
-/* Autres (neutre) */
 .kyrn-text .kyrn-otext{
   color: inherit;
-  background: rgba(255,255,255,0.035);
 }
 
-/* Kyrn (couleur dédiée) */
-.kyrn-text .kyrn-ktext{
-  color: var(--kyrn-kyrn-color);
-  font-weight: 600; /* optionnel */
-  border-left-color: var(--kyrn-kyrn-color);
-  background: rgba(75, 106, 132, 0.10);
+.kyrn-text .kyrn-dia.kyrn-ktext{
+  color: var(--kyrn-ink);
+  -webkit-text-stroke: 0.55px var(--kyrn-gold);
+  text-shadow:
+    0 0 0.6px var(--kyrn-gold),
+    0.9px 0.9px 0 var(--kyrn-gold-deep),
+    -0.6px -0.6px 0 var(--kyrn-gold-lite),
+    0 0 8px rgba(214, 177, 93, 0.16);
 }
 
-/* Si tu utilises des blockquote pour dialogues */
 .kyrn-text blockquote{
   margin: var(--kyrn-dia-gap) 0 2px;
   padding: 8px 12px 8px 14px;
-
   border-left: 2px solid rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.04);
   border-radius: 10px;
 
   font-family: "Macondo", Georgia, "Times New Roman", serif;
   font-size: inherit;
-
-  max-width: 92%;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.05),
-    0 6px 16px rgba(0,0,0,0.28);
 }
 
-/* =========================
-   FIX FORUM: gros trou après la bulle
-   (souvent causé par <br> injectés ou bulle encapsulée dans <p>)
-   ========================= */
-
-/* 1) Si le forum met des <br> juste après la bulle, on les supprime */
 .kyrn-text .kyrn-dia + br{ display: none; }
 .kyrn-text .kyrn-dia + br + br{ display: none; }
 
-/* 2) Si le forum encapsule la bulle dans un <p>, on réduit le gap du <p> suivant */
 @supports selector(p:has(.kyrn-dia)){
   .kyrn-text p:has(.kyrn-dia) + p{
     margin-top: var(--kyrn-dia-after-p-gap);
   }
-
-  /* 3) Nettoie les paragraphes "vides" du type <p><br></p> */
   .kyrn-text p:has(> br:only-child){
     display: none;
   }
 }
 
-/* 4) Paragraphes vraiment vides */
 .kyrn-text p:empty{
   display: none;
 }
 
-/* =========================
-   Séparateur optionnel
-   Usage: <div class="kyrn-sep"></div>
-   ========================= */
-.kyrn-sep{
-  height: 1px;
-  width: min(420px, 70%);
-  margin: 18px auto;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255, 235, 180, 0.18),
-    transparent
-  );
-  border-radius: 999px;
-}
-
-/* Bas proche du texte */
 .kyrn-end{
   margin-top: calc(-1 * var(--kyrn-end-pull));
   padding: 0;
@@ -273,12 +171,9 @@
   object-position: center bottom;
   user-select: none;
   pointer-events: none;
-
-  /* halo discret */
   filter: drop-shadow(0 0 10px var(--kyrn-flower-glow));
 }
 
-/* Responsive: évite que les réserves mangent tout + justify souvent moche sur mobile */
 @media (max-width: 520px){
   .kyrn-rpbox{
     --kyrn-safe-left: 18px;
@@ -289,16 +184,8 @@
     --kyrn-text-maxw: 100%;
     --kyrn-font-size: 14px;
   }
-
-  .kyrn-text{
-    text-align: left;
-  }
-
-  .kyrn-text .kyrn-dia,
-  .kyrn-text blockquote{
-    max-width: 100%;
-  }
 }
+
 
 
 
