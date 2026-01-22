@@ -1,7 +1,7 @@
 /* =========================
    Kyrn RP Template (3 images)
    Coins haut G/D + marqueur bas
-   Texte qui wrap entre les coins
+   Texte en colonne constante (ne “revient” pas)
    Classes uniques: kyrn-
    ========================= */
 
@@ -12,17 +12,14 @@
   box-sizing: border-box;
 
   /* --- Réglages principaux --- */
-  --kyrn-corner-w: 140px;           /* largeur d’affichage des coins (si tu veux fixe) */
-  --kyrn-corner-h: 150px;           /* hauteur “zone haute” occupée par les coins */
+  --kyrn-corner-w: 140px;           /* largeur d’affichage des coins */
+  --kyrn-reserve-left: 92px;        /* espace réservé à gauche pour coller à la fleur */
+  --kyrn-reserve-right: 92px;       /* espace réservé à droite */
+  --kyrn-corner-gap: 8px;           /* marge entre texte et coins */
 
-  /* Réservation WRAP (pour coller au transparent) */
-  --kyrn-reserve-left: 92px;        /* ton calcul: largeur transparente à gauche */
-  --kyrn-reserve-right: 92px;       /* idem à droite (ajuste si besoin) */
-  --kyrn-corner-gap: 8px;           /* petit espace entre texte et coin */
-
-  /* Décalage optionnel (0 par défaut) */
-  --kyrn-corner-shift-left: 0px;    /* décale le coin gauche vers la droite */
-  --kyrn-corner-shift-right: 0px;   /* décale le coin droit vers la gauche */
+  /* Décalages optionnels des coins (0 par défaut) */
+  --kyrn-corner-shift-left: 0px;    /* + = coin gauche vers la droite */
+  --kyrn-corner-shift-right: 0px;   /* + = coin droit vers la gauche (inward) */
 }
 
 /* Coins en overlay (hors flux) */
@@ -52,37 +49,20 @@
   right: var(--kyrn-corner-shift-right);
 }
 
-/* Texte */
+/* Texte : colonne CONSTANTE sur toute la hauteur */
 .kyrn-text{
   box-sizing: border-box;
   width: 100%;
   line-height: 1.6;
   overflow-wrap: break-word;
   word-break: normal;
+  text-align: left;
 
-  /* contient les floats (zones interdites) */
-  display: flow-root;
-
-  /* padding général */
-  padding: 14px 14px 18px;
-}
-
-/* Zones interdites (wrap) en haut:
-   le texte commence entre les coins */
-.kyrn-text::before,
-.kyrn-text::after{
-  content: "";
-  height: var(--kyrn-corner-h);
-}
-
-.kyrn-text::before{
-  float: left;
-  width: calc(var(--kyrn-reserve-left) + var(--kyrn-corner-gap));
-}
-
-.kyrn-text::after{
-  float: right;
-  width: calc(var(--kyrn-reserve-right) + var(--kyrn-corner-gap));
+  /* IMPORTANT: réserve à gauche/droite tout du long */
+  padding-top: 14px;
+  padding-bottom: 18px;
+  padding-left: calc(var(--kyrn-reserve-left) + var(--kyrn-corner-gap));
+  padding-right: calc(var(--kyrn-reserve-right) + var(--kyrn-corner-gap));
 }
 
 /* Marqueur de fin */
@@ -98,6 +78,7 @@
   user-select: none;
   pointer-events: none;
 }
+
 
 
 
