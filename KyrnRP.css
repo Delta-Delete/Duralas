@@ -35,7 +35,7 @@
   --kyrn-end-h: clamp(90px, 14vw, 160px);
 
   /* NEW: rapproche le champ de fleurs du texte */
-  --kyrn-end-pull: 18px;  /* augmente pour rapprocher (18, 30, 45...) */
+  --kyrn-end-pull: 0px;  /* augmente pour rapprocher (18, 30, 45...) */
 }
 
 /* Coins en overlay */
