@@ -1,17 +1,21 @@
+/* =========================
+   Kyrn RP Template (BRUT)
+   Coins haut G/D montés en top négatif (-84px)
+   Wrap du texte entre les coins (floats)
+   Classes uniques: kyrn-
+   ========================= */
+
 .kyrn-rpbox{
   width: 100%;
   max-width: 100%;
   position: relative;
   box-sizing: border-box;
 
-  /* Réglages faciles */
-  --kyrn-corner-w: clamp(90px, 16vw, 140px);
-  --kyrn-corner-h: clamp(90px, 16vw, 140px);
-  --kyrn-corner-inset: 6px;
-
-  /* Nouveaux réglages */
-  --kyrn-corner-up: -84px;     /* + = monte les fleurs */
-  --kyrn-corner-out: -20px;    /* + = vers les côtés */
+  /* Réglages */
+  --kyrn-corner-w: clamp(90px, 16vw, 140px);  /* largeur d’affichage des coins */
+  --kyrn-corner-h: clamp(90px, 16vw, 140px);  /* hauteur “zone interdite” de base */
+  --kyrn-corner-inset: 6px;                   /* rapproche le texte des coins */
+  --kyrn-corner-up-brut: 84px;                /* MONTE les coins (brut) */
 }
 
 /* Coins en overlay */
@@ -22,23 +26,20 @@
   z-index: 5;
 }
 
+/* Images coins (BRUT) */
 .kyrn-corner{
   position: absolute;
-  top: 0; /* safe */
+  top: calc(-1 * var(--kyrn-corner-up-brut));  /* <- le fameux -84px */
   width: var(--kyrn-corner-w);
   height: auto;
   display: block;
   user-select: none;
   pointer-events: none;
-
-  /* monte l’image sans sortir en top négatif */
-  transform: translateY(calc(-1 * var(--kyrn-corner-up)));
 }
 
-/* Vers les côtés: ATTENTION au clipping si ton forum coupe.
-   Si ça disparaît, remets left/right à 0 et baisse --kyrn-corner-out. */
-.kyrn-corner-left{ left: calc(-1 * var(--kyrn-corner-out)); }
-.kyrn-corner-right{ right: calc(-1 * var(--kyrn-corner-out)); }
+/* SAFE: pas de left/right négatifs (évite clipping forum) */
+.kyrn-corner-left{ left: 0; }
+.kyrn-corner-right{ right: 0; }
 
 /* Texte : wrap entre deux “floats” au début */
 .kyrn-text{
@@ -51,19 +52,22 @@
   padding: 14px 14px 18px;
 }
 
-/* Zones interdites (wrap) */
+/* Zones interdites pour que le texte commence entre les coins
+   IMPORTANT: on ajoute +84px pour suivre la montée des images */
 .kyrn-text::before,
 .kyrn-text::after{
   content: "";
   width: calc(var(--kyrn-corner-w) - var(--kyrn-corner-inset));
-  height: calc(var(--kyrn-corner-h) - 8px);
+  height: calc(var(--kyrn-corner-h) + var(--kyrn-corner-up-brut));
 }
 
 .kyrn-text::before{ float: left; }
 .kyrn-text::after{ float: right; }
 
 /* Marqueur de fin */
-.kyrn-end{ margin-top: 12px; }
+.kyrn-end{
+  margin-top: 12px;
+}
 
 .kyrn-endmark{
   width: 100%;
@@ -73,6 +77,7 @@
   user-select: none;
   pointer-events: none;
 }
+
 
 
 
