@@ -41,11 +41,11 @@
   --kyrn-dia-inset: rgba(255,255,255,0.06);
 
   /* Media frame (450x720 | inner 378x678) */
-  --kyrn-media-w: 450px;
-  --kyrn-media-h: 720px;
-  --kyrn-media-inner-w: 378px;
-  --kyrn-media-inner-h: 678px;
-  --kyrn-media-float-gap: 14px;
+  --kyrn-media-w: 379px;
+  --kyrn-media-h: 533px;
+  --kyrn-media-inner-w: 320px;
+  --kyrn-media-inner-h: 480px;
+  --kyrn-media-float-gap: -14px;
 
   /* URL de TON cadre perso (PNG transparent, 450x720) */
   --kyrn-media-frame-img: url("https://i.postimg.cc/Gt38fqw7/Kyrn-Cadre.png");
