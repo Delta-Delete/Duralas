@@ -356,7 +356,7 @@
     --kyrn-media-mt: 6px;
     --kyrn-media-mb: 10px;
 
-    /* sur mobile, on évite de pousser hors écran */
+    /* version mobile non test */
     --kyrn-media-push-right: 0px;
     --kyrn-media-push-left: 0px;
   }
