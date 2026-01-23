@@ -41,8 +41,8 @@
   --kyrn-dia-inset: rgba(255,255,255,0.06);
 
   /* Media frame (450x720 | inner 378x678) */
-  --kyrn-media-w: 379px;
-  --kyrn-media-h: 533px;
+  --kyrn-media-w: 398px;
+  --kyrn-media-h: 530px;
   --kyrn-media-inner-w: 320px;
   --kyrn-media-inner-h: 480px;
   --kyrn-media-float-gap: -14px;
