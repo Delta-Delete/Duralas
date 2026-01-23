@@ -52,9 +52,9 @@
 
   --kyrn-media-fit: cover;
 
-  --kyrn-media-mt: 15px;
-  --kyrn-media-mb: 5px;
-  --kyrn-media-float-gap: 8px;
+  --kyrn-media-mt: 20px;
+  --kyrn-media-mb: -15px;
+  --kyrn-media-float-gap: 5px;
 
   --kyrn-media-frame-img: url("https://i.postimg.cc/mgq8YFfB/Cadre-Kyrn2.png");
 }
