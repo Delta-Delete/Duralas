@@ -33,22 +33,28 @@
 
   --kyrn-flower-glow: rgba(255, 235, 180, 0.18);
 
-  --kyrn-dia-texture: url("https://i.postimg.cc/dt5v1Mt9/32.png ");
+  --kyrn-dia-texture: url("https://i.postimg.cc/dt5v1Mt9/32.png");
   --kyrn-dia-texture-opacity: 0.16;
   --kyrn-dia-texture-size: 420px;
   --kyrn-dia-base-bg: rgba(0,0,0,0.35);
   --kyrn-dia-border-gold: rgba(184, 134, 60, 0.22);
   --kyrn-dia-inset: rgba(255,255,255,0.06);
 
-  /* Media frame (450x720 | inner 378x678) */
-  --kyrn-media-w: 398px;
-  --kyrn-media-h: 530px;
-  --kyrn-media-inner-w: 320px;
-  --kyrn-media-inner-h: 480px;
+  /* Media frame (cadre 376x545 | image 320x480) */
+  --kyrn-media-w: 376px;
+  --kyrn-media-h: 545px;
+  --kyrn-media-aspect: 376 / 545;
+
+  --kyrn-media-inner-w-r: 0.8510638; /* 320/376 */
+  --kyrn-media-inner-h-r: 0.8807339; /* 480/545 */
+
+  --kyrn-media-inner-shift-x: 0%;
+  --kyrn-media-inner-shift-y: 0%;
+
+  --kyrn-media-fit: cover;
   --kyrn-media-float-gap: -14px;
 
-  /* URL de TON cadre perso (PNG transparent, 450x720) */
-  --kyrn-media-frame-img: url("https://i.postimg.cc/Gt38fqw7/Kyrn-Cadre.png");
+  --kyrn-media-frame-img: url("https://i.postimg.cc/mgq8YFfB/Cadre-Kyrn2.png");
 }
 
 .kyrn-corners{
@@ -163,9 +169,7 @@
 .kyrn-text .kyrn-ktext{
   color: #F2E6CF;
   font-weight: 500;
-
   -webkit-text-stroke: 0.6px rgba(184, 134, 60, 0.90);
-
   text-shadow:
     0 0 6px rgba(184, 134, 60, 0.22),
     0 1px 0 rgba(0,0,0,0.55);
@@ -240,21 +244,10 @@
   filter: drop-shadow(0 0 10px var(--kyrn-flower-glow));
 }
 
-/* ===== Media Frame FLOAT (cadre perso au-dessus + wrap texte) ===== */
-/* HTML:
-<div class="kyrn-mediaframe kyrn-mediafloat-right">
-  <div class="kyrn-mediaframe-inner">
-    <img src="..." alt="">
-    <!-- ou <audio controls src="..."></audio> -->
-  </div>
-</div>
-<div class="kyrn-clear"></div>  <!-- optionnel si tu veux stopper le wrap -->
-*/
-
 .kyrn-text .kyrn-mediaframe{
   box-sizing: border-box;
-  width: var(--kyrn-media-w);
-  height: var(--kyrn-media-h);
+  width: min(100%, var(--kyrn-media-w));
+  aspect-ratio: var(--kyrn-media-aspect);
 
   position: relative;
   overflow: visible;
@@ -268,28 +261,34 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-
   background: var(--kyrn-media-frame-img) center / 100% 100% no-repeat;
   z-index: 3;
+}
+
+.kyrn-text .kyrn-mediaframe > *{
+  position: relative;
+  z-index: 1;
 }
 
 .kyrn-text .kyrn-mediafloat-left{
   float: left;
   margin: 6px var(--kyrn-media-float-gap) 10px 0;
+  shape-outside: inset(0 round 16px);
 }
 
 .kyrn-text .kyrn-mediafloat-right{
   float: right;
   margin: 6px 0 10px var(--kyrn-media-float-gap);
+  shape-outside: inset(0 round 16px);
 }
 
 .kyrn-text .kyrn-mediaframe-inner{
-  width: var(--kyrn-media-inner-w);
-  height: var(--kyrn-media-inner-h);
+  width: calc(100% * var(--kyrn-media-inner-w-r));
+  height: calc(100% * var(--kyrn-media-inner-h-r));
 
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: calc(50% + var(--kyrn-media-inner-shift-x));
+  top: calc(50% + var(--kyrn-media-inner-shift-y));
   transform: translate(-50%, -50%);
 
   display: flex;
@@ -304,7 +303,8 @@
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover; /* mets contain si tu veux garder l'image entière */
+  object-fit: var(--kyrn-media-fit);
+  object-position: center;
 }
 
 .kyrn-text .kyrn-mediaframe-inner audio{
@@ -316,18 +316,19 @@
   clear: both;
 }
 
-/* ===== Responsive: on enlève le float et on scale ===== */
-@media (max-width: 820px){
+@supports not (aspect-ratio: 1 / 1){
   .kyrn-text .kyrn-mediaframe{
-    float: none;
     width: min(100%, var(--kyrn-media-w));
     height: auto;
-    aspect-ratio: 450 / 720;
-    margin: 10px auto;
   }
-  .kyrn-text .kyrn-mediaframe-inner{
-    width: calc(100% * (378 / 450));
-    height: calc(100% * (678 / 720));
+}
+
+@media (max-width: 820px){
+  .kyrn-text .kyrn-mediafloat-left,
+  .kyrn-text .kyrn-mediafloat-right{
+    float: none;
+    margin: 10px auto;
+    shape-outside: none;
   }
 }
 
@@ -347,3 +348,4 @@
     --kyrn-media-float-gap: 10px;
   }
 }
+
