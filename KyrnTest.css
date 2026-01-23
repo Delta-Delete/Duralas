@@ -40,7 +40,7 @@
   --kyrn-dia-border-gold: rgba(184, 134, 60, 0.22);
   --kyrn-dia-inset: rgba(255,255,255,0.06);
 
-  /* Media frame (cadre 376x545 | image 320x480) */
+  
   --kyrn-media-w: 376px;
   --kyrn-media-h: 545px;
   --kyrn-media-aspect: 376 / 545;
@@ -57,9 +57,9 @@
   --kyrn-media-mb: -15px;
   --kyrn-media-float-gap: 2px;
 
-  /* NEW: décale le CADRE lui-même (sans casser le wrap du texte) */
-  --kyrn-media-push-right: 84px; /* + = pousse vers la droite (float right) */
-  --kyrn-media-push-left: 84px;  /* + = pousse vers la gauche (float left) */
+  
+  --kyrn-media-push-right: 90px; 
+  --kyrn-media-push-left: 90px;  
 
   --kyrn-media-frame-img: url("https://i.postimg.cc/mgq8YFfB/Cadre-Kyrn2.png");
 }
