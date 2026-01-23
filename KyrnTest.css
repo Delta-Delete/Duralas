@@ -59,7 +59,7 @@
 
   /* NEW: décale le CADRE lui-même (sans casser le wrap du texte) */
   --kyrn-media-push-right: 84px; /* + = pousse vers la droite (float right) */
-  --kyrn-media-push-left: 0px;  /* + = pousse vers la gauche (float left) */
+  --kyrn-media-push-left: 84px;  /* + = pousse vers la gauche (float left) */
 
   --kyrn-media-frame-img: url("https://i.postimg.cc/mgq8YFfB/Cadre-Kyrn2.png");
 }
