@@ -40,6 +40,7 @@
   --kyrn-dia-border-gold: rgba(184, 134, 60, 0.22);
   --kyrn-dia-inset: rgba(255,255,255,0.06);
 
+  /* Media frame (cadre 376x545 | image 320x480) */
   --kyrn-media-w: 376px;
   --kyrn-media-h: 545px;
   --kyrn-media-aspect: 376 / 545;
@@ -55,6 +56,10 @@
   --kyrn-media-mt: 22px;
   --kyrn-media-mb: -15px;
   --kyrn-media-float-gap: 2px;
+
+  /* NEW: décale le CADRE lui-même (sans casser le wrap du texte) */
+  --kyrn-media-push-right: 0px; /* + = pousse vers la droite (float right) */
+  --kyrn-media-push-left: 0px;  /* + = pousse vers la gauche (float left) */
 
   --kyrn-media-frame-img: url("https://i.postimg.cc/mgq8YFfB/Cadre-Kyrn2.png");
 }
@@ -274,13 +279,13 @@
 
 .kyrn-text .kyrn-mediafloat-left{
   float: left;
-  margin: var(--kyrn-media-mt) var(--kyrn-media-float-gap) var(--kyrn-media-mb) 0;
+  margin: var(--kyrn-media-mt) var(--kyrn-media-float-gap) var(--kyrn-media-mb) calc(0px - var(--kyrn-media-push-left));
   shape-outside: inset(0 round 16px);
 }
 
 .kyrn-text .kyrn-mediafloat-right{
   float: right;
-  margin: var(--kyrn-media-mt) 0 var(--kyrn-media-mb) var(--kyrn-media-float-gap);
+  margin: var(--kyrn-media-mt) calc(0px - var(--kyrn-media-push-right)) var(--kyrn-media-mb) var(--kyrn-media-float-gap);
   shape-outside: inset(0 round 16px);
 }
 
@@ -350,7 +355,12 @@
     --kyrn-media-float-gap: 10px;
     --kyrn-media-mt: 6px;
     --kyrn-media-mb: 10px;
+
+    /* sur mobile, on évite de pousser hors écran */
+    --kyrn-media-push-right: 0px;
+    --kyrn-media-push-left: 0px;
   }
 }
+
 
 
