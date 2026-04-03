@@ -1,0 +1,178 @@
+/* ===== Carnet des lieux visités ===== */
+
+.lieux-wrap {
+  --bg: #111214;
+  --bg-soft: #181a1f;
+  --card: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.10);
+  --text: #e8e1d6;
+  --muted: #a79e92;
+  --gold: #c7a86b;
+  --gold-soft: rgba(199,168,107,0.18);
+  --visited: #7ea67e;
+  --current: #a98ad6;
+  --future: #6e8fb8;
+  --danger: #b87676;
+
+  max-width: 950px;
+  margin: 25px auto;
+  padding: 28px;
+  background:
+    radial-gradient(circle at top left, rgba(199,168,107,0.08), transparent 35%),
+    linear-gradient(180deg, #121317 0%, #0d0e11 100%);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.35),
+    inset 0 0 0 1px rgba(255,255,255,0.03);
+  color: var(--text);
+  font-family: "Georgia", "Times New Roman", serif;
+}
+
+.lieux-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.lieux-title {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.1;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.lieux-subtitle {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  font-style: italic;
+}
+
+.lieux-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.lieu-card {
+  position: relative;
+  padding: 18px;
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015)),
+    var(--card);
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.lieu-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(199,168,107,0.35);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.28);
+}
+
+.lieu-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  opacity: 0.9;
+}
+
+.lieu-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.lieu-name {
+  margin: 0;
+  font-size: 20px;
+  color: #f3ede4;
+  line-height: 1.15;
+}
+
+.lieu-badge {
+  flex-shrink: 0;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border: 1px solid transparent;
+  font-weight: bold;
+}
+
+.lieu-badge.visited {
+  color: #dff1df;
+  background: rgba(126,166,126,0.15);
+  border-color: rgba(126,166,126,0.35);
+}
+
+.lieu-badge.current {
+  color: #efe5ff;
+  background: rgba(169,138,214,0.16);
+  border-color: rgba(169,138,214,0.35);
+}
+
+.lieu-badge.future {
+  color: #dceaff;
+  background: rgba(110,143,184,0.16);
+  border-color: rgba(110,143,184,0.35);
+}
+
+.lieu-badge.lost {
+  color: #ffe3e3;
+  background: rgba(184,118,118,0.16);
+  border-color: rgba(184,118,118,0.35);
+}
+
+.lieu-meta {
+  margin-bottom: 12px;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.2px;
+}
+
+.lieu-desc {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.lieu-note {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(199,168,107,0.07);
+  border: 1px solid rgba(199,168,107,0.12);
+  color: #ddd2c0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.lieux-footer {
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* Petit effet "ancienne fiche" */
+.lieux-wrap .ornement {
+  width: 90px;
+  height: 1px;
+  margin: 14px auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.8;
+}
