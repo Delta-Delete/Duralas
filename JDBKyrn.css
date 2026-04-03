@@ -1,23 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
 
 .jdb-kyrn-lieux {
-  width: 100% !important;
-  max-width: none !important;
-  margin: 12px auto !important;
-  padding: 14px 10px !important;
+  width: 100%;
+  margin: 12px auto;
+  padding: 18px 14px;
   background: linear-gradient(180deg, rgba(18,18,22,0.96) 0%, rgba(10,10,14,0.96) 100%);
   border: 1px solid rgba(255,255,255,0.10);
   border-radius: 18px;
   box-shadow: 0 8px 28px rgba(0,0,0,0.30);
   color: #e8e0d4;
   font-family: Georgia, "Times New Roman", serif;
-  box-sizing: border-box !important;
-  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .jdb-kyrn-lieux-header {
   text-align: center;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
 .jdb-kyrn-lieux-suptitle {
@@ -50,30 +48,40 @@
   line-height: 1.6;
   color: #a79d91;
   font-style: italic;
-  margin-bottom: 8px;
 }
 
-.jdb-kyrn-lieux-grid {
-  display: block !important;
-  width: 100% !important;
-  font-size: 0;
-  text-align: left;
+.jdb-kyrn-cols {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 14px 0;
+}
+
+.jdb-kyrn-col {
+  display: table-cell;
+  width: 50%;
+  vertical-align: top;
 }
 
 .jdb-kyrn-lieu-card {
-  display: inline-block !important;
-  vertical-align: top !important;
-  width: 47.8% !important;
-  margin: 0 1.1% 16px 1.1% !important;
-  float: none !important;
-  clear: none !important;
   position: relative;
+  margin: 0 0 16px 0;
   padding: 18px;
-  background: rgba(255,255,255,0.035);
+  background:
+    linear-gradient(180deg, rgba(7,7,10,0.58) 0%, rgba(7,7,10,0.76) 45%, rgba(7,7,10,0.90) 100%),
+    var(--lieu-bg, none),
+    rgba(255,255,255,0.035);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 14px;
-  box-sizing: border-box !important;
-  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 80px rgba(0,0,0,0.18),
+    0 8px 20px rgba(0,0,0,0.18);
 }
 
 .jdb-kyrn-lieu-card::before {
@@ -93,14 +101,16 @@
   justify-content: space-between;
   gap: 10px;
   margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .jdb-kyrn-lieu-name {
   font-size: 21px;
   line-height: 1.1;
   color: #f2eadf;
-  min-width: 0;
   font-family: 'Metamorphous', Georgia, "Times New Roman", serif;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.45);
 }
 
 .jdb-kyrn-lieu-badge {
@@ -114,6 +124,8 @@
   border: 1px solid transparent;
   white-space: nowrap;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .jdb-kyrn-lieu-badge.visited {
@@ -143,16 +155,22 @@
 .jdb-kyrn-lieu-meta {
   margin-bottom: 10px;
   font-size: 12px;
-  color: #988f84;
+  color: #ccb892;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-family: 'Metamorphous', Georgia, "Times New Roman", serif;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.45);
 }
 
 .jdb-kyrn-lieu-desc {
   font-size: 14px;
   line-height: 1.65;
-  color: #e2d8ca;
+  color: #f0e4d4;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.50);
 }
 
 .jdb-kyrn-lieu-note {
@@ -161,23 +179,22 @@
   border-top: 1px solid rgba(255,255,255,0.08);
   font-size: 13px;
   line-height: 1.55;
-  color: #b7ab9b;
+  color: #d5c4af;
   font-style: italic;
-}
-
-.jdb-kyrn-lieux * {
-  box-sizing: border-box !important;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.50);
 }
 
 @media (max-width: 700px) {
-  .jdb-kyrn-lieux {
-    padding: 12px 8px !important;
+  .jdb-kyrn-cols,
+  .jdb-kyrn-col {
+    display: block;
+    width: 100%;
   }
 
-  .jdb-kyrn-lieu-card {
-    display: block !important;
-    width: 100% !important;
-    margin: 0 0 16px 0 !important;
+  .jdb-kyrn-col {
+    margin-bottom: 16px;
   }
 
   .jdb-kyrn-lieu-top {
