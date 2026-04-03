@@ -1,17 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
 
 .jdb-kyrn-lieux {
-  max-width: 980px;
-  margin: 18px auto;
-  padding: 18px 16px;
-  background:
-    linear-gradient(180deg, rgba(18,18,22,0.96) 0%, rgba(10,10,14,0.96) 100%);
+  width: 100% !important;
+  max-width: none !important;
+  margin: 12px auto !important;
+  padding: 14px 10px !important;
+  background: linear-gradient(180deg, rgba(18,18,22,0.96) 0%, rgba(10,10,14,0.96) 100%);
   border: 1px solid rgba(255,255,255,0.10);
   border-radius: 18px;
   box-shadow: 0 8px 28px rgba(0,0,0,0.30);
   color: #e8e0d4;
   font-family: Georgia, "Times New Roman", serif;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
+  overflow: hidden;
 }
 
 .jdb-kyrn-lieux-header {
@@ -49,33 +50,30 @@
   line-height: 1.6;
   color: #a79d91;
   font-style: italic;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .jdb-kyrn-lieux-grid {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 14px;
+  display: block !important;
+  width: 100% !important;
+  font-size: 0;
+  text-align: left;
 }
 
 .jdb-kyrn-lieu-card {
+  display: inline-block !important;
+  vertical-align: top !important;
+  width: 47.8% !important;
+  margin: 0 1.1% 16px 1.1% !important;
+  float: none !important;
+  clear: none !important;
   position: relative;
-  width: calc(50% - 7px);
   padding: 18px;
   background: rgba(255,255,255,0.035);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 14px;
-  transition: 0.2s ease;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   min-width: 0;
-}
-
-.jdb-kyrn-lieu-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(204,176,122,0.28);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
 }
 
 .jdb-kyrn-lieu-card::before {
@@ -167,14 +165,19 @@
   font-style: italic;
 }
 
+.jdb-kyrn-lieux * {
+  box-sizing: border-box !important;
+}
+
 @media (max-width: 700px) {
   .jdb-kyrn-lieux {
-    max-width: 100%;
-    padding: 16px 12px;
+    padding: 12px 8px !important;
   }
 
   .jdb-kyrn-lieu-card {
-    width: 100%;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 0 16px 0 !important;
   }
 
   .jdb-kyrn-lieu-top {
