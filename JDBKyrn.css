@@ -1,5 +1,5 @@
 .jdb-kyrn-lieux {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 25px auto;
   padding: 28px;
   background:
@@ -9,6 +9,7 @@
   box-shadow: 0 8px 28px rgba(0,0,0,0.30);
   color: #e8e0d4;
   font-family: Georgia, "Times New Roman", serif;
+  box-sizing: border-box;
 }
 
 .jdb-kyrn-lieux-header {
@@ -48,8 +49,9 @@
 
 .jdb-kyrn-lieux-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+  align-items: start;
 }
 
 .jdb-kyrn-lieu-card {
@@ -59,6 +61,8 @@
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 14px;
   transition: 0.2s ease;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .jdb-kyrn-lieu-card:hover {
@@ -90,6 +94,7 @@
   font-size: 21px;
   line-height: 1.1;
   color: #f2eadf;
+  min-width: 0;
 }
 
 .jdb-kyrn-lieu-badge {
@@ -102,6 +107,7 @@
   letter-spacing: 0.8px;
   border: 1px solid transparent;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .jdb-kyrn-lieu-badge.visited {
@@ -150,4 +156,19 @@
   line-height: 1.55;
   color: #b7ab9b;
   font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .jdb-kyrn-lieux {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .jdb-kyrn-lieux-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .jdb-kyrn-lieu-top {
+    flex-wrap: wrap;
+  }
 }
