@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
+
 .jdb-kyrn-lieux {
   max-width: 1100px;
   margin: 25px auto;
@@ -23,6 +25,7 @@
   text-transform: uppercase;
   color: #9f9587;
   margin-bottom: 6px;
+  font-family: 'Metamorphous', Georgia, "Times New Roman", serif;
 }
 
 .jdb-kyrn-lieux-title {
@@ -31,6 +34,7 @@
   line-height: 1.1;
   text-transform: uppercase;
   color: #ccb07a;
+  font-family: 'Metamorphous', Georgia, "Times New Roman", serif;
 }
 
 .jdb-kyrn-lieux-line {
@@ -95,6 +99,7 @@
   line-height: 1.1;
   color: #f2eadf;
   min-width: 0;
+  font-family: 'Metamorphous', Georgia, "Times New Roman", serif;
 }
 
 .jdb-kyrn-lieu-badge {
@@ -140,6 +145,7 @@
   color: #988f84;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-family: 'Metamorphous', Georgia, "Times New Roman", serif;
 }
 
 .jdb-kyrn-lieu-desc {
