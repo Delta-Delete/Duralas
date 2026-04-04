@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Metamorphous&family=Pirata+One&display=swap');
 
 .tempest-sheet,
 .tempest-sheet * {
@@ -8,8 +8,6 @@
 .tempest-sheet {
   --storm-bg: #02070b;
   --storm-bg-2: #061019;
-  --storm-panel: #153548;
-  --storm-panel-2: #0b1f2b;
   --storm-gold: #c29a5f;
   --storm-blue: #7dd3f0;
   --storm-text: #eadfcd;
@@ -21,13 +19,18 @@
   --tentacle-top-left: url("https://i.postimg.cc/BvG8dy2R/left_top_tentacle_soft.png");
 
   --storm-anchor: url("https://i.postimg.cc/Z5jRMRKH/anchor.png");
+  --storm-scene: url("https://i.postimg.cc/y6GsWbLD/7680x4320-391779-underwater-fantasy-scenery-digital-art-4k-pc-wallpaper.jpg");
+
+  --storm-sigil: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%2399d9ef' stroke-opacity='.18' stroke-width='2.2'%3E%3Ccircle cx='110' cy='110' r='66'/%3E%3Ccircle cx='110' cy='110' r='38'/%3E%3Cpath d='M110 24 L110 62 M110 158 L110 196 M24 110 L62 110 M158 110 L196 110'/%3E%3Cpath d='M110 72 C126 72 138 83 138 98 C138 111 129 120 114 123 C100 126 92 133 92 145 C92 158 103 168 118 168'/%3E%3Cpath d='M82 54 L96 68 M138 152 L152 166 M166 82 L152 96 M68 138 L54 152'/%3E%3C/g%3E%3C/svg%3E");
 
   width: 760px;
   max-width: 100%;
   margin: 8px auto;
   padding: 0;
   position: relative;
-  background: linear-gradient(180deg, #02070b 0%, #061019 100%) !important;
+  background:
+    linear-gradient(180deg, rgba(2, 7, 11, 0.92) 0%, rgba(6, 16, 25, 0.94) 100%),
+    var(--storm-scene) center center / cover no-repeat !important;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 22px;
   overflow: hidden;
@@ -39,7 +42,6 @@
     0 16px 42px rgba(0, 0, 0, 0.42) !important;
 }
 
-/* Tentacules globales discrètes autour de la fiche */
 .tempest-sheet::before,
 .tempest-sheet::after {
   content: "";
@@ -67,7 +69,6 @@
   transform: rotate(8deg);
 }
 
-/* Reset Forumactif / éditeurs */
 .tempest-sheet p,
 .tempest-sheet br {
   margin: 0 !important;
@@ -169,11 +170,12 @@
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  color: #f3e6d3 !important;
-  font-size: 52px !important;
-  line-height: 1.02 !important;
-  font-family: 'Metamorphous', Georgia, serif !important;
+  color: #f5e7d2 !important;
+  font-size: 64px !important;
+  line-height: 0.95 !important;
+  font-family: 'Pirata One', Georgia, serif !important;
   font-weight: normal;
+  letter-spacing: 0.5px;
   text-shadow:
     0 1px 0 rgba(0, 0, 0, 0.55),
     0 0 14px rgba(125, 211, 240, 0.10) !important;
@@ -195,8 +197,9 @@
   z-index: 1;
   padding: 16px !important;
   background:
-    radial-gradient(circle at top, rgba(20, 55, 75, 0.10), transparent 35%),
-    linear-gradient(180deg, #02070b 0%, #040b12 100%) !important;
+    linear-gradient(180deg, rgba(2, 8, 12, 0.74) 0%, rgba(3, 10, 15, 0.82) 100%),
+    radial-gradient(circle at top, rgba(20, 55, 75, 0.12), transparent 35%),
+    var(--storm-scene) center center / cover no-repeat !important;
 }
 
 /* BLOCS */
@@ -210,9 +213,15 @@
   border-radius: 20px !important;
   border: 1px solid rgba(125, 211, 240, 0.12) !important;
   background:
+    radial-gradient(circle at 14% 76%, rgba(220, 245, 255, 0.14) 0 2px, rgba(220, 245, 255, 0.06) 2px 4px, transparent 5px),
+    radial-gradient(circle at 23% 67%, rgba(170, 228, 245, 0.10) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.12) 0 2.5px, rgba(220, 245, 255, 0.05) 2.5px 5px, transparent 6px),
+    radial-gradient(circle at 73% 31%, rgba(125, 211, 240, 0.10) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 66% 58%, rgba(220, 245, 255, 0.08) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 38% 24%, rgba(180, 235, 250, 0.07) 0 1px, transparent 2.5px),
     radial-gradient(circle at top right, rgba(125, 211, 240, 0.10), transparent 26%),
     radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.07), transparent 30%),
-    linear-gradient(180deg, #153548 0%, #0b1f2b 100%) !important;
+    linear-gradient(180deg, rgba(21, 53, 72, 0.90) 0%, rgba(11, 31, 43, 0.92) 100%) !important;
   box-shadow:
     inset 3px 0 0 rgba(194, 154, 95, 0.85),
     inset 0 0 0 1px rgba(255, 255, 255, 0.025),
@@ -225,7 +234,20 @@
   margin-bottom: 0 !important;
 }
 
-/* Tentacules SUR les blocs, mais sous le texte */
+.tempest-section:nth-child(even) {
+  background:
+    radial-gradient(circle at 84% 74%, rgba(220, 245, 255, 0.13) 0 2px, rgba(220, 245, 255, 0.05) 2px 4px, transparent 5px),
+    radial-gradient(circle at 74% 63%, rgba(170, 228, 245, 0.10) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 16% 22%, rgba(220, 245, 255, 0.12) 0 2.5px, rgba(220, 245, 255, 0.05) 2.5px 5px, transparent 6px),
+    radial-gradient(circle at 28% 32%, rgba(125, 211, 240, 0.10) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 61% 20%, rgba(220, 245, 255, 0.07) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 42% 72%, rgba(180, 235, 250, 0.06) 0 1px, transparent 2.5px),
+    radial-gradient(circle at top right, rgba(125, 211, 240, 0.10), transparent 26%),
+    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.07), transparent 30%),
+    linear-gradient(180deg, rgba(21, 53, 72, 0.90) 0%, rgba(11, 31, 43, 0.92) 100%) !important;
+}
+
+/* Tentacules */
 .tempest-section::before,
 .tempest-section::after {
   content: "";
@@ -277,7 +299,26 @@
   transform: rotate(8deg);
 }
 
-/* Premier bloc : tentacules hautes plus visibles */
+/* Bloc 1 */
+.tempest-body > .tempest-section:first-child {
+  border-color: rgba(194, 154, 95, 0.18) !important;
+  background:
+    var(--storm-sigil) no-repeat center 56% / 170px auto,
+    radial-gradient(circle at 84% 26%, rgba(220, 245, 255, 0.09) 0 2px, rgba(220, 245, 255, 0.04) 2px 4px, transparent 5px),
+    radial-gradient(circle at 18% 78%, rgba(170, 228, 245, 0.07) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 62% 22%, rgba(220, 245, 255, 0.06) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 34% 68%, rgba(180, 235, 250, 0.05) 0 1px, transparent 2.5px),
+    radial-gradient(circle at top right, rgba(145, 198, 226, 0.10), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(25, 56, 72, 0.94) 0%, rgba(13, 32, 42, 0.96) 100%) !important;
+  box-shadow:
+    inset 3px 0 0 rgba(194, 154, 95, 0.95),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.025),
+    inset 0 0 95px rgba(0, 0, 0, 0.14),
+    0 0 16px rgba(194, 154, 95, 0.08),
+    0 10px 24px rgba(0, 0, 0, 0.24) !important;
+}
+
 .tempest-body > .tempest-section:first-child::before {
   left: -66px;
   top: -48px;
@@ -285,11 +326,8 @@
   width: 255px;
   height: 195px;
   background-image: var(--tentacle-top-left);
-  background-repeat: no-repeat;
   background-position: left top;
-  background-size: contain;
   transform: rotate(-7deg);
-  opacity: 1;
 }
 
 .tempest-body > .tempest-section:first-child::after {
@@ -299,23 +337,68 @@
   width: 235px;
   height: 190px;
   background-image: var(--tentacle-top-right);
-  background-repeat: no-repeat;
   background-position: right top;
-  background-size: contain;
   transform: rotate(-7deg);
-  opacity: 1;
 }
 
-/* Bloc 7 : plus sobre */
+.tempest-grid-lower {
+  margin-top: 12px;
+}
+
+.tempest-row-full {
+  margin-top: 12px !important;
+}
+
+/* Bloc 3 froid */
+.tempest-body > .tempest-section:nth-child(3) {
+  background:
+    radial-gradient(circle at 18% 78%, rgba(220, 245, 255, 0.13) 0 2px, rgba(220, 245, 255, 0.05) 2px 4px, transparent 5px),
+    radial-gradient(circle at 74% 24%, rgba(170, 228, 245, 0.10) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 58% 62%, rgba(180, 235, 250, 0.07) 0 1px, transparent 2.5px),
+    radial-gradient(circle at top right, rgba(125, 211, 240, 0.13), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(90, 150, 185, 0.07), transparent 28%),
+    linear-gradient(180deg, rgba(21, 56, 75, 0.92) 0%, rgba(13, 34, 48, 0.95) 100%) !important;
+}
+
+/* Bloc 4 mémoire */
+.tempest-body > .tempest-section:nth-child(4) {
+  border-color: rgba(125, 211, 240, 0.10) !important;
+  background:
+    var(--storm-sigil) no-repeat center 58% / 190px auto,
+    radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.10) 0 2px, rgba(220, 245, 255, 0.04) 2px 4px, transparent 5px),
+    radial-gradient(circle at 22% 76%, rgba(170, 228, 245, 0.08) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 64% 61%, rgba(180, 235, 250, 0.05) 0 1px, transparent 2.5px),
+    radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.05), transparent 28%),
+    linear-gradient(180deg, rgba(17, 39, 54, 0.95) 0%, rgba(9, 20, 28, 0.97) 100%) !important;
+  box-shadow:
+    inset 3px 0 0 rgba(194, 154, 95, 0.75),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02),
+    inset 0 0 100px rgba(0, 0, 0, 0.18),
+    0 0 12px rgba(125, 211, 240, 0.05),
+    0 12px 28px rgba(0, 0, 0, 0.26) !important;
+}
+
+/* Bloc 7 */
 .tempest-body > .tempest-section:last-child {
   padding-bottom: 26px !important;
+  border-color: rgba(160, 185, 200, 0.10) !important;
   background:
-    radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
-    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
-    linear-gradient(180deg, #132734 0%, #0a1923 100%) !important;
+    radial-gradient(circle at 18% 72%, rgba(220, 245, 255, 0.09) 0 2px, rgba(220, 245, 255, 0.04) 2px 4px, transparent 5px),
+    radial-gradient(circle at 74% 20%, rgba(170, 228, 245, 0.06) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 58% 58%, rgba(220, 245, 255, 0.05) 0 1px, transparent 2.5px),
+    radial-gradient(circle at 26% 28%, rgba(180, 235, 250, 0.05) 0 1px, transparent 2.5px),
+    radial-gradient(circle at top right, rgba(125, 211, 240, 0.06), transparent 24%),
+    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.05), transparent 28%),
+    linear-gradient(180deg, rgba(18, 39, 54, 0.95) 0%, rgba(11, 25, 35, 0.97) 100%) !important;
+  box-shadow:
+    inset 3px 0 0 rgba(194, 154, 95, 0.68),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02),
+    inset 0 0 80px rgba(0, 0, 0, 0.12),
+    0 0 10px rgba(125, 211, 240, 0.04),
+    0 10px 22px rgba(0, 0, 0, 0.20) !important;
 }
 
-/* Tentacule bas gauche du bloc 7 */
 .tempest-body > .tempest-section:last-child::before {
   left: -30px;
   bottom: -40px;
@@ -323,35 +406,47 @@
   width: 145px;
   height: 175px;
   background-image: var(--tentacle-bottom-left);
-  background-repeat: no-repeat;
   background-position: left bottom;
-  background-size: contain;
   transform: rotate(-2deg);
-  opacity: 1;
 }
 
-/* Tentacule haut droite du bloc 7 */
 .tempest-body > .tempest-section:last-child::after {
-  display: block !important;
-  content: "";
-  position: absolute !important;
   right: -34px;
   top: -24px;
-  left: auto;
-  bottom: auto;
   width: 150px;
   height: 165px;
   background-image: var(--tentacle-top-right);
-  background-repeat: no-repeat !important;
-  background-position: right top !important;
-  background-size: contain !important;
+  background-position: right top;
   transform: rotate(-14deg);
-  opacity: 1;
-  z-index: 3 !important;
   filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.18));
 }
 
-/* Ancre du bloc 7 : douce, en pseudo-élément séparé */
+.tempest-body > .tempest-section:last-child .tempest-footer-note::before {
+  content: "";
+  position: absolute;
+  right: -38px;
+  bottom: -98px;
+  width: 230px;
+  height: 285px;
+  pointer-events: none;
+  z-index: -14;
+  opacity: 0.9;
+  background:
+    radial-gradient(circle at 72% 82%, rgba(220,245,255,0.18) 0 1.3px, rgba(220,245,255,0.06) 1.3px 3px, transparent 4px),
+    radial-gradient(circle at 78% 74%, rgba(220,245,255,0.16) 0 1px, transparent 2.5px),
+    radial-gradient(circle at 69% 69%, rgba(190,236,248,0.14) 0 0.9px, transparent 2px),
+    radial-gradient(circle at 83% 64%, rgba(220,245,255,0.16) 0 1.2px, rgba(220,245,255,0.05) 1.2px 2.6px, transparent 3.8px),
+    radial-gradient(circle at 74% 57%, rgba(190,236,248,0.14) 0 0.9px, transparent 2px),
+    radial-gradient(circle at 80% 48%, rgba(220,245,255,0.18) 0 1.4px, rgba(220,245,255,0.06) 1.4px 3px, transparent 4px),
+    radial-gradient(circle at 67% 42%, rgba(190,236,248,0.12) 0 0.8px, transparent 2px),
+    radial-gradient(circle at 84% 36%, rgba(220,245,255,0.14) 0 1px, transparent 2.4px),
+    radial-gradient(circle at 76% 28%, rgba(220,245,255,0.18) 0 1.2px, rgba(220,245,255,0.05) 1.2px 2.8px, transparent 4px),
+    radial-gradient(circle at 71% 19%, rgba(190,236,248,0.12) 0 0.8px, transparent 2px),
+    radial-gradient(circle at 87% 22%, rgba(220,245,255,0.15) 0 1px, transparent 2.4px),
+    radial-gradient(circle at 62% 63%, rgba(160,220,238,0.10) 0 0.7px, transparent 1.8px),
+    radial-gradient(circle at 90% 54%, rgba(220,245,255,0.12) 0 0.9px, transparent 2px);
+}
+
 .tempest-body > .tempest-section:last-child .tempest-footer-note::after {
   content: "";
   position: absolute;
@@ -367,7 +462,7 @@
   filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.16));
 }
 
-/* Contenu au-dessus des tentacules */
+/* Contenu */
 .tempest-section-title,
 .tempest-divider,
 .tempest-grid,
@@ -384,11 +479,12 @@
   margin: 0 !important;
   padding: 0 !important;
   text-align: center !important;
-  font-size: 25px !important;
-  line-height: 1.2 !important;
+  font-size: 28px !important;
+  line-height: 1.15 !important;
   color: #f1dfc1 !important;
-  font-family: 'Metamorphous', Georgia, serif !important;
+  font-family: 'Pirata One', Georgia, serif !important;
   font-weight: normal;
+  letter-spacing: 0.4px;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35) !important;
 }
 
@@ -441,9 +537,16 @@
   margin-bottom: 0 !important;
 }
 
+.tempest-row-full {
+  margin-top: 12px !important;
+}
+
 .tempest-label {
   color: #9fe1f8 !important;
-  font-weight: bold !important;
+  font-weight: normal !important;
+  font-family: 'Metamorphous', Georgia, serif !important;
+  font-size: 13px !important;
+  letter-spacing: 0.2px;
 }
 
 .tempest-copy {
@@ -505,7 +608,8 @@
   }
 
   .tempest-main-title {
-    font-size: 34px !important;
+    font-size: 42px !important;
+    line-height: 0.95 !important;
   }
 
   .tempest-subtitle {
@@ -513,15 +617,68 @@
   }
 
   .tempest-section-title {
-    font-size: 20px !important;
+    font-size: 22px !important;
   }
 
   .tempest-body {
     padding: 10px !important;
   }
 
+  .tempest-section,
+  .tempest-section:nth-child(even),
+  .tempest-body > .tempest-section:first-child,
+  .tempest-body > .tempest-section:nth-child(2) {
+    background:
+      radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.10) 0 2px, transparent 4px),
+      radial-gradient(circle at 18% 74%, rgba(170, 228, 245, 0.07) 0 1.5px, transparent 3px),
+      radial-gradient(circle at 62% 58%, rgba(220, 245, 255, 0.05) 0 1px, transparent 2.3px),
+      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
+      linear-gradient(180deg, rgba(21, 53, 72, 0.92) 0%, rgba(11, 31, 43, 0.94) 100%) !important;
+  }
+
+  .tempest-body > .tempest-section:nth-child(4) {
+    background:
+      var(--storm-sigil) no-repeat center 58% / 120px auto,
+      radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.08) 0 2px, transparent 4px),
+      radial-gradient(circle at 18% 74%, rgba(170, 228, 245, 0.06) 0 1.5px, transparent 3px),
+      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
+      linear-gradient(180deg, rgba(17, 39, 54, 0.95) 0%, rgba(9, 20, 28, 0.97) 100%) !important;
+  }
+
+  .tempest-body > .tempest-section:last-child {
+    background:
+      radial-gradient(circle at 78% 22%, rgba(220, 245, 255, 0.08) 0 2px, transparent 4px),
+      radial-gradient(circle at 20% 72%, rgba(170, 228, 245, 0.05) 0 1.5px, transparent 3px),
+      radial-gradient(circle at 58% 60%, rgba(220, 245, 255, 0.04) 0 1px, transparent 2px),
+      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
+      linear-gradient(180deg, rgba(18, 39, 54, 0.95) 0%, rgba(11, 25, 35, 0.97) 100%) !important;
+    padding: 16px 14px 14px 14px !important;
+  }
+
   .tempest-section {
     padding: 16px 14px 14px 14px !important;
+  }
+
+  .tempest-grid,
+  .tempest-col {
+    display: block;
+    width: 100%;
+    border-spacing: 0;
+  }
+
+  .tempest-col {
+    margin: 0 0 10px 0;
+  }
+
+  .tempest-col:last-child {
+    margin-bottom: 0;
+  }
+
+  .tempest-grid-lower {
+    margin-top: 10px;
   }
 
   .tempest-section::before {
@@ -586,26 +743,19 @@
     opacity: 0.22;
   }
 
+  .tempest-body > .tempest-section:last-child .tempest-footer-note::before {
+    right: -6px;
+    bottom: -78px;
+    width: 120px;
+    height: 150px;
+    opacity: 0.7;
+  }
+
   .tempest-body > .tempest-section:last-child .tempest-footer-note::after {
     right: -8px;
     bottom: -74px;
     width: 105px;
     height: 145px;
     opacity: 0.08;
-  }
-
-  .tempest-grid,
-  .tempest-col {
-    display: block;
-    width: 100%;
-    border-spacing: 0;
-  }
-
-  .tempest-col {
-    margin: 0 0 10px 0;
-  }
-
-  .tempest-col:last-child {
-    margin-bottom: 0;
   }
 }
