@@ -835,3 +835,26 @@
     padding: 9px 12px !important;
   }
 }
+
+.tempest-section-final {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.tempest-kraken-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 260px;
+  max-width: 70%;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tempest-section-final > *:not(.tempest-kraken-bg) {
+  position: relative;
+  z-index: 1;
+}
