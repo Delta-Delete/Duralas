@@ -99,7 +99,7 @@
   border-spacing: 0;
 }
 
-/* PATCH STABILISATION FORUM */
+/* Stabilisation forum */
 .tempest-sheet,
 .tempest-sheet div,
 .tempest-sheet span,
@@ -450,18 +450,19 @@
   filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.18));
 }
 
-/* Ancre + bulles */
-.tempest-body > .tempest-section:last-child .tempest-footer-note {
+/* Support fiable pour l’ancre et les bulles */
+.tempest-body > .tempest-section:last-child > .tempest-grid,
+.tempest-body > .tempest-section:last-child > .tempest-footer-note {
   position: relative !important;
   z-index: 5 !important;
   overflow: visible !important;
 }
 
-.tempest-body > .tempest-section:last-child .tempest-footer-note::before {
+.tempest-body > .tempest-section:last-child > .tempest-grid::after {
   content: "";
   position: absolute;
   right: 6px;
-  bottom: 18px;
+  bottom: -150px;
   width: 190px;
   height: 220px;
   pointer-events: none;
@@ -476,18 +477,14 @@
     radial-gradient(circle at 80% 48%, rgba(220,245,255,0.18) 0 1.4px, rgba(220,245,255,0.06) 1.4px 3px, transparent 4px),
     radial-gradient(circle at 67% 42%, rgba(190,236,248,0.12) 0 0.8px, transparent 2px),
     radial-gradient(circle at 84% 36%, rgba(220,245,255,0.14) 0 1px, transparent 2.4px),
-    radial-gradient(circle at 76% 28%, rgba(220,245,255,0.18) 0 1.2px, rgba(220,245,255,0.05) 1.2px 2.8px, transparent 4px),
-    radial-gradient(circle at 71% 19%, rgba(190,236,248,0.12) 0 0.8px, transparent 2px),
-    radial-gradient(circle at 87% 22%, rgba(220,245,255,0.15) 0 1px, transparent 2.4px),
-    radial-gradient(circle at 62% 63%, rgba(160,220,238,0.10) 0 0.7px, transparent 1.8px),
-    radial-gradient(circle at 90% 54%, rgba(220,245,255,0.12) 0 0.9px, transparent 2px);
+    radial-gradient(circle at 76% 28%, rgba(220,245,255,0.18) 0 1.2px, rgba(220,245,255,0.05) 1.2px 2.8px, transparent 4px);
 }
 
-.tempest-body > .tempest-section:last-child .tempest-footer-note::after {
+.tempest-body > .tempest-section:last-child > .tempest-grid::before {
   content: "";
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: -170px;
   width: 150px;
   height: 200px;
   background: var(--storm-anchor) no-repeat right bottom / contain;
@@ -790,17 +787,17 @@
     opacity: 0.22;
   }
 
-  .tempest-body > .tempest-section:last-child .tempest-footer-note::before {
+  .tempest-body > .tempest-section:last-child > .tempest-grid::after {
     right: 0;
-    bottom: 8px;
+    bottom: -92px;
     width: 110px;
     height: 130px;
     opacity: 0.65;
   }
 
-  .tempest-body > .tempest-section:last-child .tempest-footer-note::after {
+  .tempest-body > .tempest-section:last-child > .tempest-grid::before {
     right: 0;
-    bottom: 0;
+    bottom: -105px;
     width: 88px;
     height: 115px;
     opacity: 0.18;
