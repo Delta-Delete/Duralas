@@ -1,0 +1,161 @@
+<style>
+.fiche-personnage,
+.fiche-joueur {
+  width: 760px;
+  max-width: 95%;
+  margin: 30px auto;
+  background:
+    radial-gradient(circle at top, rgba(46, 110, 140, 0.22), transparent 35%),
+    linear-gradient(180deg, #07131b 0%, #0a1c26 40%, #061018 100%);
+  border: 1px solid rgba(103, 196, 221, 0.28);
+  border-radius: 18px;
+  box-shadow:
+    0 0 0 1px rgba(180, 245, 255, 0.05) inset,
+    0 0 24px rgba(0, 180, 220, 0.14),
+    0 10px 35px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  color: #d8edf3;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.fiche-personnage img,
+.fiche-joueur img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.fiche-personnage > .entete-centree,
+.fiche-personnage-partie > .titre-centre {
+  text-align: center;
+}
+
+.fiche-personnage-contenu {
+  padding: 22px;
+}
+
+.fiche-personnage-partie {
+  position: relative;
+  margin: 0 0 24px 0;
+  padding: 22px 24px 20px 24px;
+  background:
+    linear-gradient(180deg, rgba(15, 43, 57, 0.78), rgba(8, 20, 28, 0.82));
+  border: 1px solid rgba(108, 190, 213, 0.16);
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.02) inset,
+    0 8px 18px rgba(0,0,0,0.18);
+  line-height: 1.75;
+  font-size: 15px;
+  text-align: justify;
+}
+
+.fiche-personnage-partie:last-child {
+  margin-bottom: 0;
+}
+
+.fiche-personnage-partie::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at top right, rgba(111, 235, 255, 0.07), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(24, 98, 140, 0.08), transparent 25%);
+}
+
+.fiche-personnage-light {
+  display: inline-block;
+  margin: 0 auto 8px auto !important;
+  opacity: 0.95;
+  filter:
+    drop-shadow(0 0 6px rgba(120, 235, 255, 0.25))
+    drop-shadow(0 0 14px rgba(65, 179, 214, 0.15));
+}
+
+.fiche-personnage-img-border {
+  width: 82%;
+  height: 2px;
+  margin: 8px auto 18px auto;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(92, 213, 234, 0.15) 10%,
+    rgba(142, 245, 255, 0.85) 50%,
+    rgba(92, 213, 234, 0.15) 90%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px rgba(123, 240, 255, 0.22);
+  border-radius: 999px;
+}
+
+.fiche-champ {
+  color: #8feaff;
+  font-weight: bold;
+  letter-spacing: 0.2px;
+}
+
+.fiche-personnage a,
+.fiche-joueur a {
+  color: #9beeff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(155, 238, 255, 0.35);
+  transition: 0.25s ease;
+}
+
+.fiche-personnage a:hover,
+.fiche-joueur a:hover {
+  color: #d8ffff;
+  border-bottom-color: rgba(216, 255, 255, 0.8);
+  text-shadow: 0 0 8px rgba(145, 240, 255, 0.22);
+}
+
+.fiche-joueur {
+  margin-top: 20px;
+}
+
+.fiche-joueur-titre {
+  padding: 16px 22px;
+  text-align: center;
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: #d9fbff;
+  background:
+    linear-gradient(180deg, rgba(19, 53, 66, 0.95), rgba(8, 24, 32, 0.95));
+  border-bottom: 1px solid rgba(108, 190, 213, 0.18);
+  text-transform: uppercase;
+}
+
+.fiche-joueur-contenu {
+  padding: 22px 24px;
+  background:
+    linear-gradient(180deg, rgba(10, 23, 31, 0.92), rgba(5, 14, 20, 0.96));
+  line-height: 1.9;
+  font-size: 15px;
+  color: #d6e9ef;
+}
+
+.fiche-joueur-contenu span,
+.fiche-joueur-contenu strong {
+  color: #93ecff;
+}
+
+.fiche-personnage center,
+.fiche-joueur center {
+  text-align: center;
+}
+
+.fiche-personnage-partie center {
+  margin-top: 12px;
+  color: #9fd8e2;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+/* Petit effet abyssal discret */
+.fiche-personnage-partie,
+.fiche-joueur-contenu {
+  backdrop-filter: blur(1px);
+}
+</style>
