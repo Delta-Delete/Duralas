@@ -21,7 +21,7 @@
   --storm-anchor: url("https://i.postimg.cc/Z5jRMRKH/anchor.png");
   --storm-scene: url("https://i.postimg.cc/y6GsWbLD/7680x4320-391779-underwater-fantasy-scenery-digital-art-4k-pc-wallpaper.jpg");
 
-  --storm-sigil: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%23dff7ff' stroke-opacity='.34' stroke-width='2.6'%3E%3Ccircle cx='110' cy='110' r='66'/%3E%3Ccircle cx='110' cy='110' r='38'/%3E%3Cpath d='M110 24 L110 62 M110 158 L110 196 M24 110 L62 110 M158 110 L196 110'/%3E%3Cpath d='M110 72 C126 72 138 83 138 98 C138 111 129 120 114 123 C100 126 92 133 92 145 C92 158 103 168 118 168'/%3E%3Cpath d='M82 54 L96 68 M138 152 L152 166 M166 82 L152 96 M68 138 L54 152'/%3E%3C/g%3E%3C/svg%3E");
+  --storm-sigil: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%2399d9ef' stroke-opacity='.18' stroke-width='2.2'%3E%3Ccircle cx='110' cy='110' r='66'/%3E%3Ccircle cx='110' cy='110' r='38'/%3E%3Cpath d='M110 24 L110 62 M110 158 L110 196 M24 110 L62 110 M158 110 L196 110'/%3E%3Cpath d='M110 72 C126 72 138 83 138 98 C138 111 129 120 114 123 C100 126 92 133 92 145 C92 158 103 168 118 168'/%3E%3Cpath d='M82 54 L96 68 M138 152 L152 166 M166 82 L152 96 M68 138 L54 152'/%3E%3C/g%3E%3C/svg%3E");
 
   width: 760px;
   max-width: 100%;
@@ -303,7 +303,7 @@
 .tempest-body > .tempest-section:first-child {
   border-color: rgba(194, 154, 95, 0.18) !important;
   background:
-    var(--storm-sigil) no-repeat center 56% / 210px auto,
+    var(--storm-sigil) no-repeat center 56% / 170px auto,
     radial-gradient(circle at 84% 26%, rgba(220, 245, 255, 0.09) 0 2px, rgba(220, 245, 255, 0.04) 2px 4px, transparent 5px),
     radial-gradient(circle at 18% 78%, rgba(170, 228, 245, 0.07) 0 1.5px, transparent 3px),
     radial-gradient(circle at 62% 22%, rgba(220, 245, 255, 0.06) 0 1.5px, transparent 3px),
@@ -364,7 +364,7 @@
 .tempest-body > .tempest-section:nth-child(4) {
   border-color: rgba(125, 211, 240, 0.10) !important;
   background:
-    var(--storm-sigil) no-repeat center 58% / 220px auto,
+    var(--storm-sigil) no-repeat center 58% / 190px auto,
     radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.10) 0 2px, rgba(220, 245, 255, 0.04) 2px 4px, transparent 5px),
     radial-gradient(circle at 22% 76%, rgba(170, 228, 245, 0.08) 0 1.5px, transparent 3px),
     radial-gradient(circle at 64% 61%, rgba(180, 235, 250, 0.05) 0 1px, transparent 2.5px),
@@ -381,7 +381,7 @@
 
 /* Bloc 7 */
 .tempest-body > .tempest-section:last-child {
-  padding-bottom: 190px !important;
+  padding-bottom: 26px !important;
   border-color: rgba(160, 185, 200, 0.10) !important;
   background:
     radial-gradient(circle at 18% 72%, rgba(220, 245, 255, 0.09) 0 2px, rgba(220, 245, 255, 0.04) 2px 4px, transparent 5px),
@@ -421,7 +421,7 @@
   filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.18));
 }
 
-/* CORRECTION FORUM : ancre et bulles visibles DANS le bloc */
+/* CORRECTION FORUM : ancre et bulles visibles */
 .tempest-body > .tempest-section:last-child .tempest-footer-note {
   position: relative;
   z-index: 4;
@@ -431,13 +431,14 @@
 .tempest-body > .tempest-section:last-child .tempest-footer-note::before {
   content: "";
   position: absolute;
-  right: 6px;
-  bottom: 18px;
-  width: 190px;
-  height: 220px;
+  right: -38px;
+  bottom: -98px;
+  width: 230px;
+  height: 285px;
   pointer-events: none;
+  z-index: -14;
   z-index: 1;
-  opacity: 0.85;
+  opacity: 0.9;
   background:
     radial-gradient(circle at 72% 82%, rgba(220,245,255,0.18) 0 1.3px, rgba(220,245,255,0.06) 1.3px 3px, transparent 4px),
     radial-gradient(circle at 78% 74%, rgba(220,245,255,0.16) 0 1px, transparent 2.5px),
@@ -457,15 +458,17 @@
 .tempest-body > .tempest-section:last-child .tempest-footer-note::after {
   content: "";
   position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 150px;
-  height: 200px;
+  right: -50px;
+  bottom: -92px;
+  width: 175px;
+  height: 240px;
   background: var(--storm-anchor) no-repeat right bottom / contain;
+  opacity: 1;
   opacity: 0.22;
   transform: rotate(16deg);
   pointer-events: none;
-  z-index: 2;
+  z-index: -15;
+  z-index: 0;
   filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.16));
 }
 
@@ -662,7 +665,7 @@
       radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
       radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
       linear-gradient(180deg, rgba(18, 39, 54, 0.95) 0%, rgba(11, 25, 35, 0.97) 100%) !important;
-    padding: 16px 14px 120px 14px !important;
+    padding: 16px 14px 14px 14px !important;
   }
 
   .tempest-section {
@@ -751,18 +754,19 @@
   }
 
   .tempest-body > .tempest-section:last-child .tempest-footer-note::before {
-    right: 0;
-    bottom: 8px;
-    width: 110px;
-    height: 130px;
-    opacity: 0.65;
+    right: -6px;
+    bottom: -78px;
+    width: 120px;
+    height: 150px;
+    opacity: 0.7;
   }
 
   .tempest-body > .tempest-section:last-child .tempest-footer-note::after {
-    right: 0;
-    bottom: 0;
-    width: 88px;
-    height: 115px;
-    opacity: 0.18;
+    right: -8px;
+    bottom: -74px;
+    width: 105px;
+    height: 145px;
+    opacity: 0.08;
+    opacity: 0.14;
   }
 }
