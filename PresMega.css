@@ -424,7 +424,7 @@
 /* CORRECTION FORUM : ancre et bulles visibles */
 .tempest-body > .tempest-section:last-child .tempest-footer-note {
   position: relative;
-  z-index: 4;
+  z-index: 400;
   overflow: visible;
 }
 
