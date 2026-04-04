@@ -766,3 +766,159 @@
     opacity: 0.14;
   }
 }
+
+/* =========================
+   PATCH STABILISATION FORUM
+========================= */
+
+/* On force une base plus propre dans la fiche */
+.tempest-sheet,
+.tempest-sheet div,
+.tempest-sheet span,
+.tempest-sheet p,
+.tempest-sheet a,
+.tempest-sheet table,
+.tempest-sheet tbody,
+.tempest-sheet tr,
+.tempest-sheet td,
+.tempest-sheet center {
+  max-width: none !important;
+  float: none !important;
+  clear: none !important;
+  line-height: inherit !important;
+}
+
+/* Les wrappers internes ne doivent pas couper les décorations */
+.tempest-body,
+.tempest-section,
+.tempest-grid,
+.tempest-col,
+.tempest-row,
+.tempest-copy,
+.tempest-note,
+.tempest-footer-note {
+  overflow: visible !important;
+}
+
+/* On renforce les contexts de superposition */
+.tempest-sheet {
+  isolation: isolate !important;
+}
+
+.tempest-body {
+  position: relative !important;
+  z-index: 1 !important;
+  isolation: isolate !important;
+}
+
+.tempest-section {
+  position: relative !important;
+  z-index: 1 !important;
+  isolation: isolate !important;
+}
+
+/* Les titres et contenus passent toujours devant */
+.tempest-section-title,
+.tempest-divider,
+.tempest-grid,
+.tempest-row,
+.tempest-copy,
+.tempest-note,
+.tempest-footer-note {
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+/* Tentacules */
+.tempest-section::before,
+.tempest-section::after {
+  z-index: 3 !important;
+}
+
+/* Bloc 7 : on garde l’ancre et les bulles DANS le bloc */
+.tempest-body > .tempest-section:last-child {
+  padding-bottom: 190px !important;
+}
+
+.tempest-body > .tempest-section:last-child .tempest-footer-note {
+  position: relative !important;
+  z-index: 5 !important;
+  overflow: visible !important;
+}
+
+.tempest-body > .tempest-section:last-child .tempest-footer-note::before {
+  z-index: 2 !important;
+}
+
+.tempest-body > .tempest-section:last-child .tempest-footer-note::after {
+  z-index: 3 !important;
+  opacity: 0.22 !important;
+}
+
+/* Le sigil blanc : on le rend plus grand et plus lisible */
+.tempest-body > .tempest-section:first-child {
+  background:
+    var(--storm-sigil) no-repeat center 56% / 230px auto,
+    radial-gradient(circle at 84% 26%, rgba(220, 245, 255, 0.09) 0 2px, rgba(220, 245, 255, 0.04) 2px 4px, transparent 5px),
+    radial-gradient(circle at 18% 78%, rgba(170, 228, 245, 0.07) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 62% 22%, rgba(220, 245, 255, 0.06) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 34% 68%, rgba(180, 235, 250, 0.05) 0 1px, transparent 2.5px),
+    radial-gradient(circle at top right, rgba(145, 198, 226, 0.10), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(25, 56, 72, 0.94) 0%, rgba(13, 32, 42, 0.96) 100%) !important;
+}
+
+.tempest-body > .tempest-section:nth-child(4) {
+  background:
+    var(--storm-sigil) no-repeat center 58% / 240px auto,
+    radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.10) 0 2px, rgba(220, 245, 255, 0.04) 2px 4px, transparent 5px),
+    radial-gradient(circle at 22% 76%, rgba(170, 228, 245, 0.08) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 64% 61%, rgba(180, 235, 250, 0.05) 0 1px, transparent 2.5px),
+    radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.05), transparent 28%),
+    linear-gradient(180deg, rgba(17, 39, 54, 0.95) 0%, rgba(9, 20, 28, 0.97) 100%) !important;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .tempest-body > .tempest-section:last-child {
+    padding-bottom: 120px !important;
+  }
+
+  .tempest-body > .tempest-section:last-child .tempest-footer-note::before {
+    right: 0 !important;
+    bottom: 8px !important;
+    width: 110px !important;
+    height: 130px !important;
+    opacity: 0.65 !important;
+  }
+
+  .tempest-body > .tempest-section:last-child .tempest-footer-note::after {
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 88px !important;
+    height: 115px !important;
+    opacity: 0.18 !important;
+  }
+
+  .tempest-body > .tempest-section:first-child {
+    background:
+      var(--storm-sigil) no-repeat center 56% / 140px auto,
+      radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.10) 0 2px, transparent 4px),
+      radial-gradient(circle at 18% 74%, rgba(170, 228, 245, 0.07) 0 1.5px, transparent 3px),
+      radial-gradient(circle at 62% 58%, rgba(220, 245, 255, 0.05) 0 1px, transparent 2.3px),
+      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
+      linear-gradient(180deg, rgba(21, 53, 72, 0.92) 0%, rgba(11, 31, 43, 0.94) 100%) !important;
+  }
+
+  .tempest-body > .tempest-section:nth-child(4) {
+    background:
+      var(--storm-sigil) no-repeat center 58% / 130px auto,
+      radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.08) 0 2px, transparent 4px),
+      radial-gradient(circle at 18% 74%, rgba(170, 228, 245, 0.06) 0 1.5px, transparent 3px),
+      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
+      linear-gradient(180deg, rgba(17, 39, 54, 0.95) 0%, rgba(9, 20, 28, 0.97) 100%) !important;
+  }
+}
