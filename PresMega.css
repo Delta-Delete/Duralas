@@ -11,17 +11,15 @@
   --storm-panel: #153548;
   --storm-panel-2: #0b1f2b;
   --storm-gold: #c29a5f;
-  --storm-gold-soft: rgba(194, 154, 95, 0.22);
   --storm-blue: #7dd3f0;
-  --storm-blue-soft: rgba(125, 211, 240, 0.18);
   --storm-text: #eadfcd;
   --storm-mist: #9eabb3;
-  --storm-line: rgba(255, 255, 255, 0.07);
 
   width: 760px;
   max-width: 100%;
   margin: 8px auto;
   padding: 0;
+  position: relative;
   background: linear-gradient(180deg, #02070b 0%, #061019 100%) !important;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 22px;
@@ -32,6 +30,34 @@
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.04) inset,
     0 16px 42px rgba(0, 0, 0, 0.42) !important;
+}
+
+.tempest-sheet::before,
+.tempest-sheet::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.14;
+  filter: blur(0.2px);
+}
+
+.tempest-sheet::before {
+  left: -30px;
+  top: 280px;
+  width: 170px;
+  height: 320px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 320'%3E%3Cpath d='M26 306 C34 257 73 224 66 173 C59 130 82 88 127 46' fill='none' stroke='%23071218' stroke-width='28' stroke-linecap='round' opacity='.9'/%3E%3Cpath d='M66 322 C76 270 119 235 116 188 C113 149 137 112 165 76' fill='none' stroke='%230e3341' stroke-width='16' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+.tempest-sheet::after {
+  right: -35px;
+  bottom: 120px;
+  width: 180px;
+  height: 330px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 330'%3E%3Cpath d='M154 20 C146 69 107 102 114 153 C121 196 98 238 53 280' fill='none' stroke='%23071218' stroke-width='28' stroke-linecap='round' opacity='.9'/%3E%3Cpath d='M114 4 C104 56 61 91 64 138 C67 177 43 214 15 250' fill='none' stroke='%230e3341' stroke-width='16' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 
 /* Reset Forumactif */
@@ -66,6 +92,7 @@
 
 .tempest-header {
   position: relative;
+  z-index: 1;
   height: 310px !important;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -155,6 +182,8 @@
 }
 
 .tempest-body {
+  position: relative;
+  z-index: 1;
   padding: 16px !important;
   background:
     radial-gradient(circle at top, rgba(20, 55, 75, 0.10), transparent 35%),
@@ -168,12 +197,22 @@
   padding: 20px 20px 18px 20px !important;
   border-radius: 20px !important;
   border: 1px solid rgba(125, 211, 240, 0.12) !important;
-  background: linear-gradient(180deg, #153548 0%, #0b1f2b 100%) !important;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 220'%3E%3Cpath d='M18 208 C35 165 70 150 58 105 C49 72 75 40 108 16' fill='none' stroke='%23071218' stroke-width='22' stroke-linecap='round' opacity='.85'/%3E%3Cpath d='M46 222 C65 176 100 155 97 117 C95 83 119 55 154 29' fill='none' stroke='%230e3341' stroke-width='14' stroke-linecap='round' opacity='.55'/%3E%3Cg fill='%237dd3f0' opacity='.12'%3E%3Ccircle cx='63' cy='158' r='4'/%3E%3Ccircle cx='72' cy='144' r='3.5'/%3E%3Ccircle cx='80' cy='127' r='3'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 220'%3E%3Cpath d='M162 12 C145 55 110 70 122 115 C131 148 105 180 72 204' fill='none' stroke='%23071218' stroke-width='22' stroke-linecap='round' opacity='.85'/%3E%3Cpath d='M134 -2 C115 44 80 65 83 103 C85 137 61 165 26 191' fill='none' stroke='%230e3341' stroke-width='14' stroke-linecap='round' opacity='.55'/%3E%3Cg fill='%237dd3f0' opacity='.12'%3E%3Ccircle cx='117' cy='62' r='4'/%3E%3Ccircle cx='108' cy='76' r='3.5'/%3E%3Ccircle cx='100' cy='93' r='3'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(180deg, #153548 0%, #0b1f2b 100%) !important;
+  background-repeat: no-repeat, no-repeat, no-repeat !important;
+  background-size: 145px 180px, 145px 180px, cover !important;
+  background-position: left -18px bottom -10px, right -20px top -12px, center !important;
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.025),
     inset 0 0 80px rgba(0, 0, 0, 0.12),
     0 10px 24px rgba(0, 0, 0, 0.22) !important;
   overflow: hidden !important;
+}
+
+.tempest-section:nth-child(even) {
+  background-position: left -22px top -8px, right -18px bottom -14px, center !important;
 }
 
 .tempest-section:last-child {
@@ -308,7 +347,10 @@
 }
 
 .tempest-irl {
-  background: linear-gradient(180deg, #132734 0%, #0a1923 100%) !important;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 220'%3E%3Cpath d='M18 208 C35 165 70 150 58 105 C49 72 75 40 108 16' fill='none' stroke='%23071218' stroke-width='22' stroke-linecap='round' opacity='.85'/%3E%3Cpath d='M46 222 C65 176 100 155 97 117 C95 83 119 55 154 29' fill='none' stroke='%230e3341' stroke-width='14' stroke-linecap='round' opacity='.55'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 220'%3E%3Cpath d='M162 12 C145 55 110 70 122 115 C131 148 105 180 72 204' fill='none' stroke='%23071218' stroke-width='22' stroke-linecap='round' opacity='.85'/%3E%3Cpath d='M134 -2 C115 44 80 65 83 103 C85 137 61 165 26 191' fill='none' stroke='%230e3341' stroke-width='14' stroke-linecap='round' opacity='.55'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, #132734 0%, #0a1923 100%) !important;
 }
 
 .tempest-footer-note {
@@ -323,6 +365,11 @@
 @media (max-width: 700px) {
   .tempest-sheet {
     border-radius: 18px;
+  }
+
+  .tempest-sheet::before,
+  .tempest-sheet::after {
+    display: none;
   }
 
   .tempest-header {
@@ -353,6 +400,7 @@
 
   .tempest-section {
     padding: 16px 14px 14px 14px !important;
+    background-size: 110px 140px, 110px 140px, cover !important;
   }
 
   .tempest-grid,
