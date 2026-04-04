@@ -371,17 +371,18 @@
 }
 
 .tempest-grid-lower {
-  margin-top: 8px !important;
+  margin-top: 2px !important;
 }
 
 .tempest-row-full {
-  margin-top: 8px !important;
+  margin-top: 4px !important;
 }
 
 /* Bloc 1 avec ancre HTML absolue */
 .tempest-section-intro {
   position: relative !important;
   overflow: visible !important;
+  padding-bottom: 10px !important;
 }
 
 .tempest-section-intro > .tempest-section-title,
@@ -392,11 +393,28 @@
   z-index: 3 !important;
 }
 
+.tempest-section-intro .tempest-grid {
+  gap: 10px !important;
+}
+
+.tempest-section-intro .tempest-row {
+  margin-bottom: 6px !important;
+  padding: 9px 12px !important;
+}
+
+.tempest-section-intro .tempest-grid-lower {
+  margin-top: 0 !important;
+}
+
+.tempest-section-intro .tempest-row-full {
+  margin-top: 2px !important;
+}
+
 .tempest-anchor-img {
   position: absolute !important;
-  right: 14px;
-  bottom: -12px;
-  width: 145px;
+  right: 12px;
+  bottom: -2px;
+  width: 132px;
   height: auto;
   opacity: 0.34;
   transform: rotate(18deg);
@@ -521,7 +539,7 @@
 
 .tempest-grid {
   display: flex !important;
-  gap: 14px !important;
+  gap: 10px !important;
   width: 100%;
   align-items: flex-start;
 }
@@ -536,8 +554,8 @@
 
 .tempest-row {
   display: block !important;
-  margin: 0 0 10px 0 !important;
-  padding: 12px 12px !important;
+  margin: 0 0 8px 0 !important;
+  padding: 10px 12px !important;
   border-radius: 14px !important;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.025) 100%) !important;
   border: 1px solid rgba(255, 255, 255, 0.07) !important;
