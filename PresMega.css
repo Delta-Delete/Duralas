@@ -76,6 +76,7 @@
   padding: 0 !important;
 }
 
+/* Correction Forumactif : Masquer tous les <br> générés automatiquement */
 .tempest-sheet > p,
 .tempest-sheet > br,
 .tempest-header > p,
@@ -130,7 +131,7 @@
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   background:
-    linear-gradient(180deg, rgba(5, 10, 16, 0.22) 0%, rgba(5, 10, 16, 0.55) 48%, rgba(5, 10, 16, 0.92) 100%),
+    linear-gradient(180deg, rgba(5, 10, 16, 0.22) 0%, rgba(5, 10, 16, 0.65) 50%, rgba(5, 10, 16, 1) 90%, rgba(5, 10, 16, 1) 100%),
     var(--tempest-header, url('https://2img.net/image.noelshack.com/fichiers/2018/31/2/1533066300-imgentete2.png'));
   background-size: cover;
   background-position: center 24% !important;
@@ -177,7 +178,7 @@
 
 .tempest-kicker {
   display: inline-block;
-  margin: 0 0 10px 0;
+  margin: 0 0 18px 0; /* Espace augmenté en bas */
   padding: 5px 13px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -206,7 +207,7 @@
 }
 
 .tempest-subtitle {
-  margin: 12px auto 0 auto !important;
+  margin: 20px auto 0 auto !important; /* Espace augmenté en haut */
   max-width: 620px;
   color: #dde3e6 !important;
   font-size: 15px !important;
@@ -314,7 +315,7 @@
   transform: rotate(-5deg);
 }
 
-.tempest-section:nth-child(even)::before {
+.tempest-section:nth-child(even):before {
   left: -52px;
   top: -70px;
   bottom: auto;
@@ -324,7 +325,7 @@
   transform: rotate(12deg);
 }
 
-.tempest-section:nth-child(even)::after {
+.tempest-section:nth-child(even):after {
   right: -42px;
   bottom: -34px;
   top: auto;
@@ -554,6 +555,11 @@
     transparent 100%
   ) !important;
   box-shadow: 0 0 12px rgba(125, 211, 240, 0.20) !important;
+}
+
+/* Ajoute l'espacement automatique entre un séparateur et une grille de colonnes (pour le premier et dernier bloc) */
+.tempest-divider + .tempest-grid {
+  margin-top: 12px !important;
 }
 
 .tempest-grid {
