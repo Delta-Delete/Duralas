@@ -76,7 +76,6 @@
   padding: 0 !important;
 }
 
-/* Correction Forumactif : Masquer tous les <br> générés automatiquement */
 .tempest-sheet > p,
 .tempest-sheet > br,
 .tempest-header > p,
@@ -96,7 +95,7 @@
   display: none !important;
 }
 
-.tempest-sheet div:empty,
+.tempest-sheet div:empty:not(.tempest-music-undericon),
 .tempest-sheet span:empty {
   display: none !important;
 }
@@ -106,7 +105,6 @@
   border-spacing: 0;
 }
 
-/* Stabilisation forum */
 .tempest-sheet,
 .tempest-sheet div,
 .tempest-sheet span,
@@ -178,7 +176,7 @@
 
 .tempest-kicker {
   display: inline-block;
-  margin: 0 0 18px 0; /* Espace augmenté en bas */
+  margin: 0 0 18px 0;
   padding: 5px 13px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -207,7 +205,7 @@
 }
 
 .tempest-subtitle {
-  margin: 20px auto 0 auto !important; /* Espace augmenté en haut */
+  margin: 20px auto 0 auto !important;
   max-width: 620px;
   color: #dde3e6 !important;
   font-size: 15px !important;
@@ -227,6 +225,45 @@
     var(--storm-scene) center center / cover no-repeat !important;
   isolation: isolate !important;
   overflow: visible !important;
+}
+
+/* LECTEUR MUSIQUE */
+.tempest-music-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -4px 0 26px 0;
+  position: relative;
+  z-index: 30;
+}
+
+.tempest-music-stage {
+  position: relative;
+  width: 300px;
+  height: 60px;
+}
+
+.tempest-music-iframe {
+  position: absolute;
+  inset: 0;
+  width: 300px;
+  height: 60px;
+  opacity: 0.001;
+  z-index: 1;
+  border: 0;
+}
+
+.tempest-music-undericon {
+  position: absolute;
+  top: 50%;
+  left: 90px;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: url('https://i.postimg.cc/YSWKHbB1/Kplay2.png') center/contain no-repeat;
+  pointer-events: none;
+  z-index: 2;
+  display: block !important;
 }
 
 /* BLOCS */
@@ -335,8 +372,8 @@
   transform: rotate(8deg);
 }
 
-/* Bloc 1 */
-.tempest-body > .tempest-section:first-child {
+/* Bloc 1 ciblé correctement malgré .tempest-music-wrap avant */
+.tempest-body > .tempest-section-intro {
   border-color: rgba(194, 154, 95, 0.18) !important;
   background:
     var(--storm-sigil) no-repeat center 56% / 230px auto,
@@ -355,18 +392,19 @@
     0 10px 24px rgba(0, 0, 0, 0.24) !important;
 }
 
-.tempest-body > .tempest-section:first-child::before {
-  left: -66px;
-  top: -48px;
-  bottom: auto;
-  width: 255px;
-  height: 195px;
-  background-image: var(--tentacle-top-left);
-  background-position: left top;
-  transform: rotate(-7deg);
+/* Bloc 1 inversé : haut droite + bas gauche */
+.tempest-body > .tempest-section-intro::before {
+  left: -52px;
+  bottom: -42px;
+  top: auto;
+  width: 205px;
+  height: 210px;
+  background-image: var(--tentacle-bottom-left);
+  background-position: left bottom;
+  transform: rotate(-2deg);
 }
 
-.tempest-body > .tempest-section:first-child::after {
+.tempest-body > .tempest-section-intro::after {
   right: -70px;
   top: -38px;
   bottom: auto;
@@ -444,7 +482,7 @@
 }
 
 /* Bloc 3 froid */
-.tempest-body > .tempest-section:nth-child(3) {
+.tempest-body > .tempest-section:nth-of-type(2) {
   background:
     radial-gradient(circle at 18% 78%, rgba(220, 245, 255, 0.13) 0 2px, rgba(220, 245, 255, 0.05) 2px 4px, transparent 5px),
     radial-gradient(circle at 74% 24%, rgba(170, 228, 245, 0.10) 0 1.5px, transparent 3px),
@@ -455,7 +493,7 @@
 }
 
 /* Bloc 4 mémoire */
-.tempest-body > .tempest-section:nth-child(4) {
+.tempest-body > .tempest-section:nth-of-type(3) {
   border-color: rgba(125, 211, 240, 0.10) !important;
   background:
     var(--storm-sigil) no-repeat center 58% / 240px auto,
@@ -474,7 +512,7 @@
 }
 
 /* Bloc 7 */
-.tempest-body > .tempest-section:last-child {
+.tempest-body > .tempest-section:last-of-type {
   padding-bottom: 18px !important;
   border-color: rgba(160, 185, 200, 0.10) !important;
   background:
@@ -493,7 +531,7 @@
     0 10px 22px rgba(0, 0, 0, 0.20) !important;
 }
 
-.tempest-body > .tempest-section:last-child::before {
+.tempest-body > .tempest-section:last-of-type::before {
   left: -30px;
   bottom: -40px;
   top: auto;
@@ -504,7 +542,7 @@
   transform: rotate(-2deg);
 }
 
-.tempest-body > .tempest-section:last-child::after {
+.tempest-body > .tempest-section:last-of-type::after {
   right: -34px;
   top: -24px;
   width: 150px;
@@ -557,7 +595,6 @@
   box-shadow: 0 0 12px rgba(125, 211, 240, 0.20) !important;
 }
 
-/* Ajoute l'espacement automatique entre un séparateur et une grille de colonnes (pour le premier et dernier bloc) */
 .tempest-divider + .tempest-grid {
   margin-top: 12px !important;
 }
@@ -681,8 +718,8 @@
 
   .tempest-section,
   .tempest-section:nth-child(even),
-  .tempest-body > .tempest-section:first-child,
-  .tempest-body > .tempest-section:nth-child(2) {
+  .tempest-body > .tempest-section-intro,
+  .tempest-body > .tempest-section:nth-of-type(2) {
     background:
       radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.10) 0 2px, transparent 4px),
       radial-gradient(circle at 18% 74%, rgba(170, 228, 245, 0.07) 0 1.5px, transparent 3px),
@@ -692,7 +729,7 @@
       linear-gradient(180deg, rgba(21, 53, 72, 0.92) 0%, rgba(11, 31, 43, 0.94) 100%) !important;
   }
 
-  .tempest-body > .tempest-section:first-child {
+  .tempest-body > .tempest-section-intro {
     background:
       var(--storm-sigil) no-repeat center 56% / 140px auto,
       radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.10) 0 2px, transparent 4px),
@@ -703,7 +740,7 @@
       linear-gradient(180deg, rgba(21, 53, 72, 0.92) 0%, rgba(11, 31, 43, 0.94) 100%) !important;
   }
 
-  .tempest-body > .tempest-section:nth-child(4) {
+  .tempest-body > .tempest-section:nth-of-type(3) {
     background:
       var(--storm-sigil) no-repeat center 58% / 130px auto,
       radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.08) 0 2px, transparent 4px),
@@ -713,7 +750,7 @@
       linear-gradient(180deg, rgba(17, 39, 54, 0.95) 0%, rgba(9, 20, 28, 0.97) 100%) !important;
   }
 
-  .tempest-body > .tempest-section:last-child {
+  .tempest-body > .tempest-section:last-of-type {
     background:
       radial-gradient(circle at 78% 22%, rgba(220, 245, 255, 0.08) 0 2px, transparent 4px),
       radial-gradient(circle at 20% 72%, rgba(170, 228, 245, 0.05) 0 1.5px, transparent 3px),
@@ -778,23 +815,31 @@
     height: 135px;
   }
 
-  .tempest-body > .tempest-section:first-child::before {
-    left: -32px;
-    top: 6px;
-    width: 150px;
-    height: 112px;
+  .tempest-body > .tempest-section-intro::before {
+    left: -24px;
+    bottom: -18px;
+    top: auto;
+    width: 130px;
+    height: 145px;
+    background-image: var(--tentacle-bottom-left);
+    background-position: left bottom;
+    transform: rotate(-2deg);
     opacity: 0.44;
   }
 
-  .tempest-body > .tempest-section:first-child::after {
+  .tempest-body > .tempest-section-intro::after {
     right: -22px;
     top: 6px;
+    bottom: auto;
     width: 138px;
     height: 108px;
+    background-image: var(--tentacle-top-right);
+    background-position: right top;
+    transform: rotate(-7deg);
     opacity: 0.42;
   }
 
-  .tempest-body > .tempest-section:last-child::before {
+  .tempest-body > .tempest-section:last-of-type::before {
     left: -18px;
     bottom: -14px;
     width: 95px;
@@ -802,7 +847,7 @@
     opacity: 0.22;
   }
 
-  .tempest-body > .tempest-section:last-child::after {
+  .tempest-body > .tempest-section:last-of-type::after {
     right: -18px;
     top: -8px;
     width: 92px;
@@ -833,6 +878,25 @@
   .tempest-section-intro .tempest-row {
     margin: 0 !important;
     padding: 9px 12px !important;
+  }
+
+  .tempest-music-wrap {
+    margin: 0 0 22px 0;
+  }
+
+  .tempest-music-stage {
+    width: 300px;
+    height: 54px;
+  }
+
+  .tempest-music-undericon {
+    left: 30px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .tempest-music-iframe {
+    height: 54px;
   }
 }
 
