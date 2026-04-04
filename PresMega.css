@@ -1,199 +1,65 @@
-.fiche-personnage,
-.fiche-joueur,
-.fiche-personnage *,
-.fiche-joueur * {
-  box-sizing: border-box;
-}
-
-.fiche-personnage,
-.fiche-joueur {
+.abyss-fiche {
   width: 760px;
   max-width: 95%;
-  margin: 18px auto;
-  font-family: Georgia, "Times New Roman", serif;
-  color: #2f2417;
-}
-
-.fiche-personnage {
-  background:
-    linear-gradient(180deg, #efe5d3 0%, #e6d7bf 100%);
-  border: 1px solid #5a4631;
-  border-radius: 8px;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.15) inset,
-    0 10px 35px rgba(0,0,0,0.35);
+  margin: 20px auto;
+  background: #08131a;
+  color: #d9edf2;
+  border: 1px solid rgba(120, 210, 230, 0.16);
+  border-radius: 16px;
   overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.35);
 }
 
-.fiche-personnage-header {
-  position: relative;
-  padding: 0;
-  margin: 0;
-  line-height: 0;
-  border-bottom: 1px solid #3e3122;
-}
-
-.fiche-personnage-header img {
+.abyss-header img {
   display: block;
   width: 100%;
   height: auto;
 }
 
-.fiche-personnage-contenu {
-  padding: 18px 18px 20px 18px;
-}
-
-.fiche-personnage-partie {
-  position: relative;
-  margin: 0 0 18px 0;
-  padding: 24px 26px 22px 26px;
-  background:
-    linear-gradient(180deg, rgba(74, 93, 86, 0.96), rgba(63, 79, 73, 0.98));
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 18px;
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.04) inset,
-    0 10px 18px rgba(0,0,0,0.16);
-  line-height: 1.65;
-  font-size: 15px;
-  text-align: justify;
-  color: #f1eadf;
-  overflow: hidden;
-}
-
-.fiche-personnage-partie:last-child {
-  margin-bottom: 0;
-}
-
-.fiche-personnage-partie::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 18px;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at top right, rgba(255,255,255,0.05), transparent 25%),
-    radial-gradient(circle at bottom left, rgba(0,0,0,0.07), transparent 35%);
-}
-
-.fiche-personnage-titre {
+.abyss-titre {
   text-align: center;
-  margin: 0 0 10px 0;
+  font-size: 34px;
+  padding: 18px 20px 6px;
+  color: #9feaff;
 }
 
-.fiche-personnage-light {
-  display: inline-block;
-  margin: 0 auto !important;
-  opacity: 0.96;
-  filter:
-    drop-shadow(0 1px 0 rgba(255,255,255,0.08))
-    drop-shadow(0 0 10px rgba(214, 169, 78, 0.10));
-}
-
-.fiche-personnage-img-border {
-  width: 78%;
-  height: 2px;
-  margin: 10px auto 18px auto;
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(199, 165, 87, 0.10) 12%,
-    rgba(217, 181, 92, 0.95) 50%,
-    rgba(199, 165, 87, 0.10) 88%,
-    transparent 100%
-  );
-  box-shadow: 0 0 8px rgba(217, 181, 92, 0.16);
-}
-
-.fiche-champ {
-  color: #9fe0f3;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-.fiche-personnage a,
-.fiche-joueur a {
-  color: #bfefff;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(191,239,255,0.35);
-  transition: 0.2s ease;
-}
-
-.fiche-personnage a:hover,
-.fiche-joueur a:hover {
-  color: #ffffff;
-  border-bottom-color: rgba(255,255,255,0.8);
-}
-
-.fiche-note {
-  margin-top: 12px;
+.abyss-soustitre {
   text-align: center;
-  color: #e7d8b8;
+  padding: 0 20px 18px;
+  color: #8ec9d6;
   font-style: italic;
-  opacity: 0.95;
 }
 
-.fiche-joueur {
-  background:
-    linear-gradient(180deg, #e7dac5 0%, #dccaae 100%);
-  border: 1px solid #5a4631;
-  border-radius: 8px;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.15) inset,
-    0 8px 26px rgba(0,0,0,0.28);
-  overflow: hidden;
+.abyss-corps {
+  padding: 20px;
 }
 
-.fiche-joueur-titre {
-  padding: 14px 18px;
+.abyss-bloc {
+  margin-bottom: 18px;
+  padding: 18px 20px;
+  background: linear-gradient(180deg, #16313c, #10252e);
+  border-radius: 14px;
+  line-height: 1.7;
+}
+
+.abyss-bloc-titre {
+  margin: 0 0 12px;
   text-align: center;
-  font-size: 22px;
-  letter-spacing: 0.5px;
-  color: #f5ebd8;
-  background:
-    linear-gradient(180deg, #5e4732 0%, #463423 100%);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  text-transform: uppercase;
+  color: #6fe7ff;
+  font-weight: normal;
 }
 
-.fiche-joueur-contenu {
-  padding: 20px 22px;
-  background:
-    linear-gradient(180deg, rgba(244,236,220,0.92), rgba(229,216,190,0.96));
-  line-height: 1.8;
-  font-size: 15px;
-  color: #34271c;
+.abyss-champ {
+  color: #b8f6ff;
 }
 
-.fiche-joueur-contenu .fiche-champ {
-  color: #6b4c28;
-  text-decoration: none;
-}
-
-.fiche-separation {
+.abyss-separateur {
   height: 1px;
-  margin: 14px 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(107, 76, 40, 0.10) 20%,
-    rgba(107, 76, 40, 0.45) 50%,
-    rgba(107, 76, 40, 0.10) 80%,
-    transparent 100%
-  );
+  margin: 0 20px;
+  background: linear-gradient(90deg, transparent, rgba(111,231,255,.8), transparent);
 }
 
-@media (max-width: 700px) {
-  .fiche-personnage,
-  .fiche-joueur {
-    width: 100%;
-  }
-
-  .fiche-personnage-contenu,
-  .fiche-joueur-contenu,
-  .fiche-personnage-partie {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
+.abyss-irl {
+  padding: 20px;
+  background: #0d1b22;
 }
