@@ -328,11 +328,10 @@
   transform: rotate(8deg);
 }
 
-/* Bloc 1 avec ancre test */
+/* Bloc 1 */
 .tempest-body > .tempest-section:first-child {
   border-color: rgba(194, 154, 95, 0.18) !important;
   background:
-    var(--storm-anchor) no-repeat right 18px bottom 14px / 135px auto,
     var(--storm-sigil) no-repeat center 56% / 230px auto,
     radial-gradient(circle at 84% 26%, rgba(220, 245, 255, 0.09) 0 2px, rgba(220, 245, 255, 0.04) 2px 4px, transparent 5px),
     radial-gradient(circle at 18% 78%, rgba(170, 228, 245, 0.07) 0 1.5px, transparent 3px),
@@ -377,6 +376,33 @@
 
 .tempest-row-full {
   margin-top: 12px !important;
+}
+
+/* Bloc 1 avec ancre HTML absolue */
+.tempest-section-intro {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.tempest-section-intro > .tempest-section-title,
+.tempest-section-intro > .tempest-divider,
+.tempest-section-intro > .tempest-grid,
+.tempest-section-intro > .tempest-row-full {
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+.tempest-anchor-img {
+  position: absolute !important;
+  right: 14px;
+  bottom: -12px;
+  width: 145px;
+  height: auto;
+  opacity: 0.34;
+  transform: rotate(18deg);
+  pointer-events: none !important;
+  z-index: 1 !important;
+  display: block;
 }
 
 /* Bloc 3 froid */
@@ -628,7 +654,6 @@
 
   .tempest-body > .tempest-section:first-child {
     background:
-      var(--storm-anchor) no-repeat right 10px bottom 10px / 90px auto,
       var(--storm-sigil) no-repeat center 56% / 140px auto,
       radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.10) 0 2px, transparent 4px),
       radial-gradient(circle at 18% 74%, rgba(170, 228, 245, 0.07) 0 1.5px, transparent 3px),
@@ -742,5 +767,13 @@
     width: 92px;
     height: 100px;
     opacity: 0.22;
+  }
+
+  .tempest-anchor-img {
+    right: 8px;
+    bottom: -10px;
+    width: 92px;
+    opacity: 0.28;
+    transform: rotate(16deg);
   }
 }
