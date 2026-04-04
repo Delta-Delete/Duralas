@@ -39,6 +39,7 @@
     0 16px 42px rgba(0, 0, 0, 0.42) !important;
 }
 
+/* Tentacules globales discrètes autour de la fiche */
 .tempest-sheet::before,
 .tempest-sheet::after {
   content: "";
@@ -203,85 +204,127 @@
   display: block !important;
   position: relative !important;
   z-index: 1;
+  isolation: isolate;
   margin: 0 0 16px 0 !important;
   padding: 20px 20px 18px 20px !important;
   border-radius: 20px !important;
   border: 1px solid rgba(125, 211, 240, 0.12) !important;
-  background-image:
-    var(--tentacle-bottom-left),
-    var(--tentacle-top-right),
+  background:
+    radial-gradient(circle at top right, rgba(125, 211, 240, 0.10), transparent 26%),
+    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.07), transparent 30%),
     linear-gradient(180deg, #153548 0%, #0b1f2b 100%) !important;
-  background-repeat: no-repeat, no-repeat, no-repeat !important;
-  background-size: 170px auto, 170px auto, cover !important;
-  background-position: left -26px bottom -20px, right -26px top -18px, center !important;
   box-shadow:
+    inset 3px 0 0 rgba(194, 154, 95, 0.85),
     inset 0 0 0 1px rgba(255, 255, 255, 0.025),
     inset 0 0 80px rgba(0, 0, 0, 0.12),
     0 10px 24px rgba(0, 0, 0, 0.22) !important;
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 
-.tempest-section:nth-child(even) {
-  background-image:
-    var(--tentacle-top-left),
-    var(--tentacle-bottom-right),
-    linear-gradient(180deg, #153548 0%, #0b1f2b 100%) !important;
-  background-repeat: no-repeat, no-repeat, no-repeat !important;
-  background-size: 170px auto, 170px auto, cover !important;
-  background-position: left -26px top -18px, right -26px bottom -20px, center !important;
+.tempest-section:last-child {
+  margin-bottom: 0 !important;
 }
 
-.tempest-body > .tempest-section:first-child {
-  background-image:
-    var(--tentacle-top-left),
-    var(--tentacle-top-right),
-    linear-gradient(180deg, #153548 0%, #0b1f2b 100%) !important;
-  background-repeat: no-repeat, no-repeat, no-repeat !important;
-  background-size: 230px auto, 210px auto, cover !important;
-  background-position: left -38px top -14px, right -22px top -10px, center !important;
+/* Tentacules qui sortent réellement des blocs */
+.tempest-section::before,
+.tempest-section::after {
+  content: "";
+  position: absolute !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  opacity: 0.22;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.18));
 }
 
-/* BLOC 7 : plus sobre, tentacule gauche seule + ancre en bas à droite */
+.tempest-section::before {
+  left: -42px;
+  bottom: -34px;
+  width: 185px;
+  height: 220px;
+  background-image: var(--tentacle-bottom-left);
+  transform: rotate(-4deg);
+}
+
+.tempest-section::after {
+  right: -42px;
+  top: -30px;
+  width: 185px;
+  height: 220px;
+  background-image: var(--tentacle-top-right);
+  transform: rotate(6deg);
+}
+
+.tempest-section:nth-child(even)::before {
+  left: -42px;
+  top: -30px;
+  bottom: auto;
+  width: 185px;
+  height: 220px;
+  background-image: var(--tentacle-top-left);
+  transform: rotate(-8deg);
+}
+
+.tempest-section:nth-child(even)::after {
+  right: -42px;
+  bottom: -34px;
+  top: auto;
+  width: 185px;
+  height: 220px;
+  background-image: var(--tentacle-bottom-right);
+  transform: rotate(8deg);
+}
+
+/* Premier bloc plus fort */
+.tempest-body > .tempest-section:first-child::before {
+  left: -56px;
+  top: -26px;
+  bottom: auto;
+  width: 240px;
+  height: 250px;
+  background-image: var(--tentacle-top-left);
+  transform: rotate(-10deg);
+  opacity: 0.24;
+}
+
+.tempest-body > .tempest-section:first-child::after {
+  right: -36px;
+  top: -18px;
+  width: 225px;
+  height: 235px;
+  background-image: var(--tentacle-top-right);
+  transform: rotate(7deg);
+  opacity: 0.22;
+}
+
+/* Bloc 7 : tentacule sobre + ancre intégrée */
 .tempest-body > .tempest-section:last-child {
-  position: relative !important;
-  background-image:
-    var(--tentacle-bottom-left),
-    none,
+  padding-bottom: 26px !important;
+  background:
+    var(--storm-anchor) no-repeat right -16px bottom -12px / 190px auto,
+    radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
     linear-gradient(180deg, #132734 0%, #0a1923 100%) !important;
-  background-repeat: no-repeat, no-repeat, no-repeat !important;
-  background-size: 135px auto, 0 0, cover !important;
-  background-position: left -22px bottom -18px, right center, center !important;
 }
 
 .tempest-body > .tempest-section:last-child::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  background:
-    radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
-    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%) !important;
-  pointer-events: none !important;
+  left: -30px;
+  bottom: -26px;
+  top: auto;
+  width: 135px;
+  height: 165px;
+  background-image: var(--tentacle-bottom-left);
+  transform: rotate(-2deg);
+  opacity: 0.18;
 }
 
 .tempest-body > .tempest-section:last-child::after {
-  content: "" !important;
-  position: absolute !important;
-  right: -8px !important;
-  bottom: -10px !important;
-  width: 210px !important;
-  height: 300px !important;
-  border-radius: 0 !important;
-  background:
-    var(--storm-anchor) no-repeat center / contain !important;
-  opacity: 0.16 !important;
-  transform: rotate(18deg) !important;
-  filter: drop-shadow(0 0 10px rgba(125, 211, 240, 0.05)) !important;
-  pointer-events: none !important;
-  left: auto !important;
-  top: auto !important;
+  display: none !important;
 }
 
-/* TITRES ET CONTENU */
+/* TITRES ET CONTENU AU-DESSUS */
 .tempest-section-title {
   display: block !important;
   position: relative;
@@ -333,6 +376,8 @@
 
 .tempest-row {
   display: block !important;
+  position: relative;
+  z-index: 2;
   margin: 0 0 12px 0 !important;
   padding: 12px 12px !important;
   border-radius: 14px !important;
@@ -437,32 +482,66 @@
 
   .tempest-section {
     padding: 16px 14px 14px 14px !important;
-    background-size: 110px auto, 110px auto, cover !important;
-    background-position: left -18px bottom -12px, right -18px top -12px, center !important;
   }
 
-  .tempest-section:nth-child(even) {
-    background-size: 110px auto, 110px auto, cover !important;
-    background-position: left -18px top -12px, right -18px bottom -12px, center !important;
+  .tempest-section::before {
+    left: -24px;
+    bottom: -18px;
+    width: 115px;
+    height: 135px;
   }
 
-  .tempest-body > .tempest-section:first-child {
-    background-size: 140px auto, 130px auto, cover !important;
-    background-position: left -24px top -8px, right -14px top -8px, center !important;
+  .tempest-section::after {
+    right: -24px;
+    top: -16px;
+    width: 115px;
+    height: 135px;
+  }
+
+  .tempest-section:nth-child(even)::before {
+    left: -24px;
+    top: -16px;
+    bottom: auto;
+    width: 115px;
+    height: 135px;
+  }
+
+  .tempest-section:nth-child(even)::after {
+    right: -24px;
+    bottom: -18px;
+    top: auto;
+    width: 115px;
+    height: 135px;
+  }
+
+  .tempest-body > .tempest-section:first-child::before {
+    left: -28px;
+    top: -14px;
+    width: 140px;
+    height: 150px;
+  }
+
+  .tempest-body > .tempest-section:first-child::after {
+    right: -18px;
+    top: -10px;
+    width: 130px;
+    height: 140px;
   }
 
   .tempest-body > .tempest-section:last-child {
-    background-size: 100px auto, 0 0, cover !important;
-    background-position: left -14px bottom -10px, right center, center !important;
+    background:
+      var(--storm-anchor) no-repeat right -10px bottom -8px / 110px auto,
+      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
+      linear-gradient(180deg, #132734 0%, #0a1923 100%) !important;
   }
 
-  .tempest-body > .tempest-section:last-child::after {
-    right: -10px !important;
-    bottom: -6px !important;
-    width: 135px !important;
-    height: 190px !important;
-    opacity: 0.11 !important;
-    transform: rotate(15deg) !important;
+  .tempest-body > .tempest-section:last-child::before {
+    left: -16px;
+    bottom: -14px;
+    width: 90px;
+    height: 105px;
+    opacity: 0.16;
   }
 
   .tempest-grid,
