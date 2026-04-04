@@ -225,13 +225,13 @@
   margin-bottom: 0 !important;
 }
 
-/* Tentacules qui sortent réellement des blocs */
+/* Tentacules SUR les blocs, mais sous le texte */
 .tempest-section::before,
 .tempest-section::after {
   content: "";
   position: absolute !important;
   pointer-events: none !important;
-  z-index: 0 !important;
+  z-index: 3 !important;
   opacity: 0.22;
   background-repeat: no-repeat !important;
   background-position: center !important;
@@ -277,24 +277,31 @@
   transform: rotate(8deg);
 }
 
-/* Premier bloc plus fort */
+/* Premier bloc : tentacules hautes qui enlacent mieux */
 .tempest-body > .tempest-section:first-child::before {
-  left: -56px;
-  top: -26px;
+  left: -62px;
+  top: -4px;
   bottom: auto;
-  width: 240px;
-  height: 250px;
+  width: 245px;
+  height: 185px;
   background-image: var(--tentacle-top-left);
-  transform: rotate(-10deg);
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: contain;
+  transform: rotate(-7deg);
   opacity: 0.24;
 }
 
 .tempest-body > .tempest-section:first-child::after {
-  right: -36px;
-  top: -18px;
+  right: -46px;
+  top: -2px;
+  bottom: auto;
   width: 225px;
-  height: 235px;
+  height: 180px;
   background-image: var(--tentacle-top-right);
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: contain;
   transform: rotate(7deg);
   opacity: 0.22;
 }
@@ -324,11 +331,20 @@
   display: none !important;
 }
 
-/* TITRES ET CONTENU AU-DESSUS */
+/* CONTENU AU-DESSUS DES TENTACULES */
+.tempest-section-title,
+.tempest-divider,
+.tempest-grid,
+.tempest-row,
+.tempest-copy,
+.tempest-note,
+.tempest-footer-note {
+  position: relative;
+  z-index: 4;
+}
+
 .tempest-section-title {
   display: block !important;
-  position: relative;
-  z-index: 2;
   margin: 0 !important;
   padding: 0 !important;
   text-align: center !important;
@@ -341,8 +357,6 @@
 }
 
 .tempest-divider {
-  position: relative;
-  z-index: 2;
   width: 110px !important;
   height: 2px;
   margin: 12px auto 18px auto !important;
@@ -359,8 +373,6 @@
 }
 
 .tempest-grid {
-  position: relative;
-  z-index: 2;
   display: table;
   width: 100%;
   table-layout: fixed;
@@ -376,8 +388,6 @@
 
 .tempest-row {
   display: block !important;
-  position: relative;
-  z-index: 2;
   margin: 0 0 12px 0 !important;
   padding: 12px 12px !important;
   border-radius: 14px !important;
@@ -401,8 +411,6 @@
 }
 
 .tempest-copy {
-  position: relative;
-  z-index: 2;
   color: #eadfcd !important;
   font-size: 14px !important;
   line-height: 1.68 !important;
@@ -410,8 +418,6 @@
 }
 
 .tempest-note {
-  position: relative;
-  z-index: 2;
   margin-top: 12px !important;
   padding-top: 10px !important;
   border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
@@ -434,8 +440,6 @@
 }
 
 .tempest-footer-note {
-  position: relative;
-  z-index: 2;
   margin-top: 8px !important;
   color: #9eabb3 !important;
   font-size: 12px;
@@ -515,17 +519,17 @@
   }
 
   .tempest-body > .tempest-section:first-child::before {
-    left: -28px;
-    top: -14px;
-    width: 140px;
-    height: 150px;
+    left: -30px;
+    top: -2px;
+    width: 145px;
+    height: 105px;
   }
 
   .tempest-body > .tempest-section:first-child::after {
-    right: -18px;
-    top: -10px;
-    width: 130px;
-    height: 140px;
+    right: -20px;
+    top: -2px;
+    width: 132px;
+    height: 102px;
   }
 
   .tempest-body > .tempest-section:last-child {
