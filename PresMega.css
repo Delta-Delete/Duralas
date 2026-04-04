@@ -198,25 +198,6 @@
     linear-gradient(180deg, #02070b 0%, #040b12 100%) !important;
 }
 
-/* Ancre usée */
-.tempest-body::after {
-  content: "";
-  position: absolute;
-  right: -18px;
-  bottom: -8px;
-  width: 250px;
-  height: 360px;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.14;
-  transform: rotate(18deg);
-  background-image: var(--storm-anchor);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  filter: drop-shadow(0 0 10px rgba(125, 211, 240, 0.05));
-}
-
 /* BLOCS */
 .tempest-section {
   display: block !important;
@@ -260,39 +241,44 @@
   background-position: left -38px top -14px, right -22px top -10px, center !important;
 }
 
+/* BLOC 7 : plus sobre, tentacule gauche seule + ancre en bas à droite */
 .tempest-body > .tempest-section:last-child {
+  position: relative !important;
   background-image:
     var(--tentacle-bottom-left),
-    var(--tentacle-bottom-right),
+    none,
     linear-gradient(180deg, #132734 0%, #0a1923 100%) !important;
   background-repeat: no-repeat, no-repeat, no-repeat !important;
-  background-size: 135px auto, 135px auto, cover !important;
-  background-position: left -22px bottom -18px, right -22px bottom -14px, center !important;
+  background-size: 135px auto, 0 0, cover !important;
+  background-position: left -22px bottom -18px, right center, center !important;
 }
 
-.tempest-section:last-child {
-  margin-bottom: 0 !important;
-}
-
-.tempest-section::before {
+.tempest-body > .tempest-section:last-child::before {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
   background:
-    radial-gradient(circle at top right, rgba(125, 211, 240, 0.10), transparent 26%),
-    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.07), transparent 30%) !important;
+    radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%) !important;
   pointer-events: none !important;
 }
 
-.tempest-section::after {
+.tempest-body > .tempest-section:last-child::after {
   content: "" !important;
   position: absolute !important;
-  left: 0 !important;
-  top: 14px !important;
-  bottom: 14px !important;
-  width: 3px !important;
-  border-radius: 10px !important;
-  background: linear-gradient(180deg, #c29a5f, rgba(125, 211, 240, 0.18)) !important;
+  right: -8px !important;
+  bottom: -10px !important;
+  width: 210px !important;
+  height: 300px !important;
+  border-radius: 0 !important;
+  background:
+    var(--storm-anchor) no-repeat center / contain !important;
+  opacity: 0.16 !important;
+  transform: rotate(18deg) !important;
+  filter: drop-shadow(0 0 10px rgba(125, 211, 240, 0.05)) !important;
+  pointer-events: none !important;
+  left: auto !important;
+  top: auto !important;
 }
 
 /* TITRES ET CONTENU */
@@ -402,13 +388,6 @@
   border-bottom-color: rgba(255, 255, 255, 0.75) !important;
 }
 
-.tempest-irl {
-  background-image:
-    var(--tentacle-bottom-left),
-    var(--tentacle-bottom-right),
-    linear-gradient(180deg, #132734 0%, #0a1923 100%) !important;
-}
-
 .tempest-footer-note {
   position: relative;
   z-index: 2;
@@ -456,15 +435,6 @@
     padding: 10px !important;
   }
 
-  .tempest-body::after {
-    right: -26px;
-    bottom: -6px;
-    width: 150px;
-    height: 230px;
-    opacity: 0.10;
-    transform: rotate(15deg);
-  }
-
   .tempest-section {
     padding: 16px 14px 14px 14px !important;
     background-size: 110px auto, 110px auto, cover !important;
@@ -482,8 +452,17 @@
   }
 
   .tempest-body > .tempest-section:last-child {
-    background-size: 100px auto, 100px auto, cover !important;
-    background-position: left -14px bottom -10px, right -14px bottom -10px, center !important;
+    background-size: 100px auto, 0 0, cover !important;
+    background-position: left -14px bottom -10px, right center, center !important;
+  }
+
+  .tempest-body > .tempest-section:last-child::after {
+    right: -10px !important;
+    bottom: -6px !important;
+    width: 135px !important;
+    height: 190px !important;
+    opacity: 0.11 !important;
+    transform: rotate(15deg) !important;
   }
 
   .tempest-grid,
