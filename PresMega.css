@@ -85,7 +85,13 @@
 .tempest-body > p,
 .tempest-body > br,
 .tempest-section > p,
-.tempest-section > br {
+.tempest-section > br,
+.tempest-section-intro > p,
+.tempest-section-intro > br,
+.tempest-grid > p,
+.tempest-grid > br,
+.tempest-col > p,
+.tempest-col > br {
   display: none !important;
 }
 
