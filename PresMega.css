@@ -298,7 +298,7 @@
   margin-bottom: 0 !important;
 }
 
-.tempest-section:nth-child(even) {
+.tempest-section:nth-of-type(even) {
   background:
     radial-gradient(circle at 84% 74%, rgba(220, 245, 255, 0.13) 0 2px, rgba(220, 245, 255, 0.05) 2px 4px, transparent 5px),
     radial-gradient(circle at 74% 63%, rgba(170, 228, 245, 0.10) 0 1.5px, transparent 3px),
@@ -320,7 +320,7 @@
   overflow: visible !important;
 }
 
-/* Tentacules */
+/* Tentacules génériques */
 .tempest-section::before,
 .tempest-section::after {
   content: "";
@@ -352,7 +352,7 @@
   transform: rotate(-5deg);
 }
 
-.tempest-section:nth-child(even):before {
+.tempest-section:nth-of-type(even)::before {
   left: -52px;
   top: -70px;
   bottom: auto;
@@ -362,7 +362,7 @@
   transform: rotate(12deg);
 }
 
-.tempest-section:nth-child(even):after {
+.tempest-section:nth-of-type(even)::after {
   right: -42px;
   bottom: -34px;
   top: auto;
@@ -372,7 +372,7 @@
   transform: rotate(8deg);
 }
 
-/* Bloc 1 ciblé correctement malgré .tempest-music-wrap avant */
+/* Bloc 1 correctement ciblé */
 .tempest-body > .tempest-section-intro {
   border-color: rgba(194, 154, 95, 0.18) !important;
   background:
@@ -392,7 +392,7 @@
     0 10px 24px rgba(0, 0, 0, 0.24) !important;
 }
 
-/* Bloc 1 inversé : haut droite + bas gauche */
+/* Bloc 1 : haut droite + bas gauche */
 .tempest-body > .tempest-section-intro::before {
   left: -52px;
   bottom: -42px;
@@ -423,7 +423,7 @@
   margin-top: 4px !important;
 }
 
-/* Bloc 1 avec ancre HTML absolue */
+/* Bloc 1 avec ancre */
 .tempest-section-intro {
   position: relative !important;
   overflow: visible !important;
@@ -511,7 +511,7 @@
     0 12px 28px rgba(0, 0, 0, 0.26) !important;
 }
 
-/* Bloc 7 */
+/* Bloc final */
 .tempest-body > .tempest-section:last-of-type {
   padding-bottom: 18px !important;
   border-color: rgba(160, 185, 200, 0.10) !important;
@@ -717,7 +717,7 @@
   }
 
   .tempest-section,
-  .tempest-section:nth-child(even),
+  .tempest-section:nth-of-type(even),
   .tempest-body > .tempest-section-intro,
   .tempest-body > .tempest-section:nth-of-type(2) {
     background:
@@ -799,7 +799,7 @@
     height: 135px;
   }
 
-  .tempest-section:nth-child(even)::before {
+  .tempest-section:nth-of-type(even)::before {
     left: -24px;
     top: -16px;
     bottom: auto;
@@ -807,7 +807,7 @@
     height: 135px;
   }
 
-  .tempest-section:nth-child(even)::after {
+  .tempest-section:nth-of-type(even)::after {
     right: -24px;
     bottom: -18px;
     top: auto;
