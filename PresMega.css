@@ -127,7 +127,7 @@
   z-index: 1;
   height: 310px !important;
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 0 !important;
   background:
     linear-gradient(180deg, rgba(5, 10, 16, 0.22) 0%, rgba(5, 10, 16, 0.65) 50%, rgba(5, 10, 16, 1) 90%, rgba(5, 10, 16, 1) 100%),
     var(--tempest-header, url('https://2img.net/image.noelshack.com/fichiers/2018/31/2/1533066300-imgentete2.png'));
@@ -218,29 +218,32 @@
 .tempest-body {
   position: relative !important;
   z-index: 1 !important;
-  padding: 16px !important;
+  padding: 8px 16px 16px 16px !important;
   background:
     linear-gradient(180deg, rgba(2, 8, 12, 0.74) 0%, rgba(3, 10, 15, 0.82) 100%),
     radial-gradient(circle at top, rgba(20, 55, 75, 0.12), transparent 35%),
     var(--storm-scene) center center / cover no-repeat !important;
   isolation: isolate !important;
   overflow: visible !important;
+  margin-top: -1px !important;
 }
 
 /* LECTEUR MUSIQUE */
 .tempest-music-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: -4px 0 26px 0;
   position: relative;
+  width: 100%;
+  height: 60px;
+  margin: -8px auto -2px auto;
   z-index: 30;
+  overflow: visible;
 }
 
 .tempest-music-stage {
   position: relative;
   width: 300px;
   height: 60px;
+  margin: 0 auto;
+  overflow: visible;
 }
 
 .tempest-music-iframe {
@@ -264,6 +267,24 @@
   pointer-events: none;
   z-index: 2;
   display: block !important;
+}
+
+.tempest-music-legend {
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 22px);
+  transform: translateY(-50%);
+  color: #f5e7d2;
+  font-family: 'Pirata One', Georgia, serif;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 3;
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.55),
+    0 0 14px rgba(125, 211, 240, 0.10);
 }
 
 /* BLOCS */
@@ -344,12 +365,12 @@
 }
 
 .tempest-section::after {
-  right: -42px;
+  right: -55px;
   top: -50px;
   width: 185px;
   height: 220px;
   background-image: var(--tentacle-top-right);
-  transform: rotate(-5deg);
+  transform: rotate(-12deg);
 }
 
 .tempest-section:nth-of-type(even)::before {
@@ -405,14 +426,14 @@
 }
 
 .tempest-body > .tempest-section-intro::after {
-  right: -70px;
+  right: -75px;
   top: -38px;
   bottom: auto;
   width: 235px;
   height: 190px;
   background-image: var(--tentacle-top-right);
   background-position: right top;
-  transform: rotate(-7deg);
+  transform: rotate(-12deg);
 }
 
 .tempest-grid-lower {
@@ -713,7 +734,7 @@
   }
 
   .tempest-body {
-    padding: 10px !important;
+    padding: 6px 10px 10px 10px !important;
   }
 
   .tempest-section,
@@ -881,22 +902,37 @@
   }
 
   .tempest-music-wrap {
-    margin: 0 0 22px 0;
+    height: 88px;
+    margin: -8px auto 28px auto;
   }
 
   .tempest-music-stage {
     width: 300px;
     height: 54px;
+    margin: 0 auto;
+  }
+
+  .tempest-music-iframe {
+    width: 300px;
+    height: 54px;
   }
 
   .tempest-music-undericon {
+    top: 27px;
     left: 30px;
     width: 60px;
     height: 60px;
   }
 
-  .tempest-music-iframe {
-    height: 54px;
+  .tempest-music-legend {
+    top: 62px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    white-space: normal;
+    text-align: center;
+    font-size: 19px;
+    line-height: 1.05;
   }
 }
 
