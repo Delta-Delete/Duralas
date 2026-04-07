@@ -21,7 +21,7 @@
   --storm-anchor: url("https://i.postimg.cc/Z5jRMRKH/anchor.png");
   --storm-scene: url("https://i.postimg.cc/y6GsWbLD/7680x4320-391779-underwater-fantasy-scenery-digital-art-4k-pc-wallpaper.jpg");
 
-  --storm-sigil: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%23dff7ff' stroke-opacity='.34' stroke-width='2.6'%3E%3Ccircle cx='110' cy='110' r='66'/%3E%3Ccircle cx='110' cy='110' r='38'/%3E%3Cpath d='M110 24 L110 62 M110 158 L110 196 M24 110 L62 110 M158 110 L196 110'/%3E%3Cpath d='M110 72 C126 72 138 83 138 98 C138 111 129 120 114 123 C100 126 92 133 92 145 C92 158 103 168 118 168'/%3E%3Cpath d='M82 54 L96 68 M138 152 L152 166 M166 82 L152 96 M68 138 L54 152'/%3E%3C/g%3E%3C/svg%3E");
+  --storm-sigil: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%23dff7ff' stroke-opacity='.34' stroke-width='2.6'%3E%3Ccircle cx='110' cy='110' r='66'/%3E%3Ccircle cx='110' cy='110' r='38'/%3E%3Cpath d='M110 24 L110 62 M110 158 L110 196 M24 110 L62 110 M158 110 L196 110'/%3E%3Cpath d='M110 72 C126 72 138 83 138 98 C138 111 29 120 114 123 C100 126 92 133 92 145 C92 158 103 168 118 168'/%3E%3Cpath d='M82 54 L96 68 M138 152 L152 166 M166 82 L152 96 M68 138 L54 152'/%3E%3C/g%3E%3C/svg%3E");
 
   width: 760px;
   max-width: 100%;
@@ -127,7 +127,7 @@
   z-index: 1;
   height: 310px !important;
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 0px solid rgba(255, 255, 255, 0.08);
   background:
     linear-gradient(180deg, rgba(5, 10, 16, 0.22) 0%, rgba(5, 10, 16, 0.65) 50%, rgba(5, 10, 16, 1) 90%, rgba(5, 10, 16, 1) 100%),
     var(--tempest-header, url('https://2img.net/image.noelshack.com/fichiers/2018/31/2/1533066300-imgentete2.png'));
@@ -227,21 +227,20 @@
   overflow: visible !important;
 }
 
-/* ---- LECTEUR MUSIQUE & TEXTE ---- */
+/* LECTEUR MUSIQUE & LÉGENDE */
 .tempest-music-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: -4px 0 26px 0;
+  margin: -15px 0 -5px 0;
   position: relative;
   z-index: 30;
 }
 
 .tempest-music-wrap br {
-  display: none !important; /* Détruit les balises invisibles de Forumactif */
+  display: none !important; /* Retour à la ligne à la con */
 }
 
-/* La zone invisible de 300px originale */
 .tempest-music-stage {
   position: relative;
   width: 300px;
@@ -258,7 +257,6 @@
   border: 0;
 }
 
-/* L'icône exactement à sa position d'origine */
 .tempest-music-undericon {
   position: absolute;
   top: 50%;
@@ -272,22 +270,20 @@
   display: block !important;
 }
 
-/* Le texte "épinglé" de force à droite de l'icône */
 .tempest-music-legend {
   position: absolute;
   top: 50%;
-  /* 50% (centre) - 20px = Pile poil à droite du triangle */
-  left: calc(50% - 20px); 
-  transform: translateY(calc(-50% + 2px)); /* Centre + ajuste la police */
+  left: calc(50% - 25px); /* Fixé exactement à droite du triangle (le centre moins 25px) */
+  transform: translateY(calc(-50% + 2px));
   font-family: 'Pirata One', Georgia, serif;
-  font-size: 24px;
+  font-size: 20px;
   color: #f1dfc1;
-  line-height: 1 !important; /* Fix anti-Forumactif */
+  line-height: 1 !important; /* retie l'étirement du forum */
   margin: 0 !important;
   padding: 0 !important;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-  z-index: 1; 
-  pointer-events: none; 
+  z-index: 1;
+  pointer-events: none;
   white-space: nowrap;
 }
 
@@ -369,12 +365,12 @@
 }
 
 .tempest-section::after {
-  right: -42px;
+  right: -55px;
   top: -50px;
   width: 185px;
   height: 220px;
   background-image: var(--tentacle-top-right);
-  transform: rotate(-5deg);
+  transform: rotate(-12deg);
 }
 
 .tempest-section:nth-of-type(even)::before {
@@ -430,14 +426,14 @@
 }
 
 .tempest-body > .tempest-section-intro::after {
-  right: -70px;
+  right: -75px;
   top: -38px;
   bottom: auto;
   width: 235px;
   height: 190px;
   background-image: var(--tentacle-top-right);
   background-position: right top;
-  transform: rotate(-7deg);
+  transform: rotate(-12deg);
 }
 
 .tempest-grid-lower {
@@ -568,13 +564,13 @@
 }
 
 .tempest-body > .tempest-section:last-of-type::after {
-  right: -34px;
+  right: -44px;
   top: -24px;
   width: 150px;
   height: 165px;
   background-image: var(--tentacle-top-right);
   background-position: right top;
-  transform: rotate(-14deg);
+  transform: rotate(-12deg);
   filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.18));
 }
 
@@ -748,4 +744,207 @@
     background:
       radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.10) 0 2px, transparent 4px),
       radial-gradient(circle at 18% 74%, rgba(170, 228, 245, 0.07) 0 1.5px, transparent 3px),
-      radial-gradient(circle at 62% 58%,
+      radial-gradient(circle at 62% 58%, rgba(220, 245, 255, 0.05) 0 1px, transparent 2.3px),
+      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
+      linear-gradient(180deg, rgba(21, 53, 72, 0.92) 0%, rgba(11, 31, 43, 0.94) 100%) !important;
+  }
+
+  .tempest-body > .tempest-section-intro {
+    background:
+      var(--storm-sigil) no-repeat center 56% / 140px auto,
+      radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.10) 0 2px, transparent 4px),
+      radial-gradient(circle at 18% 74%, rgba(170, 228, 245, 0.07) 0 1.5px, transparent 3px),
+      radial-gradient(circle at 62% 58%, rgba(220, 245, 255, 0.05) 0 1px, transparent 2.3px),
+      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
+      linear-gradient(180deg, rgba(21, 53, 72, 0.92) 0%, rgba(11, 31, 43, 0.94) 100%) !important;
+  }
+
+  .tempest-body > .tempest-section:nth-of-type(3) {
+    background:
+      var(--storm-sigil) no-repeat center 58% / 130px auto,
+      radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.08) 0 2px, transparent 4px),
+      radial-gradient(circle at 18% 74%, rgba(170, 228, 245, 0.06) 0 1.5px, transparent 3px),
+      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
+      linear-gradient(180deg, rgba(17, 39, 54, 0.95) 0%, rgba(9, 20, 28, 0.97) 100%) !important;
+  }
+
+  .tempest-body > .tempest-section:last-of-type {
+    background:
+      radial-gradient(circle at 78% 22%, rgba(220, 245, 255, 0.08) 0 2px, transparent 4px),
+      radial-gradient(circle at 20% 72%, rgba(170, 228, 245, 0.05) 0 1.5px, transparent 3px),
+      radial-gradient(circle at 58% 60%, rgba(220, 245, 255, 0.04) 0 1px, transparent 2px),
+      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
+      linear-gradient(180deg, rgba(18, 39, 54, 0.95) 0%, rgba(11, 25, 35, 0.97) 100%) !important;
+    padding: 16px 14px 18px 14px !important;
+  }
+
+  .tempest-section {
+    padding: 16px 14px 14px 14px !important;
+  }
+
+  .tempest-grid {
+    display: block !important;
+    width: 100%;
+    gap: 0 !important;
+  }
+
+  .tempest-col {
+    display: block !important;
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
+
+  .tempest-col:last-child {
+    margin-bottom: 0;
+  }
+
+  .tempest-grid-lower {
+    margin-top: 8px !important;
+  }
+
+  .tempest-section::before {
+    left: -24px;
+    bottom: -18px;
+    width: 115px;
+    height: 135px;
+  }
+
+  .tempest-section::after {
+    right: -24px;
+    top: -16px;
+    width: 115px;
+    height: 135px;
+  }
+
+  .tempest-section:nth-of-type(even):before {
+    left: -24px;
+    top: -16px;
+    bottom: auto;
+    width: 115px;
+    height: 135px;
+  }
+
+  .tempest-section:nth-of-type(even):after {
+    right: -24px;
+    bottom: -18px;
+    top: auto;
+    width: 115px;
+    height: 135px;
+  }
+
+  .tempest-body > .tempest-section-intro::before {
+    left: -24px;
+    bottom: -18px;
+    top: auto;
+    width: 130px;
+    height: 145px;
+    background-image: var(--tentacle-bottom-left);
+    background-position: left bottom;
+    transform: rotate(-2deg);
+    opacity: 0.44;
+  }
+
+  .tempest-body > .tempest-section-intro::after {
+    right: -22px;
+    top: 6px;
+    bottom: auto;
+    width: 138px;
+    height: 108px;
+    background-image: var(--tentacle-top-right);
+    background-position: right top;
+    transform: rotate(-7deg);
+    opacity: 0.42;
+  }
+
+  .tempest-body > .tempest-section:last-of-type::before {
+    left: -18px;
+    bottom: -14px;
+    width: 95px;
+    height: 110px;
+    opacity: 0.22;
+  }
+
+  .tempest-body > .tempest-section:last-of-type::after {
+    right: -18px;
+    top: -8px;
+    width: 92px;
+    height: 100px;
+    opacity: 0.22;
+  }
+
+  .tempest-anchor-img {
+    right: 8px;
+    bottom: -10px;
+    width: 92px;
+    opacity: 0.28;
+    transform: rotate(16deg);
+  }
+
+  .tempest-section-intro .tempest-grid,
+  .tempest-section-intro .tempest-grid-lower {
+    display: block !important;
+    width: 100%;
+  }
+
+  .tempest-section-intro .tempest-col {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .tempest-section-intro .tempest-row {
+    margin: 0 !important;
+    padding: 9px 12px !important;
+  }
+
+  .tempest-music-wrap {
+    margin: 0 0 22px 0;
+  }
+
+  .tempest-music-stage {
+    width: 300px;
+    height: 54px;
+  }
+
+  .tempest-music-iframe {
+    height: 54px;
+  }
+
+  .tempest-music-undericon {
+    left: 30px; /* Triangle décalé à gauche sur mobile (depuis le centre de la zone de 300px) */
+    width: 60px;
+    height: 60px;
+  }
+
+  .tempest-music-legend {
+    left: calc(50% - 85px); /* Le texte suit le triangle vers la gauche sur mobile */
+    font-size: 20px;
+  }
+}
+
+.tempest-section-final {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.tempest-kraken-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 260px;
+  max-width: 70%;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tempest-section-final > *:not(.tempest-kraken-bg) {
+  position: relative;
+  z-index: 1;
+}
