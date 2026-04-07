@@ -127,7 +127,7 @@
   z-index: 1;
   height: 310px !important;
   overflow: hidden;
-  border-bottom: 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   background:
     linear-gradient(180deg, rgba(5, 10, 16, 0.22) 0%, rgba(5, 10, 16, 0.65) 50%, rgba(5, 10, 16, 1) 90%, rgba(5, 10, 16, 1) 100%),
     var(--tempest-header, url('https://2img.net/image.noelshack.com/fichiers/2018/31/2/1533066300-imgentete2.png'));
@@ -218,49 +218,50 @@
 .tempest-body {
   position: relative !important;
   z-index: 1 !important;
-  padding: 8px 16px 16px 16px !important;
+  padding: 16px !important;
   background:
     linear-gradient(180deg, rgba(2, 8, 12, 0.74) 0%, rgba(3, 10, 15, 0.82) 100%),
     radial-gradient(circle at top, rgba(20, 55, 75, 0.12), transparent 35%),
     var(--storm-scene) center center / cover no-repeat !important;
   isolation: isolate !important;
   overflow: visible !important;
-  margin-top: -1px !important;
 }
 
 /* LECTEUR MUSIQUE */
 .tempest-music-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Assure un alignement vertical parfait */
+  gap: 12px;           /* Espace entre l'icône et le texte */
+  margin: -4px 0 26px 0;
   position: relative;
-  width: 100%;
-  height: 60px;
-  margin: -16px auto -2px auto;
   z-index: 30;
-  overflow: visible;
+}
+
+.tempest-music-wrap br {
+  display: none !important; /* Détruit les balises rajoutées par Forumactif */
 }
 
 .tempest-music-stage {
   position: relative;
-  width: 300px;
+  width: 60px; /* Ne prend que la taille de l'icône */
   height: 60px;
-  margin: 0 auto;
-  overflow: visible;
 }
 
 .tempest-music-iframe {
   position: absolute;
-  inset: 0;
-  width: 300px;
+  top: 0;
+  left: 0;
+  width: 300px; /* Reste grand pour couvrir l'icône ET le texte (le texte devient cliquable) */
   height: 60px;
   opacity: 0.001;
-  z-index: 1;
+  z-index: 10;
   border: 0;
 }
 
 .tempest-music-undericon {
   position: absolute;
-  top: 50%;
-  left: 90px;
-  transform: translate(-50%, -50%);
+  inset: 0;
   width: 60px;
   height: 60px;
   background: url('https://i.postimg.cc/YSWKHbB1/Kplay2.png') center/contain no-repeat;
@@ -270,21 +271,16 @@
 }
 
 .tempest-music-legend {
-  position: absolute;
-  top: 50%;
-  left: calc(50% - 22px);
-  transform: translateY(-50%);
-  color: #f5e7d2;
   font-family: 'Pirata One', Georgia, serif;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: 0.2px;
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 3;
-  text-shadow:
-    0 1px 0 rgba(0, 0, 0, 0.55),
-    0 0 14px rgba(125, 211, 240, 0.10);
+  font-size: 24px;
+  color: #f1dfc1;
+  line-height: 1 !important; /* Le fix ultime contre l'étirement Forumactif */
+  margin: 0 !important;
+  padding: 0 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  transform: translateY(2px); /* Triche visuelle pour la police Pirata One */
+  position: relative;
+  z-index: 1; /* Reste sous l'iframe pour qu'il soit cliquable */
 }
 
 /* BLOCS */
@@ -365,12 +361,12 @@
 }
 
 .tempest-section::after {
-  right: -55px;
+  right: -42px;
   top: -50px;
   width: 185px;
   height: 220px;
   background-image: var(--tentacle-top-right);
-  transform: rotate(-12deg);
+  transform: rotate(-5deg);
 }
 
 .tempest-section:nth-of-type(even)::before {
@@ -426,14 +422,14 @@
 }
 
 .tempest-body > .tempest-section-intro::after {
-  right: -75px;
+  right: -70px;
   top: -38px;
   bottom: auto;
   width: 235px;
   height: 190px;
   background-image: var(--tentacle-top-right);
   background-position: right top;
-  transform: rotate(-12deg);
+  transform: rotate(-7deg);
 }
 
 .tempest-grid-lower {
@@ -734,7 +730,7 @@
   }
 
   .tempest-body {
-    padding: 6px 10px 10px 10px !important;
+    padding: 10px !important;
   }
 
   .tempest-section,
@@ -820,7 +816,7 @@
     height: 135px;
   }
 
-  .tempest-section:nth-of-type(even)::before {
+  .tempest-section:nth-of-type(even):before {
     left: -24px;
     top: -16px;
     bottom: auto;
@@ -828,7 +824,7 @@
     height: 135px;
   }
 
-  .tempest-section:nth-of-type(even)::after {
+  .tempest-section:nth-of-type(even):after {
     right: -24px;
     bottom: -18px;
     top: auto;
@@ -902,37 +898,21 @@
   }
 
   .tempest-music-wrap {
-    height: 88px;
-    margin: -8px auto 28px auto;
+    margin: 0 0 22px 0;
   }
 
-  .tempest-music-stage {
-    width: 300px;
-    height: 54px;
-    margin: 0 auto;
+  .tempest-music-stage,
+  .tempest-music-undericon {
+    width: 50px;
+    height: 50px;
   }
 
   .tempest-music-iframe {
-    width: 300px;
-    height: 54px;
+    height: 50px;
   }
-
-  .tempest-music-undericon {
-    top: 27px;
-    left: 30px;
-    width: 60px;
-    height: 60px;
-  }
-
+  
   .tempest-music-legend {
-    top: 62px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 260px;
-    white-space: normal;
-    text-align: center;
-    font-size: 19px;
-    line-height: 1.05;
+    font-size: 20px;
   }
 }
 
