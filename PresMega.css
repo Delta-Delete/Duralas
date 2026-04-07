@@ -227,41 +227,43 @@
   overflow: visible !important;
 }
 
-/* LECTEUR MUSIQUE */
+/* ---- LECTEUR MUSIQUE & TEXTE ---- */
 .tempest-music-wrap {
   display: flex;
   justify-content: center;
-  align-items: center; /* Assure un alignement vertical parfait */
-  gap: 12px;           /* Espace entre l'icône et le texte */
+  align-items: center;
   margin: -4px 0 26px 0;
   position: relative;
   z-index: 30;
 }
 
 .tempest-music-wrap br {
-  display: none !important; /* Détruit les balises rajoutées par Forumactif */
+  display: none !important; /* Détruit les balises invisibles de Forumactif */
 }
 
+/* La zone invisible de 300px originale */
 .tempest-music-stage {
   position: relative;
-  width: 60px; /* Ne prend que la taille de l'icône */
+  width: 300px;
   height: 60px;
 }
 
 .tempest-music-iframe {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 300px; /* Reste grand pour couvrir l'icône ET le texte (le texte devient cliquable) */
+  inset: 0;
+  width: 300px;
   height: 60px;
   opacity: 0.001;
   z-index: 10;
   border: 0;
 }
 
+/* L'icône exactement à sa position d'origine */
 .tempest-music-undericon {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 90px;
+  transform: translate(-50%, -50%);
   width: 60px;
   height: 60px;
   background: url('https://i.postimg.cc/YSWKHbB1/Kplay2.png') center/contain no-repeat;
@@ -270,17 +272,23 @@
   display: block !important;
 }
 
+/* Le texte "épinglé" de force à droite de l'icône */
 .tempest-music-legend {
+  position: absolute;
+  top: 50%;
+  /* 50% (centre) - 20px = Pile poil à droite du triangle */
+  left: calc(50% - 20px); 
+  transform: translateY(calc(-50% + 2px)); /* Centre + ajuste la police */
   font-family: 'Pirata One', Georgia, serif;
   font-size: 24px;
   color: #f1dfc1;
-  line-height: 1 !important; /* Le fix ultime contre l'étirement Forumactif */
+  line-height: 1 !important; /* Fix anti-Forumactif */
   margin: 0 !important;
   padding: 0 !important;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-  transform: translateY(2px); /* Triche visuelle pour la police Pirata One */
-  position: relative;
-  z-index: 1; /* Reste sous l'iframe pour qu'il soit cliquable */
+  z-index: 1; 
+  pointer-events: none; 
+  white-space: nowrap;
 }
 
 /* BLOCS */
@@ -740,201 +748,4 @@
     background:
       radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.10) 0 2px, transparent 4px),
       radial-gradient(circle at 18% 74%, rgba(170, 228, 245, 0.07) 0 1.5px, transparent 3px),
-      radial-gradient(circle at 62% 58%, rgba(220, 245, 255, 0.05) 0 1px, transparent 2.3px),
-      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
-      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
-      linear-gradient(180deg, rgba(21, 53, 72, 0.92) 0%, rgba(11, 31, 43, 0.94) 100%) !important;
-  }
-
-  .tempest-body > .tempest-section-intro {
-    background:
-      var(--storm-sigil) no-repeat center 56% / 140px auto,
-      radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.10) 0 2px, transparent 4px),
-      radial-gradient(circle at 18% 74%, rgba(170, 228, 245, 0.07) 0 1.5px, transparent 3px),
-      radial-gradient(circle at 62% 58%, rgba(220, 245, 255, 0.05) 0 1px, transparent 2.3px),
-      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
-      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
-      linear-gradient(180deg, rgba(21, 53, 72, 0.92) 0%, rgba(11, 31, 43, 0.94) 100%) !important;
-  }
-
-  .tempest-body > .tempest-section:nth-of-type(3) {
-    background:
-      var(--storm-sigil) no-repeat center 58% / 130px auto,
-      radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.08) 0 2px, transparent 4px),
-      radial-gradient(circle at 18% 74%, rgba(170, 228, 245, 0.06) 0 1.5px, transparent 3px),
-      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
-      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
-      linear-gradient(180deg, rgba(17, 39, 54, 0.95) 0%, rgba(9, 20, 28, 0.97) 100%) !important;
-  }
-
-  .tempest-body > .tempest-section:last-of-type {
-    background:
-      radial-gradient(circle at 78% 22%, rgba(220, 245, 255, 0.08) 0 2px, transparent 4px),
-      radial-gradient(circle at 20% 72%, rgba(170, 228, 245, 0.05) 0 1.5px, transparent 3px),
-      radial-gradient(circle at 58% 60%, rgba(220, 245, 255, 0.04) 0 1px, transparent 2px),
-      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
-      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
-      linear-gradient(180deg, rgba(18, 39, 54, 0.95) 0%, rgba(11, 25, 35, 0.97) 100%) !important;
-    padding: 16px 14px 18px 14px !important;
-  }
-
-  .tempest-section {
-    padding: 16px 14px 14px 14px !important;
-  }
-
-  .tempest-grid {
-    display: block !important;
-    width: 100%;
-    gap: 0 !important;
-  }
-
-  .tempest-col {
-    display: block !important;
-    width: 100%;
-    margin: 0 0 10px 0;
-  }
-
-  .tempest-col:last-child {
-    margin-bottom: 0;
-  }
-
-  .tempest-grid-lower {
-    margin-top: 8px !important;
-  }
-
-  .tempest-section::before {
-    left: -24px;
-    bottom: -18px;
-    width: 115px;
-    height: 135px;
-  }
-
-  .tempest-section::after {
-    right: -24px;
-    top: -16px;
-    width: 115px;
-    height: 135px;
-  }
-
-  .tempest-section:nth-of-type(even):before {
-    left: -24px;
-    top: -16px;
-    bottom: auto;
-    width: 115px;
-    height: 135px;
-  }
-
-  .tempest-section:nth-of-type(even):after {
-    right: -24px;
-    bottom: -18px;
-    top: auto;
-    width: 115px;
-    height: 135px;
-  }
-
-  .tempest-body > .tempest-section-intro::before {
-    left: -24px;
-    bottom: -18px;
-    top: auto;
-    width: 130px;
-    height: 145px;
-    background-image: var(--tentacle-bottom-left);
-    background-position: left bottom;
-    transform: rotate(-2deg);
-    opacity: 0.44;
-  }
-
-  .tempest-body > .tempest-section-intro::after {
-    right: -22px;
-    top: 6px;
-    bottom: auto;
-    width: 138px;
-    height: 108px;
-    background-image: var(--tentacle-top-right);
-    background-position: right top;
-    transform: rotate(-7deg);
-    opacity: 0.42;
-  }
-
-  .tempest-body > .tempest-section:last-of-type::before {
-    left: -18px;
-    bottom: -14px;
-    width: 95px;
-    height: 110px;
-    opacity: 0.22;
-  }
-
-  .tempest-body > .tempest-section:last-of-type::after {
-    right: -18px;
-    top: -8px;
-    width: 92px;
-    height: 100px;
-    opacity: 0.22;
-  }
-
-  .tempest-anchor-img {
-    right: 8px;
-    bottom: -10px;
-    width: 92px;
-    opacity: 0.28;
-    transform: rotate(16deg);
-  }
-
-  .tempest-section-intro .tempest-grid,
-  .tempest-section-intro .tempest-grid-lower {
-    display: block !important;
-    width: 100%;
-  }
-
-  .tempest-section-intro .tempest-col {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 8px !important;
-  }
-
-  .tempest-section-intro .tempest-row {
-    margin: 0 !important;
-    padding: 9px 12px !important;
-  }
-
-  .tempest-music-wrap {
-    margin: 0 0 22px 0;
-  }
-
-  .tempest-music-stage,
-  .tempest-music-undericon {
-    width: 50px;
-    height: 50px;
-  }
-
-  .tempest-music-iframe {
-    height: 50px;
-  }
-  
-  .tempest-music-legend {
-    font-size: 20px;
-  }
-}
-
-.tempest-section-final {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.tempest-kraken-bg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 260px;
-  max-width: 70%;
-  opacity: 0.12;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.tempest-section-final > *:not(.tempest-kraken-bg) {
-  position: relative;
-  z-index: 1;
-}
+      radial-gradient(circle at 62% 58%,
