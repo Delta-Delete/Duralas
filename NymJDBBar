@@ -1,0 +1,307 @@
+/* =========================================================
+   NYM HÉMOLIGNES
+   Composant HTML/CSS only
+   Les couleurs viennent du forum via les classes raciales
+   ex : <strong class="abyssal">...</strong>
+========================================================= */
+
+.Nym-panel,
+.Nym-panel * {
+  box-sizing: border-box;
+}
+
+.Nym-panel {
+  width: min(840px, 100%);
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #4b1118;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at top, rgba(120, 0, 20, 0.22), transparent 46%),
+    linear-gradient(180deg, #22050a, #120204);
+  box-shadow:
+    0 0 30px rgba(80, 0, 10, 0.35),
+    inset 0 0 35px rgba(255, 0, 40, 0.04);
+  color: #f5d8dd;
+  font-family: Georgia, "Times New Roman", serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.Nym-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(255,255,255,0.05), transparent 18%),
+    linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+  mix-blend-mode: screen;
+  opacity: 0.7;
+}
+
+.Nym-title {
+  margin: 0 0 8px;
+  font-size: 24px;
+  line-height: 1.1;
+  color: #ffd9df;
+  text-shadow: 0 0 10px rgba(120, 0, 25, 0.3);
+}
+
+.Nym-subtitle {
+  margin: 0 0 20px;
+  color: #b98b94;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.Nym-list {
+  display: grid;
+  gap: 16px;
+}
+
+.Nym-entry {
+  position: relative;
+  padding: 16px;
+  border: 1px solid #4f1119;
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
+    linear-gradient(180deg, rgba(70, 7, 15, 0.95), rgba(24, 3, 7, 0.96));
+  box-shadow:
+    inset 0 0 25px rgba(255, 0, 51, 0.03),
+    0 0 18px rgba(0,0,0,0.18);
+  overflow: hidden;
+}
+
+.Nym-entry::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  right: 26px;
+  width: 12px;
+  height: 28px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.3), rgba(90,0,15,0.85));
+  opacity: 0.35;
+}
+
+.Nym-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.Nym-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffe4e8;
+}
+
+.Nym-name strong,
+.Nym-percent,
+.Nym-subraceName,
+.Nym-subraceValue,
+.Nym-tag,
+.Nym-fill,
+.Nym-miniFill {
+  text-decoration: none !important;
+}
+
+.Nym-percent {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  text-shadow: 0 0 10px color-mix(in srgb, currentColor 35%, transparent);
+}
+
+.Nym-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.Nym-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, currentColor 45%, #30070d 55%);
+  background: color-mix(in srgb, currentColor 10%, #1a0408 90%);
+  color: #f9dfe4 !important;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.Nym-bar {
+  position: relative;
+  height: 18px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #2a0910, #1b0509);
+  border: 1px solid #54131b;
+  overflow: hidden;
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,0.45),
+    inset 0 -1px 3px rgba(255,255,255,0.03);
+}
+
+.Nym-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  position: relative;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, currentColor 70%, white 30%),
+      currentColor 45%,
+      color-mix(in srgb, currentColor 70%, black 30%)
+    );
+  box-shadow:
+    0 0 12px color-mix(in srgb, currentColor 40%, transparent),
+    inset 0 0 10px rgba(255,255,255,0.14);
+}
+
+.Nym-fill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255,255,255,0.05) 35%,
+      rgba(255,255,255,0.18) 50%,
+      rgba(255,255,255,0.05) 65%,
+      transparent 100%
+    );
+  animation: Nym-flow 3.2s linear infinite;
+}
+
+.Nym-fill::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -2px;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: color-mix(in srgb, currentColor 80%, white 20%);
+  box-shadow: 0 0 10px color-mix(in srgb, currentColor 50%, transparent);
+}
+
+.Nym-note {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #b98b94;
+  line-height: 1.45;
+}
+
+.Nym-subraces {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.Nym-subraceTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: #f2cfd6;
+}
+
+.Nym-mini {
+  position: relative;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #1a0509, #110307);
+  border: 1px solid #411018;
+}
+
+.Nym-miniFill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, currentColor 45%, white 20%),
+      color-mix(in srgb, currentColor 82%, black 18%)
+    );
+  box-shadow: 0 0 8px color-mix(in srgb, currentColor 40%, transparent);
+}
+
+.Nym-divider {
+  height: 1px;
+  margin: 4px 0 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  border: 0;
+}
+
+@keyframes Nym-flow {
+  from {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(120%);
+  }
+}
+
+/* =========================================================
+   PETITS AJUSTEMENTS POUR LES BALISES STRONG RACIALES
+========================================================= */
+
+.Nym-panel strong.abyssal,
+.Nym-panel strong.djollfulin,
+.Nym-panel strong.elfe,
+.Nym-panel strong.entomomorphe,
+.Nym-panel strong.geant,
+.Nym-panel strong.humain,
+.Nym-panel strong.hybride,
+.Nym-panel strong.naga,
+.Nym-panel strong.nain,
+.Nym-panel strong.peau-verte,
+.Nym-panel strong.stryge-blanc,
+.Nym-panel strong.stryge-noir,
+.Nym-panel strong.therianthrope,
+.Nym-panel strong.vampire {
+  font-weight: inherit;
+}
+
+/* =========================================================
+   OPTIONNEL : version compacte
+   Ajoute la classe Nym-panelCompact sur le conteneur
+========================================================= */
+
+.Nym-panelCompact {
+  padding: 16px;
+}
+
+.Nym-panelCompact .Nym-entry {
+  padding: 13px;
+}
+
+.Nym-panelCompact .Nym-title {
+  font-size: 21px;
+}
+
+.Nym-panelCompact .Nym-name {
+  font-size: 16px;
+}
+
+.Nym-panelCompact .Nym-bar {
+  height: 14px;
+}
+
+.Nym-panelCompact .Nym-mini {
+  height: 8px;
+}
