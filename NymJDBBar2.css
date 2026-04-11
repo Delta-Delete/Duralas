@@ -1,3 +1,6 @@
+/* --- CSS POUR FORUMACTIF --- */
+/* À copier dans votre message entre des balises <style> ou dans votre fichier CSS */
+
 .fa-blood-board {
   background-image: url('https://i.pinimg.com/736x/a2/6b/39/a26b39f84376b6e4329b9dc1644382ca.jpg');
   background-size: cover;
@@ -5,9 +8,9 @@
   width: 100%;
   max-width: 450px;
   margin: 0 auto;
-  border: 3px solid #2a0000;
+  border: 3px solid #2a0000 !important;
   border-radius: 6px;
-  box-shadow: 0 0 20px rgba(150, 0, 0, 0.4), inset 0 0 30px rgba(0,0,0,0.9);
+  box-shadow: 0 0 20px rgba(150, 0, 0, 0.4), inset 0 0 30px rgba(0,0,0,0.9) !important;
   font-family: 'Georgia', 'Times New Roman', serif;
   color: #d4b8b8;
   position: relative;
@@ -15,7 +18,7 @@
 }
 
 .fa-blood-overlay {
-  background: linear-gradient(to bottom, rgba(15, 2, 2, 0.85), rgba(5, 0, 0, 0.95));
+  background: linear-gradient(to bottom, rgba(15, 2, 2, 0.85), rgba(5, 0, 0, 0.95)) !important;
   padding: 25px 20px;
   width: 100%;
   box-sizing: border-box;
@@ -26,24 +29,39 @@
   font-size: 22px;
   text-transform: uppercase;
   letter-spacing: 3px;
-  color: #9e0000;
-  border-bottom: 1px solid #4a0000;
+  color: #9e0000 !important;
+  border-bottom: 1px solid #4a0000 !important;
   padding-bottom: 15px;
   margin-bottom: 25px;
-  text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.6) !important;
   font-weight: bold;
 }
 
 .fa-race-card {
-  background-color: rgba(20, 0, 0, 0.6);
-  border: 1px solid #3a0000;
-  border-left: 4px solid #7a0000;
+  background-color: #110000 !important;
+  border: 1px solid #3a0000 !important;
+  border-left: 4px solid #7a0000 !important;
   margin-bottom: 15px;
   padding: 12px;
-  box-shadow: inset 0 0 15px rgba(0,0,0,0.9);
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.9) !important;
   position: relative;
-  background-size: cover;
-  background-position: center;
+  background-size: cover !important;
+  background-position: center !important;
+  overflow: hidden;
+}
+
+/* Assombrit l'image de fond sans utiliser de gradient inline (souvent bloqué par Forumactif) */
+.fa-race-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(10, 0, 0, 0.8) !important;
+  z-index: 1;
+}
+
+.fa-race-header, .fa-bar-track, .fa-subraces-container {
+  position: relative;
+  z-index: 2;
 }
 
 .fa-race-header {
@@ -62,18 +80,20 @@
 
 .fa-race-pct {
   font-size: 14px;
-  color: #888;
+  color: #d4b8b8 !important;
   font-family: monospace;
+  font-weight: bold;
 }
 
 .fa-bar-track {
   width: 100%;
-  height: 10px;
-  background: #0a0000;
-  border: 1px solid #2a0000;
+  height: 10px !important;
+  background: #0a0000 !important;
+  border: 1px solid #2a0000 !important;
   border-radius: 2px;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.9);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.9) !important;
   overflow: hidden;
+  display: block !important;
 }
 
 @keyframes fa-bloodFlow {
@@ -82,26 +102,29 @@
 }
 
 .fa-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #4a0000 0%, #c20000 25%, #ff1a1a 50%, #c20000 75%, #4a0000 100%);
-  background-size: 200% 100%;
-  animation: fa-bloodFlow 2.5s infinite linear;
-  box-shadow: 0 0 8px rgba(200, 0, 0, 0.8);
+  display: block !important;
+  height: 10px !important;
+  min-height: 10px !important;
+  background-color: #c20000 !important; /* Fallback si le gradient bug */
+  background-image: linear-gradient(90deg, #4a0000 0%, #c20000 25%, #ff1a1a 50%, #c20000 75%, #4a0000 100%) !important;
+  background-size: 200% 100% !important;
+  animation: fa-bloodFlow 2.5s infinite linear !important;
+  box-shadow: 0 0 8px rgba(200, 0, 0, 0.8) !important;
   transition: width 1s ease-in-out;
 }
 
 .fa-subraces-container {
   margin-top: 10px;
   padding-left: 15px;
-  border-left: 1px dotted #5a0000;
+  border-left: 1px dotted #5a0000 !important;
   margin-left: 5px;
 }
 
 .fa-subrace-card {
   margin-bottom: 8px;
   padding: 5px 8px;
-  background: rgba(10, 0, 0, 0.5);
-  border-left: 2px solid #5a0000;
+  background: rgba(10, 0, 0, 0.5) !important;
+  border-left: 2px solid #5a0000 !important;
 }
 
 .fa-subrace-card:last-child {
@@ -117,24 +140,27 @@
 
 .fa-subrace-name {
   font-size: 13px;
-  color: #b39b9b;
+  color: #b39b9b !important;
 }
 
 .fa-subrace-pct {
   font-size: 11px;
-  color: #666;
+  color: #999 !important;
   font-family: monospace;
 }
 
 .fa-subrace-card .fa-bar-track {
-  height: 5px;
+  height: 6px !important;
 }
 
 .fa-subrace-card .fa-bar-fill {
-  background: linear-gradient(90deg, #2a0000 0%, #8a0000 25%, #d90000 50%, #8a0000 75%, #2a0000 100%);
-  background-size: 200% 100%;
-  animation: fa-bloodFlow 3s infinite linear;
-  box-shadow: 0 0 5px rgba(150, 0, 0, 0.5);
+  height: 6px !important;
+  min-height: 6px !important;
+  background-color: #8a0000 !important;
+  background-image: linear-gradient(90deg, #2a0000 0%, #8a0000 25%, #d90000 50%, #8a0000 75%, #2a0000 100%) !important;
+  background-size: 200% 100% !important;
+  animation: fa-bloodFlow 3s infinite linear !important;
+  box-shadow: 0 0 5px rgba(150, 0, 0, 0.5) !important;
 }
 
 /* --- Couleurs de test pour l'aperçu (à ignorer si déjà définies sur le forum) --- */
@@ -152,4 +178,3 @@
 .stryges-noirs { color: #555555; }
 .therianthropes { color: #a84545; }
 .vampires { color: #d90000; }
-
