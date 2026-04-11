@@ -1,113 +1,158 @@
-/* =======================================================
-   TABLEAU DES RACES - THEME VAMPIRE / SANG / FOLIE
-======================================================== */
+/* --- CSS POUR FORUMACTIF --- */
+/* À copier dans : Panneau d'administration > Affichage > Couleurs > Feuille de style CSS */
 
-/* Conteneur principal avec ton image de fond */
-.vamp-stats-wrapper {
-    background-image: url('https://i.pinimg.com/736x/a2/6b/39/a26b39f84376b6e4329b9dc1644382ca.jpg');
-    background-size: cover;
-    background-position: center;
-    padding: 30px 15px;
-    display: flex;
-    justify-content: center;
-    font-family: 'Georgia', 'Times New Roman', serif;
+.fa-blood-board {
+  background-image: url('https://i.pinimg.com/736x/a2/6b/39/a26b39f84376b6e4329b9dc1644382ca.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  border: 3px solid #2a0000;
+  border-radius: 6px;
+  box-shadow: 0 0 20px rgba(150, 0, 0, 0.4), inset 0 0 30px rgba(0,0,0,0.9);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: #d4b8b8;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Le cadre du tableau */
-.vamp-stats-board {
-    background: rgba(10, 2, 2, 0.85); /* Fond très sombre et légèrement rouge */
-    border: 2px solid #5a0000;
-    box-shadow: 0 0 20px rgba(0,0,0,0.9), inset 0 0 30px rgba(40, 0, 0, 0.8);
-    width: 100%;
-    max-width: 450px; /* Taille petite et compacte */
-    padding: 15px;
-    border-radius: 8px;
+.fa-blood-overlay {
+  background: linear-gradient(to bottom, rgba(15, 2, 2, 0.85), rgba(5, 0, 0, 0.95));
+  padding: 25px 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* --- RACE PRINCIPALE --- */
-.vamp-race-slot {
-    margin-bottom: 12px;
-    border: 1px solid #3a0000;
-    border-radius: 5px;
-    background-color: #111;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.7);
+.fa-blood-title {
+  text-align: center;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #9e0000;
+  border-bottom: 1px solid #4a0000;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+  font-weight: bold;
 }
 
-/* Couche assombrie pour lire le texte sur l'image de fond de la race */
-.vamp-race-inner {
-    background: linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.95) 100%);
-    padding: 10px 12px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.fa-race-card {
+  background-color: rgba(20, 0, 0, 0.6);
+  border: 1px solid #3a0000;
+  border-left: 4px solid #7a0000;
+  margin-bottom: 15px;
+  padding: 12px;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.9);
+  position: relative;
+  background-size: cover;
+  background-position: center;
 }
 
-/* Nom de la race */
-.vamp-race-name {
-    width: 110px; /* Fixe pour aligner les barres */
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-shadow: 1px 1px 3px #000;
-    flex-shrink: 0;
+.fa-race-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 8px;
 }
 
-/* --- SOUS-RACES --- */
-.vamp-sub-slot {
-    background: rgba(5, 0, 0, 0.95);
-    padding: 6px 12px 6px 35px; /* Décalé vers la droite */
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-top: 1px dashed #4a0000;
+.fa-race-name {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
 }
 
-.vamp-sub-slot .vamp-race-name {
-    width: 85px;
-    font-size: 11px; /* Plus petit */
-    text-transform: none;
-    font-style: italic;
-    color: #ccc;
+.fa-race-pct {
+  font-size: 14px;
+  color: #888;
+  font-family: monospace;
 }
 
-/* --- BARRES DE PROGRESSION --- */
-.vamp-bar-bg {
-    flex-grow: 1;
-    background: #1a0505;
-    border: 1px solid #000;
-    border-radius: 8px;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.9);
-    overflow: hidden;
+.fa-bar-track {
+  width: 100%;
+  height: 10px;
+  background: #0a0000;
+  border: 1px solid #2a0000;
+  border-radius: 2px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.9);
+  overflow: hidden;
 }
 
-/* Hauteur pour race principale */
-.vamp-race-inner .vamp-bar-bg { height: 12px; }
-
-/* Hauteur pour sous-race (plus fine) */
-.vamp-sub-slot .vamp-bar-bg { height: 6px; }
-
-/* Remplissage de la barre (Effet Sang) */
-.vamp-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #400000, #990000, #ff1a1a);
-    box-shadow: 0 0 8px #cc0000;
-    border-radius: 8px 0 0 8px;
-    transition: width 0.5s ease;
+@keyframes fa-bloodFlow {
+  0% { background-position: 200% 0; }
+  100% { background-position: 0% 0; }
 }
 
-/* Pourcentage */
-.vamp-percent {
-    font-size: 12px;
-    font-weight: bold;
-    color: #b3b3b3;
-    width: 35px;
-    text-align: right;
-    flex-shrink: 0;
-    text-shadow: 1px 1px 2px #000;
+.fa-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4a0000 0%, #c20000 25%, #ff1a1a 50%, #c20000 75%, #4a0000 100%);
+  background-size: 200% 100%;
+  animation: fa-bloodFlow 2.5s infinite linear;
+  box-shadow: 0 0 8px rgba(200, 0, 0, 0.8);
+  transition: width 1s ease-in-out;
 }
-.vamp-sub-slot .vamp-percent {
-    font-size: 10px;
+
+.fa-subraces-container {
+  margin-top: 10px;
+  padding-left: 15px;
+  border-left: 1px dotted #5a0000;
+  margin-left: 5px;
 }
+
+.fa-subrace-card {
+  margin-bottom: 8px;
+  padding: 5px 8px;
+  background: rgba(10, 0, 0, 0.5);
+  border-left: 2px solid #5a0000;
+}
+
+.fa-subrace-card:last-child {
+  margin-bottom: 0;
+}
+
+.fa-subrace-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 5px;
+}
+
+.fa-subrace-name {
+  font-size: 13px;
+  color: #b39b9b;
+}
+
+.fa-subrace-pct {
+  font-size: 11px;
+  color: #666;
+  font-family: monospace;
+}
+
+.fa-subrace-card .fa-bar-track {
+  height: 5px;
+}
+
+.fa-subrace-card .fa-bar-fill {
+  background: linear-gradient(90deg, #2a0000 0%, #8a0000 25%, #d90000 50%, #8a0000 75%, #2a0000 100%);
+  background-size: 200% 100%;
+  animation: fa-bloodFlow 3s infinite linear;
+  box-shadow: 0 0 5px rgba(150, 0, 0, 0.5);
+}
+
+/* --- Couleurs de test pour l'aperçu (à ignorer si déjà définies sur le forum) --- */
+.abyssaux { color: #4a7c8c; }
+.djollfulins { color: #c49a52; }
+.elfes { color: #5c9e64; }
+.entomothropes { color: #9eab48; }
+.geants { color: #a86445; }
+.humains { color: #cccccc; }
+.hybrides { color: #9a52a8; }
+.nagas { color: #45a896; }
+.nains { color: #a87645; }
+.peaux-vertes { color: #64a845; }
+.stryges-blancs { color: #f0f0f0; }
+.stryges-noirs { color: #555555; }
+.therianthropes { color: #a84545; }
+.vampires { color: #d90000; }
+
