@@ -1,0 +1,174 @@
+
+/* --- NOUVEAU: CSS POUR LE SLIDER HISTOIRE (THÈME TEMPÊTE OR & BLEU) --- */
+/* Ajoute ça tout en bas de ton code CSS actuel */
+
+.tempest-slider-container {
+  position: relative;
+  width: 100%;
+  padding: 10px 0 15px 0 !important;
+}
+
+.th-slider-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.tempest-radio {
+  display: none !important;
+}
+
+.tempest-slides {
+  display: flex !important;
+  width: 300%; /* 100% * nb de slides (ici 3) */
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.tempest-slide {
+  width: 33.333%; /* 100% / nb de slides */
+  padding: 0 !important; /* Le texte prend toute la largeur de la box */
+  box-sizing: border-box;
+}
+
+/* Animations de translation (On cible activement le bon x%) */
+#th-slide1:checked ~ .th-slider-viewport .tempest-slides { transform: translateX(0%); }
+#th-slide2:checked ~ .th-slider-viewport .tempest-slides { transform: translateX(-33.333%); }
+#th-slide3:checked ~ .th-slider-viewport .tempest-slides { transform: translateX(-66.666%); }
+
+/* Conteneur des flèches */
+.tempest-arrows {
+  position: absolute;
+  top: 0; /* Placé le plus haut possible */
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 10;
+  height: 0;
+}
+
+/* Wrapper de la flèche (cliquable et contenant le texte) */
+.th-arrow {
+  position: absolute;
+  top: 15px; /* Aligné avec le milieu du titre environ */
+  margin-top: -16px; /* Centrage du diamant de 32px */
+  cursor: pointer;
+  pointer-events: auto;
+  display: none !important; /* hidden by default */
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+  width: 32px; /* Set directly to diamond width */
+}
+
+/* Style du Diamant */
+.th-diamond {
+  width: 32px;
+  height: 32px;
+  transform: rotate(45deg);
+  background: linear-gradient(135deg, rgba(21, 53, 72, 0.95), rgba(11, 31, 43, 0.95));
+  border: 1px solid rgba(194, 154, 95, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.th-arrow:hover .th-diamond {
+  background: linear-gradient(135deg, rgba(11, 31, 43, 0.95), rgba(21, 53, 72, 0.95));
+  border-color: rgba(194, 154, 95, 0.85);
+  box-shadow: 0 0 12px rgba(194, 154, 95, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Le chevron à l'intérieur */
+.th-arrow-in {
+  display: block;
+  transform: rotate(-45deg);
+  color: #c29a5f;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  transition: color 0.3s;
+}
+
+.th-arrow:hover .th-arrow-in {
+  color: #f5e7d2;
+}
+
+/* Texte à côté de la flèche */
+.th-arrow-text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #c29a5f;
+  font-family: 'Pirata One', Georgia, serif;
+  font-size: 16px;
+  opacity: 0.85;
+  transition: opacity 0.3s ease, color 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.th-prev .th-arrow-text {
+  left: 45px;
+  text-align: left;
+}
+
+.th-next .th-arrow-text {
+  right: 45px;
+  text-align: right;
+}
+
+.th-arrow:hover .th-arrow-text {
+  opacity: 1;
+  color: #f1dfc1;
+}
+
+/* Positionnement pour être bien au bord SANS être coupé */
+.th-prev { left: 5px; }
+.th-next { right: 5px; }
+
+/* Affichage des flèches selon la slide active (Système sans-boucle) */
+#th-slide1:checked ~ .tempest-arrows .s1 { display: flex !important; }
+#th-slide2:checked ~ .tempest-arrows .s2 { display: flex !important; }
+#th-slide3:checked ~ .tempest-arrows .s3 { display: flex !important; }
+
+/* Indicateurs / Puces de progression en bas */
+.th-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+.th-dot {
+  width: 6px;
+  height: 6px;
+  background: rgba(125, 211, 240, 0.15);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.th-dot:hover {
+  background: rgba(125, 211, 240, 0.4);
+}
+#th-slide1:checked ~ .th-indicators .d1,
+#th-slide2:checked ~ .th-indicators .d2,
+#th-slide3:checked ~ .th-indicators .d3 {
+  background: #c29a5f;
+  transform: scale(1.4);
+  box-shadow: 0 0 8px rgba(194, 154, 95, 0.4);
+}
+
+@media (max-width: 700px) {
+  .tempest-slide { padding: 0 !important; }
+  .th-arrow { width: 26px; top: 12px; margin-top: -13px; }
+  .th-diamond { width: 26px; height: 26px; }
+  .th-arrow-text { font-size: 14px; top: 50%; }
+  .th-prev .th-arrow-text { left: 36px; }
+  .th-next .th-arrow-text { right: 36px; }
+  .th-arrow-in { font-size: 11px; }
+  .th-prev { left: 5px; }
+  .th-next { right: 5px; }
+}
