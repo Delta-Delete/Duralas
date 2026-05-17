@@ -1,4 +1,227 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Metamorphous&family=Pirata+One&display=swap');
+
+.tempest-sheet * {
+  box-sizing: border-box;
+}
+
+.tempest-sheet {
+  --storm-bg: #02070b;
+  --storm-bg-2: #061019;
+  --storm-gold: #c29a5f;
+  --storm-blue: #7dd3f0;
+  --storm-text: #eadfcd;
+  --storm-mist: #9eabb3;
+
+  --tentacle-bottom-left: url("https://i.postimg.cc/XvcZ388w/left_bottom_tentacle_soft.png");
+  --tentacle-bottom-right: url("https://i.postimg.cc/HL4JH228/right_bottom_tentacle_soft.png");
+  --tentacle-top-right: url("https://i.postimg.cc/FKgfmZZH/right_top_tentacle_soft.png");
+  --tentacle-top-left: url("https://i.postimg.cc/BvG8dy2R/left_top_tentacle_soft.png");
+
+  --storm-scene: url("https://i.postimg.cc/y6GsWbLD/7680x4320-391779-underwater-fantasy-scenery-digital-art-4k-pc-wallpaper.jpg");
+  --storm-sigil: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%23dff7ff' stroke-opacity='.34' stroke-width='2.6'%3E%3Ccircle cx='110' cy='110' r='66'/%3E%3Ccircle cx='110' cy='110' r='38'/%3E%3Cpath d='M110 24 L110 62 M110 158 L110 196 M24 110 L62 110 M158 110 L196 110'/%3E%3Cpath d='M110 72 C126 72 138 83 138 98 C138 111 29 120 114 123 C100 126 92 133 92 145 C92 158 103 168 118 168'/%3E%3Cpath d='M82 54 L96 68 M138 152 L152 166 M166 82 L152 96 M68 138 L54 152'/%3E%3C/g%3E%3C/svg%3E");
+
+  width: 760px;
+  max-width: 100%;
+  margin: 8px auto;
+  padding: 0;
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(2, 7, 11, 0.92) 0%, rgba(6, 16, 25, 0.94) 100%),
+    var(--storm-scene) center center / cover no-repeat !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  overflow: hidden;
+  color: var(--storm-text);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.45;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 16px 42px rgba(0, 0, 0, 0.42) !important;
+}
+
+.tempest-sheet::before,
+.tempest-sheet::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.10;
+}
+
+.tempest-sheet::before {
+  left: -34px;
+  top: 260px;
+  width: 170px;
+  height: 330px;
+  background: var(--tentacle-top-left) no-repeat center / contain;
+  transform: rotate(-6deg);
+}
+
+.tempest-sheet::after {
+  right: -36px;
+  bottom: 110px;
+  width: 180px;
+  height: 340px;
+  background: var(--tentacle-bottom-right) no-repeat center / contain;
+  transform: rotate(8deg);
+}
+
+.tempest-header {
+  position: relative;
+  z-index: 1;
+  height: 310px !important;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(5, 10, 16, 0.22) 0%, rgba(5, 10, 16, 0.65) 50%, rgba(5, 10, 16, 1) 90%, rgba(5, 10, 16, 1) 100%),
+    var(--tempest-header, url('https://i.postimg.cc/Y2XY0YG2/vitrail.png'));
+  background-size: cover;
+  background-position: center 24% !important;
+  background-repeat: no-repeat;
+}
+
+.tempest-header-inner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 26px !important;
+  z-index: 2;
+  padding: 0 28px !important;
+  text-align: center;
+}
+
+.tempest-kicker {
+  display: inline-block;
+  margin: 0 0 18px 0;
+  padding: 5px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(7, 16, 24, 0.48);
+  color: #dcc29a;
+  font-size: 10px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  font-family: 'Metamorphous', Georgia, serif;
+}
+
+.tempest-main-title {
+  display: block !important;
+  color: #f5e7d2 !important;
+  font-size: 64px !important;
+  line-height: 0.95 !important;
+  font-family: 'Pirata One', Georgia, serif !important;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55), 0 0 14px rgba(125, 211, 240, 0.10) !important;
+}
+
+.tempest-subtitle {
+  margin: 20px auto 0 auto !important;
+  max-width: 620px;
+  color: #dde3e6 !important;
+  font-size: 15px !important;
+  font-style: italic;
+}
+
+.tempest-body {
+  position: relative !important;
+  z-index: 1 !important;
+  padding: 16px !important;
+  background:
+    linear-gradient(180deg, rgba(2, 8, 12, 0.74) 0%, rgba(3, 10, 15, 0.82) 100%),
+    radial-gradient(circle at top, rgba(20, 55, 75, 0.12), transparent 35%),
+    var(--storm-scene) center center / cover no-repeat !important;
+}
+
+.tempest-section {
+  display: block !important;
+  position: relative !important;
+  z-index: 1 !important;
+  margin: 0 0 44px 0 !important;
+  padding: 20px !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(125, 211, 240, 0.12) !important;
+  background: linear-gradient(180deg, rgba(21, 53, 72, 0.90) 0%, rgba(11, 31, 43, 0.92) 100%) !important;
+  box-shadow: inset 3px 0 0 rgba(194, 154, 95, 0.85), inset 0 0 0 1px rgba(255, 255, 255, 0.025), inset 0 0 80px rgba(0, 0, 0, 0.12), 0 10px 24px rgba(0, 0, 0, 0.22) !important;
+}
+
+body .tempest-sheet div.tempest-section-title,
+.tempest-sheet .tempest-section-title {
+  display: block !important;
+  text-align: center !important;
+  font-size: 28px !important;
+  font-family: 'Pirata One', Georgia, serif !important;
+  color: #c29a5f !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8) !important;
+  letter-spacing: 0.5px !important;
+}
+
+body .tempest-sheet div.tempest-section-title *,
+.tempest-sheet .tempest-section-title * {
+  font-family: 'Pirata One', Georgia, serif !important;
+  color: #c29a5f !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8) !important;
+  letter-spacing: 0.5px !important;
+}
+
+.tempest-divider {
+  width: 110px !important;
+  height: 2px;
+  margin: 12px auto 18px auto !important;
+  background: linear-gradient(90deg, transparent 0%, rgba(194, 154, 95, 0.16) 14%, rgba(125, 211, 240, 1) 50%, rgba(194, 154, 95, 0.16) 86%, transparent 100%) !important;
+}
+
+.tempest-grid {
+  display: flex !important;
+  gap: 10px !important;
+  width: 100%;
+}
+
+.tempest-col {
+  flex: 1 1 0;
+}
+
+.tempest-row {
+  margin: 0 0 8px 0 !important;
+  padding: 10px 12px !important;
+  border-radius: 14px !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.025) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  color: var(--storm-text);
+  font-size: 14px !important;
+  transition: all 0.2s ease !important;
+}
+
+.tempest-row:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-1px) !important;
+}
+
+.tempest-label {
+  color: #9fe1f8 !important;
+  font-family: 'Metamorphous', Georgia, serif !important;
+  font-size: 13px !important;
+}
+
+.tempest-copy {
+  color: #eadfcd !important;
+  font-size: 14px !important;
+  line-height: 1.68 !important;
+  text-align: justify;
+}
+
+.tempest-note, .tempest-footer-note {
+  margin-top: 12px !important;
+  color: #ccb99d !important;
+  font-size: 12px;
+  text-align: center;
+  font-style: italic;
+}
+
+.tempest-music-wrap {
+  display: none;
+}
+
+
 /* --- NOUVEAU: CSS POUR LE SLIDER HISTOIRE (THÈME TEMPÊTE OR & BLEU) --- */
 /* Ajoute ça tout en bas de ton code CSS actuel */
 
@@ -172,3 +395,4 @@
   .th-prev { left: 5px; }
   .th-next { right: 5px; }
 }
+
