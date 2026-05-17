@@ -165,7 +165,7 @@ body .tempest-sheet div.tempest-section-title *,
   width: 110px !important;
   height: 2px;
   margin: 12px auto 18px auto !important;
-  background: linear-gradient(90deg, transparent 0%, rgba(194, 154, 95, 0.16) 14%, rgba(125, 211, 240, 1) 50%, rgba(194, 154, 95, 0.16) 86%, transparent 100%) !important;
+  background: linear-gradient(90deg, transparent 0%, rgba(194, 154, 95, 0.16) 14%, rgba(194, 154, 95, 1) 50%, rgba(194, 154, 95, 0.16) 86%, transparent 100%) !important;
 }
 
 .tempest-grid {
