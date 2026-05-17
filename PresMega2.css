@@ -94,7 +94,7 @@
   display: none !important;
 }
 
-.tempest-sheet div:empty:not(.tempest-music-undericon),
+.tempest-sheet div:empty:not(.tempest-music-undericon):not(.tempest-divider),
 .tempest-sheet span:empty {
   display: none !important;
 }
@@ -295,7 +295,7 @@
   z-index: 1 !important;
   isolation: isolate;
   margin: 0 0 44px 0 !important;
-  padding: 20px 20px 18px 20px !important;
+  padding: 24px 20px 18px 20px !important;
   border-radius: 20px !important;
   border: 1px solid rgba(125, 211, 240, 0.12) !important;
   background:
@@ -533,7 +533,7 @@
 
 /* Bloc final */
 .tempest-body > .tempest-section:last-of-type {
-  padding-bottom: 18px !important;
+  padding-bottom: 24px !important;
   border-color: rgba(160, 185, 200, 0.10) !important;
   background:
     radial-gradient(circle at 18% 72%, rgba(220, 245, 255, 0.09) 0 2px, rgba(220, 245, 255, 0.04) 2px 4px, transparent 5px),
@@ -600,9 +600,10 @@
 }
 
 .tempest-divider {
+  display: block !important;
   width: 110px !important;
   height: 2px;
-  margin: 12px auto 18px auto !important;
+  margin: 24px auto 36px auto !important;
   border-radius: 999px;
   background: linear-gradient(
     90deg,
