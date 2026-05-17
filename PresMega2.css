@@ -18,7 +18,7 @@
   --tentacle-top-left: url("https://i.postimg.cc/BvG8dy2R/left_top_tentacle_soft.png");
 
   --storm-scene: url("https://i.postimg.cc/y6GsWbLD/7680x4320-391779-underwater-fantasy-scenery-digital-art-4k-pc-wallpaper.jpg");
-  --storm-sigil: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%23dff7ff' stroke-opacity='.34' stroke-width='2.6'%3E%3Ccircle cx='110' cy='110' r='66'/%3E%3Ccircle cx='110' cy='110' r='38'/%3E%3Cpath d='M110 24 L110 62 M110 158 L110 196 M24 110 L62 110 M158 110 L196 110'/%3E%3Cpath d='M110 72 C126 72 138 83 138 98 C138 111 29 120 114 123 C100 126 92 133 92 145 C92 158 103 168 118 168'/%3E%3Cpath d='M82 54 L96 68 M138 152 L152 166 M166 82 L152 96 M68 138 L54 152'/%3E%3C/g%3E%3C/svg%3E");
+  --storm-sigil: none !important;
 
   width: 760px;
   max-width: 100%;
@@ -162,8 +162,9 @@ body .tempest-sheet div.tempest-section-title *,
 }
 
 .tempest-divider {
+  display: block !important;
   width: 110px !important;
-  height: 2px;
+  height: 2px !important;
   margin: 12px auto 18px auto !important;
   background: linear-gradient(90deg, transparent 0%, rgba(194, 154, 95, 0.16) 14%, rgba(194, 154, 95, 1) 50%, rgba(194, 154, 95, 0.16) 86%, transparent 100%) !important;
 }
@@ -185,7 +186,8 @@ body .tempest-sheet div.tempest-section-title *,
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.025) 100%) !important;
   border: 1px solid rgba(255, 255, 255, 0.07) !important;
   color: var(--storm-text);
-  font-size: 14px !important;
+  font-size: 15px !important;
+  line-height: 1.85 !important;
   transition: all 0.2s ease !important;
 }
 
@@ -198,20 +200,21 @@ body .tempest-sheet div.tempest-section-title *,
 .tempest-label {
   color: #9fe1f8 !important;
   font-family: 'Metamorphous', Georgia, serif !important;
-  font-size: 13px !important;
+  font-size: 14px !important;
 }
 
 .tempest-copy {
   color: #eadfcd !important;
-  font-size: 14px !important;
-  line-height: 1.68 !important;
+  font-size: 15px !important;
+  line-height: 1.95 !important;
   text-align: justify;
 }
 
 .tempest-note, .tempest-footer-note {
   margin-top: 12px !important;
   color: #ccb99d !important;
-  font-size: 12px;
+  font-size: 13px;
+  line-height: 1.8;
   text-align: center;
   font-style: italic;
 }
@@ -222,27 +225,74 @@ body .tempest-sheet div.tempest-section-title *,
 
 .tempest-anchor-img {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 0px;
+  right: 10px;
   width: 180px;
   opacity: 0.04;
   pointer-events: none;
-  z-index: 0;
+  z-index: 10;
   border: none;
   box-shadow: none;
 }
 
 .tempest-kraken-bg {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
-  width: 200px;
-  opacity: 0.06;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  opacity: 0.05;
   pointer-events: none;
-  z-index: 0;
+  z-index: 10;
   border: none;
   box-shadow: none;
+}
+
+.tempest-section:has(.tempest-tooltip:hover),
+.tempest-grid:has(.tempest-tooltip:hover),
+.tempest-col:has(.tempest-tooltip:hover),
+.tempest-row:has(.tempest-tooltip:hover) {
+  z-index: 9999 !important;
+  position: relative !important;
+}
+
+.tempest-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  color: #7dd3f0;
+  text-decoration: underline dotted;
+}
+
+.tempest-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-5px);
+  background: rgba(2, 7, 11, 0.95);
+  color: #eadfcd;
+  padding: 8px 12px;
+  border: 1px solid rgba(194, 154, 95, 0.4);
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.8;
+  width: max-content;
+  max-width: 300px;
+  white-space: normal;
+  word-wrap: break-word;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  z-index: 99999;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+  font-family: 'Open Sans', Arial, sans-serif;
+  text-shadow: none;
+}
+
+.tempest-tooltip:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
 }
 
 
@@ -419,5 +469,6 @@ body .tempest-sheet div.tempest-section-title *,
   .th-prev { left: 5px; }
   .th-next { right: 5px; }
 }
+
 
 
