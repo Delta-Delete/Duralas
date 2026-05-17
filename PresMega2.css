@@ -587,7 +587,7 @@
 
 .tempest-section-title {
   display: block !important;
-  margin: 0 !important;
+  margin: 0 auto 36px auto !important;
   padding: 0 !important;
   text-align: center !important;
   font-size: 28px !important;
@@ -600,7 +600,7 @@
 }
 
 .tempest-divider {
-  display: block !important;
+  display: none !important;
   width: 110px !important;
   height: 2px;
   margin: 24px auto 36px auto !important;
