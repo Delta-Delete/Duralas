@@ -17,7 +17,9 @@
   --tentacle-top-right: url("https://i.postimg.cc/FKgfmZZH/right_top_tentacle_soft.png");
   --tentacle-top-left: url("https://i.postimg.cc/BvG8dy2R/left_top_tentacle_soft.png");
 
+  --storm-anchor: url("https://i.postimg.cc/Z5jRMRKH/anchor.png");
   --storm-scene: url("https://i.postimg.cc/y6GsWbLD/7680x4320-391779-underwater-fantasy-scenery-digital-art-4k-pc-wallpaper.jpg");
+
   --storm-sigil: none !important;
 
   width: 760px;
@@ -37,6 +39,7 @@
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.04) inset,
     0 16px 42px rgba(0, 0, 0, 0.42) !important;
+  isolation: isolate !important;
 }
 
 .tempest-sheet::before,
@@ -66,17 +69,98 @@
   transform: rotate(8deg);
 }
 
+.tempest-sheet p,
+.tempest-sheet br {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.tempest-sheet > p,
+.tempest-sheet > br,
+.tempest-header > p,
+.tempest-header > br,
+.tempest-header-inner > p,
+.tempest-header-inner > br,
+.tempest-body > p,
+.tempest-body > br,
+.tempest-section > p,
+.tempest-section > br,
+.tempest-section-intro > p,
+.tempest-section-intro > br,
+.tempest-grid > p,
+.tempest-grid > br,
+.tempest-col > p,
+.tempest-col > br {
+  display: none !important;
+}
+
+.tempest-sheet div:empty:not(.tempest-music-undericon),
+.tempest-sheet span:empty {
+  display: none !important;
+}
+
+.tempest-sheet table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.tempest-sheet,
+.tempest-sheet div,
+.tempest-sheet span,
+.tempest-sheet p,
+.tempest-sheet a,
+.tempest-sheet table,
+.tempest-sheet tbody,
+.tempest-sheet tr,
+.tempest-sheet td,
+.tempest-sheet center {
+  max-width: none !important;
+  float: none !important;
+  clear: none !important;
+  line-height: inherit !important;
+}
+
+/* HEADER */
 .tempest-header {
   position: relative;
   z-index: 1;
   height: 310px !important;
   overflow: hidden;
+  border-bottom: 0px solid rgba(255, 255, 255, 0.08);
   background:
     linear-gradient(180deg, rgba(5, 10, 16, 0.22) 0%, rgba(5, 10, 16, 0.65) 50%, rgba(5, 10, 16, 1) 90%, rgba(5, 10, 16, 1) 100%),
-    var(--tempest-header, url('https://i.postimg.cc/Y2XY0YG2/vitrail.png'));
+    var(--tempest-header, url('https://2img.net/image.noelshack.com/fichiers/2018/31/2/1533066300-imgentete2.png'));
   background-size: cover;
   background-position: center 24% !important;
   background-repeat: no-repeat;
+}
+
+.tempest-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 52% 32%, rgba(125, 211, 240, 0.13) 0%, transparent 34%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.18) 44%, rgba(0, 0, 0, 0.54) 100%);
+  pointer-events: none;
+}
+
+.tempest-header::after {
+  content: "";
+  position: absolute;
+  right: -70px;
+  top: -70px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  opacity: 0.10;
+  background:
+    radial-gradient(circle, transparent 58%, rgba(194, 154, 95, 0.32) 59%, transparent 61%),
+    radial-gradient(circle, transparent 70%, rgba(125, 211, 240, 0.24) 71%, transparent 73%),
+    linear-gradient(0deg, transparent 49%, rgba(194, 154, 95, 0.40) 50%, transparent 51%),
+    linear-gradient(90deg, transparent 49%, rgba(194, 154, 95, 0.40) 50%, transparent 51%);
+  transform: rotate(16deg);
+  pointer-events: none;
 }
 
 .tempest-header-inner {
@@ -101,15 +185,22 @@
   letter-spacing: 1.8px;
   text-transform: uppercase;
   font-family: 'Metamorphous', Georgia, serif;
+  line-height: 1;
 }
 
 .tempest-main-title {
   display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
   color: #f5e7d2 !important;
   font-size: 64px !important;
   line-height: 0.95 !important;
   font-family: 'Pirata One', Georgia, serif !important;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55), 0 0 14px rgba(125, 211, 240, 0.10) !important;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.55),
+    0 0 14px rgba(125, 211, 240, 0.10) !important;
 }
 
 .tempest-subtitle {
@@ -117,9 +208,12 @@
   max-width: 620px;
   color: #dde3e6 !important;
   font-size: 15px !important;
+  line-height: 1.4 !important;
   font-style: italic;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.48);
 }
 
+/* BODY */
 .tempest-body {
   position: relative !important;
   z-index: 1 !important;
@@ -128,111 +222,711 @@
     linear-gradient(180deg, rgba(2, 8, 12, 0.74) 0%, rgba(3, 10, 15, 0.82) 100%),
     radial-gradient(circle at top, rgba(20, 55, 75, 0.12), transparent 35%),
     var(--storm-scene) center center / cover no-repeat !important;
+  isolation: isolate !important;
+  overflow: visible !important;
 }
 
+/* LECTEUR MUSIQUE & LÉGENDE */
+.tempest-music-wrap {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: -15px 0 -5px 0;
+  position: relative;
+  z-index: 30;
+  width: 100% !important; /* assure toute la largeur */
+}
+
+.tempest-music-wrap br {
+  display: none !important; /* Retour à la ligne à la con */
+}
+
+.tempest-music-stage {
+  position: relative;
+  width: 300px;
+  height: 60px;
+  display: block !important;
+}
+
+.tempest-music-iframe {
+  position: absolute;
+  inset: 0;
+  width: 300px;
+  height: 60px;
+  opacity: 0.001;
+  z-index: 10;
+  border: 0;
+}
+
+.tempest-music-undericon {
+  position: absolute;
+  top: 50%;
+  left: 90px;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: url('https://i.postimg.cc/YSWKHbB1/Kplay2.png') center/contain no-repeat;
+  pointer-events: none;
+  z-index: 2;
+  display: block !important;
+}
+
+.tempest-music-legend {
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 25px); /* Fixé exactement à droite du triangle (le centre moins 25px) */
+  transform: translateY(calc(-50% + 2px));
+  font-family: 'Pirata One', Georgia, serif;
+  font-size: 20px;
+  color: #f1dfc1;
+  line-height: 1 !important; /* retie l'étirement du forum */
+  margin: 0 !important;
+  padding: 0 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* BLOCS */
 .tempest-section {
   display: block !important;
   position: relative !important;
   z-index: 1 !important;
+  isolation: isolate;
   margin: 0 0 44px 0 !important;
-  padding: 20px !important;
+  padding: 20px 20px 18px 20px !important;
   border-radius: 20px !important;
   border: 1px solid rgba(125, 211, 240, 0.12) !important;
-  background: linear-gradient(180deg, rgba(21, 53, 72, 0.90) 0%, rgba(11, 31, 43, 0.92) 100%) !important;
-  box-shadow: inset 3px 0 0 rgba(194, 154, 95, 0.85), inset 0 0 0 1px rgba(255, 255, 255, 0.025), inset 0 0 80px rgba(0, 0, 0, 0.12), 0 10px 24px rgba(0, 0, 0, 0.22) !important;
+  background:
+    radial-gradient(circle at 14% 76%, rgba(220, 245, 255, 0.14) 0 2px, rgba(220, 245, 255, 0.06) 2px 4px, transparent 5px),
+    radial-gradient(circle at 23% 67%, rgba(170, 228, 245, 0.10) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.12) 0 2.5px, rgba(220, 245, 255, 0.05) 2.5px 5px, transparent 6px),
+    radial-gradient(circle at 73% 31%, rgba(125, 211, 240, 0.10) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 66% 58%, rgba(220, 245, 255, 0.08) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 38% 24%, rgba(180, 235, 250, 0.07) 0 1px, transparent 2.5px),
+    radial-gradient(circle at top right, rgba(125, 211, 240, 0.10), transparent 26%),
+    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.07), transparent 30%),
+    linear-gradient(180deg, rgba(21, 53, 72, 0.90) 0%, rgba(11, 31, 43, 0.92) 100%) !important;
+  box-shadow:
+    inset 3px 0 0 rgba(194, 154, 95, 0.85),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.025),
+    inset 0 0 80px rgba(0, 0, 0, 0.12),
+    0 10px 24px rgba(0, 0, 0, 0.22) !important;
+  overflow: visible !important;
 }
 
-body .tempest-sheet div.tempest-section-title,
-.tempest-sheet .tempest-section-title {
+.tempest-section:last-child {
+  margin-bottom: 0 !important;
+}
+
+.tempest-section:nth-of-type(even) {
+  background:
+    radial-gradient(circle at 84% 74%, rgba(220, 245, 255, 0.13) 0 2px, rgba(220, 245, 255, 0.05) 2px 4px, transparent 5px),
+    radial-gradient(circle at 74% 63%, rgba(170, 228, 245, 0.10) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 16% 22%, rgba(220, 245, 255, 0.12) 0 2.5px, rgba(220, 245, 255, 0.05) 2.5px 5px, transparent 6px),
+    radial-gradient(circle at 28% 32%, rgba(125, 211, 240, 0.10) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 61% 20%, rgba(220, 245, 255, 0.07) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 42% 72%, rgba(180, 235, 250, 0.06) 0 1px, transparent 2.5px),
+    radial-gradient(circle at top right, rgba(125, 211, 240, 0.10), transparent 26%),
+    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.07), transparent 30%),
+    linear-gradient(180deg, rgba(21, 53, 72, 0.90) 0%, rgba(11, 31, 43, 0.92) 100%) !important;
+}
+
+.tempest-grid,
+.tempest-col,
+.tempest-row,
+.tempest-copy,
+.tempest-note,
+.tempest-footer-note {
+  overflow: visible !important;
+}
+
+/* Tentacules génériques */
+.tempest-section::before,
+.tempest-section::after {
+  content: "";
+  position: absolute !important;
+  pointer-events: none !important;
+  z-index: 3 !important;
+  opacity: 1;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
+}
+
+.tempest-section::before {
+  left: -42px;
+  bottom: -50px;
+  width: 185px;
+  height: 220px;
+  background-image: var(--tentacle-bottom-left);
+  transform: rotate(-4deg);
+}
+
+.tempest-section::after {
+  right: -55px;
+  top: -50px;
+  width: 185px;
+  height: 220px;
+  background-image: var(--tentacle-top-right);
+  transform: rotate(-12deg);
+}
+
+.tempest-section:nth-of-type(even)::before {
+  left: -52px;
+  top: -70px;
+  bottom: auto;
+  width: 185px;
+  height: 220px;
+  background-image: var(--tentacle-top-left);
+  transform: rotate(12deg);
+}
+
+.tempest-section:nth-of-type(even)::after {
+  right: -42px;
+  bottom: -34px;
+  top: auto;
+  width: 185px;
+  height: 220px;
+  background-image: var(--tentacle-bottom-right);
+  transform: rotate(8deg);
+}
+
+/* Bloc 1 correctement ciblé */
+.tempest-body > .tempest-section-intro {
+  border-color: rgba(194, 154, 95, 0.18) !important;
+  background:
+    radial-gradient(circle at 84% 26%, rgba(220, 245, 255, 0.09) 0 2px, rgba(220, 245, 255, 0.04) 2px 4px, transparent 5px),
+    radial-gradient(circle at 18% 78%, rgba(170, 228, 245, 0.07) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 62% 22%, rgba(220, 245, 255, 0.06) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 34% 68%, rgba(180, 235, 250, 0.05) 0 1px, transparent 2.5px),
+    radial-gradient(circle at top right, rgba(145, 198, 226, 0.10), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(25, 56, 72, 0.94) 0%, rgba(13, 32, 42, 0.96) 100%) !important;
+  box-shadow:
+    inset 3px 0 0 rgba(194, 154, 95, 0.95),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.025),
+    inset 0 0 95px rgba(0, 0, 0, 0.14),
+    0 0 16px rgba(194, 154, 95, 0.08),
+    0 10px 24px rgba(0, 0, 0, 0.24) !important;
+}
+
+/* Bloc 1 : haut droite + bas gauche */
+.tempest-body > .tempest-section-intro::before {
+  left: -52px;
+  bottom: -42px;
+  top: auto;
+  width: 205px;
+  height: 210px;
+  background-image: var(--tentacle-bottom-left);
+  background-position: left bottom;
+  transform: rotate(-2deg);
+}
+
+.tempest-body > .tempest-section-intro::after {
+  right: -75px;
+  top: -38px;
+  bottom: auto;
+  width: 235px;
+  height: 190px;
+  background-image: var(--tentacle-top-right);
+  background-position: right top;
+  transform: rotate(-12deg);
+}
+
+.tempest-grid-lower {
+  margin-top: 2px !important;
+}
+
+.tempest-row-full {
+  margin-top: 4px !important;
+}
+
+/* Bloc 1 avec ancre */
+.tempest-section-intro {
+  position: relative !important;
+  overflow: visible !important;
+  padding-bottom: 10px !important;
+}
+
+.tempest-section-intro > .tempest-section-title,
+.tempest-section-intro > .tempest-divider,
+.tempest-section-intro > .tempest-grid,
+.tempest-section-intro > .tempest-row-full {
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+.tempest-section-intro .tempest-grid,
+.tempest-section-intro .tempest-grid-lower {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 14px !important;
+  row-gap: 0 !important;
+  align-items: start !important;
+  width: 100%;
+}
+
+.tempest-section-intro .tempest-col {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  min-width: 0 !important;
+}
+
+.tempest-section-intro .tempest-row {
+  margin: 0 !important;
+  padding: 9px 12px !important;
+}
+
+.tempest-section-intro .tempest-grid-lower {
+  margin-top: 4px !important;
+}
+
+.tempest-section-intro .tempest-row-full {
+  margin-top: 4px !important;
+}
+
+.tempest-anchor-img {
+  position: absolute !important;
+  right: 12px;
+  bottom: -2px;
+  width: 132px;
+  height: auto;
+  opacity: 0.34;
+  transform: rotate(18deg);
+  pointer-events: none !important;
+  z-index: 1 !important;
+  display: block;
+}
+
+/* Bloc 3 froid */
+.tempest-body > .tempest-section:nth-of-type(2) {
+  background:
+    radial-gradient(circle at 18% 78%, rgba(220, 245, 255, 0.13) 0 2px, rgba(220, 245, 255, 0.05) 2px 4px, transparent 5px),
+    radial-gradient(circle at 74% 24%, rgba(170, 228, 245, 0.10) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 58% 62%, rgba(180, 235, 250, 0.07) 0 1px, transparent 2.5px),
+    radial-gradient(circle at top right, rgba(125, 211, 240, 0.13), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(90, 150, 185, 0.07), transparent 28%),
+    linear-gradient(180deg, rgba(21, 56, 75, 0.92) 0%, rgba(13, 34, 48, 0.95) 100%) !important;
+}
+
+/* Bloc 4 mémoire */
+.tempest-body > .tempest-section:nth-of-type(3) {
+  border-color: rgba(125, 211, 240, 0.10) !important;
+  background:
+    radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.10) 0 2px, rgba(220, 245, 255, 0.04) 2px 4px, transparent 5px),
+    radial-gradient(circle at 22% 76%, rgba(170, 228, 245, 0.08) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 64% 61%, rgba(180, 235, 250, 0.05) 0 1px, transparent 2.5px),
+    radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.05), transparent 28%),
+    linear-gradient(180deg, rgba(17, 39, 54, 0.95) 0%, rgba(9, 20, 28, 0.97) 100%) !important;
+  box-shadow:
+    inset 3px 0 0 rgba(194, 154, 95, 0.75),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02),
+    inset 0 0 100px rgba(0, 0, 0, 0.18),
+    0 0 12px rgba(125, 211, 240, 0.05),
+    0 12px 28px rgba(0, 0, 0, 0.26) !important;
+}
+
+/* Bloc final */
+.tempest-body > .tempest-section:last-of-type {
+  padding-bottom: 18px !important;
+  border-color: rgba(160, 185, 200, 0.10) !important;
+  background:
+    radial-gradient(circle at 18% 72%, rgba(220, 245, 255, 0.09) 0 2px, rgba(220, 245, 255, 0.04) 2px 4px, transparent 5px),
+    radial-gradient(circle at 74% 20%, rgba(170, 228, 245, 0.06) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 58% 58%, rgba(220, 245, 255, 0.05) 0 1px, transparent 2.5px),
+    radial-gradient(circle at 26% 28%, rgba(180, 235, 250, 0.05) 0 1px, transparent 2.5px),
+    radial-gradient(circle at top right, rgba(125, 211, 240, 0.06), transparent 24%),
+    radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.05), transparent 28%),
+    linear-gradient(180deg, rgba(18, 39, 54, 0.95) 0%, rgba(11, 25, 35, 0.97) 100%) !important;
+  box-shadow:
+    inset 3px 0 0 rgba(194, 154, 95, 0.68),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02),
+    inset 0 0 80px rgba(0, 0, 0, 0.12),
+    0 0 10px rgba(125, 211, 240, 0.04),
+    0 10px 22px rgba(0, 0, 0, 0.20) !important;
+}
+
+.tempest-body > .tempest-section:last-of-type::before {
+  left: -30px;
+  bottom: -40px;
+  top: auto;
+  width: 145px;
+  height: 175px;
+  background-image: var(--tentacle-bottom-left);
+  background-position: left bottom;
+  transform: rotate(-2deg);
+}
+
+.tempest-body > .tempest-section:last-of-type::after {
+  right: -44px;
+  top: -24px;
+  width: 150px;
+  height: 165px;
+  background-image: var(--tentacle-top-right);
+  background-position: right top;
+  transform: rotate(-12deg);
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.18));
+}
+
+/* Contenu */
+.tempest-section-title,
+.tempest-divider,
+.tempest-grid,
+.tempest-row,
+.tempest-copy,
+.tempest-note,
+.tempest-footer-note {
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+.tempest-section-title {
   display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
   text-align: center !important;
   font-size: 28px !important;
+  line-height: 1.15 !important;
+  color: #f1dfc1 !important;
   font-family: 'Pirata One', Georgia, serif !important;
-  color: #c29a5f !important;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.8) !important;
-  letter-spacing: 0.5px !important;
-}
-
-body .tempest-sheet div.tempest-section-title *,
-.tempest-sheet .tempest-section-title * {
-  font-family: 'Pirata One', Georgia, serif !important;
-  color: #c29a5f !important;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.8) !important;
-  letter-spacing: 0.5px !important;
+  font-weight: normal;
+  letter-spacing: 0.4px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35) !important;
 }
 
 .tempest-divider {
-  display: block !important;
   width: 110px !important;
-  height: 2px !important;
+  height: 2px;
   margin: 12px auto 18px auto !important;
-  background: linear-gradient(90deg, transparent 0%, rgba(194, 154, 95, 0.16) 14%, rgba(194, 154, 95, 1) 50%, rgba(194, 154, 95, 0.16) 86%, transparent 100%) !important;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(194, 154, 95, 0.16) 14%,
+    rgba(125, 211, 240, 1) 50%,
+    rgba(194, 154, 95, 0.16) 86%,
+    transparent 100%
+  ) !important;
+  box-shadow: 0 0 12px rgba(125, 211, 240, 0.20) !important;
+}
+
+.tempest-divider + .tempest-grid {
+  margin-top: 12px !important;
 }
 
 .tempest-grid {
   display: flex !important;
   gap: 10px !important;
   width: 100%;
+  align-items: flex-start;
 }
 
 .tempest-col {
+  display: block !important;
   flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+  vertical-align: top;
 }
 
 .tempest-row {
+  display: block !important;
   margin: 0 0 8px 0 !important;
   padding: 10px 12px !important;
   border-radius: 14px !important;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.025) 100%) !important;
   border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.015),
+    0 4px 10px rgba(0, 0, 0, 0.10) !important;
   color: var(--storm-text);
-  font-size: 15px !important;
-  line-height: 1.85 !important;
-  transition: all 0.2s ease !important;
+  font-size: 16px !important;
+  line-height: 1.48 !important;
 }
 
-.tempest-row:hover {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  transform: translateY(-1px) !important;
+.tempest-row:last-child {
+  margin-bottom: 0 !important;
 }
 
 .tempest-label {
   color: #9fe1f8 !important;
+  font-weight: normal !important;
   font-family: 'Metamorphous', Georgia, serif !important;
-  font-size: 14px !important;
+  font-size: 15px !important;
+  letter-spacing: 0.2px;
 }
 
 .tempest-copy {
   color: #eadfcd !important;
-  font-size: 15px !important;
-  line-height: 1.95 !important;
+  font-size: 16px !important;
+  line-height: 1.45 !important;
   text-align: justify;
 }
 
-.tempest-note, .tempest-footer-note {
+.tempest-note {
   margin-top: 12px !important;
+  padding-top: 10px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
   color: #ccb99d !important;
-  font-size: 13px;
-  line-height: 1.8;
+  font-size: 14px;
+  line-height: 1.4;
   text-align: center;
   font-style: italic;
 }
 
-.tempest-music-wrap {
-  display: none;
+.tempest-link {
+  color: #b9ebfa !important;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(185, 235, 250, 0.30) !important;
 }
 
-.tempest-anchor-img {
-  position: absolute;
-  bottom: 0px;
-  right: 10px;
-  width: 180px;
-  opacity: 0.04;
-  pointer-events: none;
-  z-index: 10;
-  border: none;
-  box-shadow: none;
+.tempest-link:hover {
+  color: #ffffff !important;
+  border-bottom-color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.tempest-footer-note {
+  margin-top: 8px !important;
+  color: #9eabb3 !important;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .tempest-sheet {
+    border-radius: 18px;
+  }
+
+  .tempest-sheet::before,
+  .tempest-sheet::after {
+    display: none;
+  }
+
+  .tempest-header {
+    height: 250px !important;
+    background-position: center 30% !important;
+  }
+
+  .tempest-header-inner {
+    bottom: 16px !important;
+    padding: 0 16px !important;
+  }
+
+  .tempest-main-title {
+    font-size: 42px !important;
+    line-height: 0.95 !important;
+  }
+
+  .tempest-subtitle {
+    font-size: 13px !important;
+  }
+
+  .tempest-section-title {
+    font-size: 22px !important;
+  }
+
+  .tempest-body {
+    padding: 10px !important;
+  }
+
+  .tempest-section,
+  .tempest-section:nth-of-type(even),
+  .tempest-body > .tempest-section-intro,
+  .tempest-body > .tempest-section:nth-of-type(2) {
+    background:
+      radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.10) 0 2px, transparent 4px),
+      radial-gradient(circle at 18% 74%, rgba(170, 228, 245, 0.07) 0 1.5px, transparent 3px),
+      radial-gradient(circle at 62% 58%, rgba(220, 245, 255, 0.05) 0 1px, transparent 2.3px),
+      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
+      linear-gradient(180deg, rgba(21, 53, 72, 0.92) 0%, rgba(11, 31, 43, 0.94) 100%) !important;
+  }
+
+  .tempest-body > .tempest-section-intro {
+    background:
+      radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.10) 0 2px, transparent 4px),
+      radial-gradient(circle at 18% 74%, rgba(170, 228, 245, 0.07) 0 1.5px, transparent 3px),
+      radial-gradient(circle at 62% 58%, rgba(220, 245, 255, 0.05) 0 1px, transparent 2.3px),
+      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
+      linear-gradient(180deg, rgba(21, 53, 72, 0.92) 0%, rgba(11, 31, 43, 0.94) 100%) !important;
+  }
+
+  .tempest-body > .tempest-section:nth-of-type(3) {
+    background:
+      radial-gradient(circle at 82% 24%, rgba(220, 245, 255, 0.08) 0 2px, transparent 4px),
+      radial-gradient(circle at 18% 74%, rgba(170, 228, 245, 0.06) 0 1.5px, transparent 3px),
+      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
+      linear-gradient(180deg, rgba(17, 39, 54, 0.95) 0%, rgba(9, 20, 28, 0.97) 100%) !important;
+  }
+
+  .tempest-body > .tempest-section:last-of-type {
+    background:
+      radial-gradient(circle at 78% 22%, rgba(220, 245, 255, 0.08) 0 2px, transparent 4px),
+      radial-gradient(circle at 20% 72%, rgba(170, 228, 245, 0.05) 0 1.5px, transparent 3px),
+      radial-gradient(circle at 58% 60%, rgba(220, 245, 255, 0.04) 0 1px, transparent 2px),
+      radial-gradient(circle at top right, rgba(125, 211, 240, 0.08), transparent 24%),
+      radial-gradient(circle at bottom left, rgba(194, 154, 95, 0.06), transparent 28%),
+      linear-gradient(180deg, rgba(18, 39, 54, 0.95) 0%, rgba(11, 25, 35, 0.97) 100%) !important;
+    padding: 16px 14px 18px 14px !important;
+  }
+
+  .tempest-section {
+    padding: 16px 14px 14px 14px !important;
+  }
+
+  .tempest-grid {
+    display: block !important;
+    width: 100%;
+    gap: 0 !important;
+  }
+
+  .tempest-col {
+    display: block !important;
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
+
+  .tempest-col:last-child {
+    margin-bottom: 0;
+  }
+
+  .tempest-grid-lower {
+    margin-top: 8px !important;
+  }
+
+  .tempest-section::before {
+    left: -24px;
+    bottom: -18px;
+    width: 115px;
+    height: 135px;
+  }
+
+  .tempest-section::after {
+    right: -24px;
+    top: -16px;
+    width: 115px;
+    height: 135px;
+  }
+
+  .tempest-section:nth-of-type(even):before {
+    left: -24px;
+    top: -16px;
+    bottom: auto;
+    width: 115px;
+    height: 135px;
+  }
+
+  .tempest-section:nth-of-type(even):after {
+    right: -24px;
+    bottom: -18px;
+    top: auto;
+    width: 115px;
+    height: 135px;
+  }
+
+  .tempest-body > .tempest-section-intro::before {
+    left: -24px;
+    bottom: -18px;
+    top: auto;
+    width: 130px;
+    height: 145px;
+    background-image: var(--tentacle-bottom-left);
+    background-position: left bottom;
+    transform: rotate(-2deg);
+    opacity: 0.44;
+  }
+
+  .tempest-body > .tempest-section-intro::after {
+    right: -22px;
+    top: 6px;
+    bottom: auto;
+    width: 138px;
+    height: 108px;
+    background-image: var(--tentacle-top-right);
+    background-position: right top;
+    transform: rotate(-7deg);
+    opacity: 0.42;
+  }
+
+  .tempest-body > .tempest-section:last-of-type::before {
+    left: -18px;
+    bottom: -14px;
+    width: 95px;
+    height: 110px;
+    opacity: 0.22;
+  }
+
+  .tempest-body > .tempest-section:last-of-type::after {
+    right: -18px;
+    top: -8px;
+    width: 92px;
+    height: 100px;
+    opacity: 0.22;
+  }
+
+  .tempest-anchor-img {
+    right: 8px;
+    bottom: -10px;
+    width: 92px;
+    opacity: 0.28;
+    transform: rotate(16deg);
+  }
+
+  .tempest-section-intro .tempest-grid,
+  .tempest-section-intro .tempest-grid-lower {
+    display: block !important;
+    width: 100%;
+  }
+
+  .tempest-section-intro .tempest-col {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .tempest-section-intro .tempest-row {
+    margin: 0 !important;
+    padding: 9px 12px !important;
+  }
+
+  .tempest-music-wrap {
+    margin: 0 0 22px 0;
+  }
+
+  .tempest-music-stage {
+    width: 300px;
+    height: 54px;
+  }
+
+  .tempest-music-iframe {
+    height: 54px;
+  }
+
+  .tempest-music-undericon {
+    left: 30px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .tempest-music-legend {
+    left: calc(50% - 85px);
+    font-size: 20px;
+  }
+}
+
+.tempest-section-final {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
 }
 
 .tempest-kraken-bg {
@@ -240,12 +934,16 @@ body .tempest-sheet div.tempest-section-title *,
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 250px;
-  opacity: 0.05;
+  width: 260px;
+  max-width: 70%;
+  opacity: 0.12;
   pointer-events: none;
-  z-index: 10;
-  border: none;
-  box-shadow: none;
+  z-index: 0;
+}
+
+.tempest-section-final > *:not(.tempest-kraken-bg) {
+  position: relative;
+  z-index: 1;
 }
 
 .tempest-section:has(.tempest-tooltip:hover),
@@ -276,7 +974,6 @@ body .tempest-sheet div.tempest-section-title *,
   border: 1px solid rgba(194, 154, 95, 0.4);
   border-radius: 4px;
   font-size: 14px;
-  line-height: 1.8;
   width: max-content;
   max-width: 300px;
   white-space: normal;
@@ -472,3 +1169,177 @@ body .tempest-sheet div.tempest-section-title *,
 
 
 
+
+/* --- NOUVEAU: CSS POUR LE SLIDER HISTOIRE (THÈME TEMPÊTE OR & BLEU) --- */
+/* Ajoute ça tout en bas de ton code CSS actuel */
+
+.tempest-slider-container {
+  position: relative;
+  width: 100%;
+  padding: 10px 0 15px 0 !important;
+}
+
+.th-slider-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.tempest-radio {
+  display: none !important;
+}
+
+.tempest-slides {
+  display: flex !important;
+  width: 300%; /* 100% * nb de slides (ici 3) */
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.tempest-slide {
+  width: 33.333%; /* 100% / nb de slides */
+  padding: 0 !important; /* Le texte prend toute la largeur de la box */
+  box-sizing: border-box;
+}
+
+/* Animations de translation (On cible activement le bon x%) */
+#th-slide1:checked ~ .th-slider-viewport .tempest-slides { transform: translateX(0%); }
+#th-slide2:checked ~ .th-slider-viewport .tempest-slides { transform: translateX(-33.333%); }
+#th-slide3:checked ~ .th-slider-viewport .tempest-slides { transform: translateX(-66.666%); }
+
+/* Conteneur des flèches */
+.tempest-arrows {
+  position: absolute;
+  top: 0; /* Placé le plus haut possible */
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 10;
+  height: 0;
+}
+
+/* Wrapper de la flèche (cliquable et contenant le texte) */
+.th-arrow {
+  position: absolute;
+  top: 15px; /* Aligné avec le milieu du titre environ */
+  margin-top: -16px; /* Centrage du diamant de 32px */
+  cursor: pointer;
+  pointer-events: auto;
+  display: none !important; /* hidden by default */
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+  width: 32px; /* Set directly to diamond width */
+}
+
+/* Style du Diamant */
+.th-diamond {
+  width: 32px;
+  height: 32px;
+  transform: rotate(45deg);
+  background: linear-gradient(135deg, rgba(21, 53, 72, 0.95), rgba(11, 31, 43, 0.95));
+  border: 1px solid rgba(194, 154, 95, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.th-arrow:hover .th-diamond {
+  background: linear-gradient(135deg, rgba(11, 31, 43, 0.95), rgba(21, 53, 72, 0.95));
+  border-color: rgba(194, 154, 95, 0.85);
+  box-shadow: 0 0 12px rgba(194, 154, 95, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Le chevron à l'intérieur */
+.th-arrow-in {
+  display: block;
+  transform: rotate(-45deg);
+  color: #c29a5f;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  transition: color 0.3s;
+}
+
+.th-arrow:hover .th-arrow-in {
+  color: #f5e7d2;
+}
+
+/* Texte à côté de la flèche */
+.th-arrow-text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #c29a5f;
+  font-family: 'Pirata One', Georgia, serif;
+  font-size: 16px;
+  opacity: 0.85;
+  transition: opacity 0.3s ease, color 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.th-prev .th-arrow-text {
+  left: 45px;
+  text-align: left;
+}
+
+.th-next .th-arrow-text {
+  right: 45px;
+  text-align: right;
+}
+
+.th-arrow:hover .th-arrow-text {
+  opacity: 1;
+  color: #f1dfc1;
+}
+
+/* Positionnement pour être bien au bord SANS être coupé */
+.th-prev { left: 5px; }
+.th-next { right: 5px; }
+
+/* Affichage des flèches selon la slide active (Système sans-boucle) */
+#th-slide1:checked ~ .tempest-arrows .s1 { display: flex !important; }
+#th-slide2:checked ~ .tempest-arrows .s2 { display: flex !important; }
+#th-slide3:checked ~ .tempest-arrows .s3 { display: flex !important; }
+
+/* Indicateurs / Puces de progression en bas */
+.th-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+.th-dot {
+  width: 6px;
+  height: 6px;
+  background: rgba(125, 211, 240, 0.15);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.th-dot:hover {
+  background: rgba(125, 211, 240, 0.4);
+}
+#th-slide1:checked ~ .th-indicators .d1,
+#th-slide2:checked ~ .th-indicators .d2,
+#th-slide3:checked ~ .th-indicators .d3 {
+  background: #c29a5f;
+  transform: scale(1.4);
+  box-shadow: 0 0 8px rgba(194, 154, 95, 0.4);
+}
+
+@media (max-width: 700px) {
+  .tempest-slide { padding: 0 !important; }
+  .th-arrow { width: 26px; top: 12px; margin-top: -13px; }
+  .th-diamond { width: 26px; height: 26px; }
+  .th-arrow-text { font-size: 14px; top: 50%; }
+  .th-prev .th-arrow-text { left: 36px; }
+  .th-next .th-arrow-text { right: 36px; }
+  .th-arrow-in { font-size: 11px; }
+  .th-prev { left: 5px; }
+  .th-next { right: 5px; }
+}
