@@ -20,7 +20,7 @@ body {
   max-width: 500px;
   width: 90%;
   text-align: center;
-  line-height: 1.45;
+  line-height: 16px;
   font-family: inherit;
   position: relative;
   isolation: isolate;
@@ -139,14 +139,13 @@ body {
   background: transparent;
   overflow: visible;
   font-size: 14px;
-  line-height: 1.45;
   text-align: justify;
   color: #f5deb3;
 }
 
 .msgBDY p {
   text-indent: 30px;
-  margin: 0 0 0.8em 0;
+  margin: -0.3em 0;
   position: relative;
   z-index: 1;
 }
@@ -214,8 +213,7 @@ body {
   }
 
   .msgBDY {
-    font-size: 12px;
-    line-height: 1.45;
+    font-size: 11px;
     padding: 8px;
   }
 }
