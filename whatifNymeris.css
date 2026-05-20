@@ -89,13 +89,15 @@ body {
   width: 363px;
   height: 259px;
   transform: translate(-50%, -50%);
-  background: url('https://nymeris-bot.github.io/Duralas/BackBlood1.png') no-repeat center center;
+  background: url('https://delta-delete.github.io/Duralas/tacheornoble.png') no-repeat center center;
   background-size: contain;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
 }
 
 .ftBDY img {
+  position: relative;
+  z-index: 1;
   width: 75px;
   height: 75px;
   border-radius: 75px;
@@ -109,6 +111,7 @@ body {
 
 .ftBDY div {
   position: absolute;
+  z-index: 2;
   margin-top: -87px;
   width: 75px;
   height: 62px;
@@ -184,7 +187,7 @@ body {
 
 .msgBDY p::first-letter {
   text-transform: uppercase;
-  color: #660000;
+  color: #d4af37;
   font-family: 'Perigord', serif;
   font-size: 22px;
 }
