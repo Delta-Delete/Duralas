@@ -20,7 +20,7 @@ body {
   max-width: 500px;
   width: 90%;
   text-align: center;
-  line-height: 16px;
+  line-height: 1.45;
   font-family: inherit;
   position: relative;
   isolation: isolate;
@@ -58,7 +58,8 @@ body {
 .ftBDY {
   position: absolute;
   z-index: 2;
-  margin-top: -60px;
+  isolation: isolate;
+  margin-top: -85px;
   margin-left: 40px;
   width: 75px;
   height: 75px;
@@ -68,8 +69,8 @@ body {
 .ftBDY::before {
   content: "";
   position: absolute;
-  top: 35%;
-  left: 140%;
+  top: 45%;
+  left: 115%;
   width: 363px;
   height: 259px;
   transform: translate(-50%, -50%);
@@ -118,8 +119,8 @@ body {
   position: relative;
   z-index: 2;
   font-family: 'Perigord', serif;
-  margin-top: -80px;
-  margin-bottom: -30px;
+  margin-top: -105px;
+  margin-bottom: -10px;
   padding: 15px 0;
   text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
   font-size: 18px;
@@ -139,13 +140,14 @@ body {
   background: transparent;
   overflow: visible;
   font-size: 14px;
+  line-height: 1.45;
   text-align: justify;
   color: #f5deb3;
 }
 
 .msgBDY p {
   text-indent: 30px;
-  margin: -0.3em 0;
+  margin: 0 0 0.8em 0;
   position: relative;
   z-index: 1;
 }
@@ -190,6 +192,7 @@ body {
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -210,10 +213,13 @@ body {
 
   .tleBDY {
     font-size: 16px;
+    margin-top: -85px;
+    margin-bottom: -5px;
   }
 
   .msgBDY {
-    font-size: 11px;
+    font-size: 12px;
+    line-height: 1.45;
     padding: 8px;
   }
 }
