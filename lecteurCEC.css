@@ -1,0 +1,14 @@
+.rp-music {
+  display: block;
+  width: 175px;
+  height: 28px;
+  margin: 8px auto;
+  opacity: 0.68;
+  filter: sepia(0.35) brightness(0.82);
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.rp-music:hover {
+  opacity: 1;
+  filter: sepia(0.18) brightness(0.95);
+}
